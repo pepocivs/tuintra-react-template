@@ -1,5 +1,7 @@
+import breakpoints from "helpers/breakpoints";
+
 const theme = {
-  palettes: {
+  colors: {
     primary: "#007BFF",
     secondary: "#7C818C",
     success: "#85C33E",
@@ -12,7 +14,17 @@ const theme = {
     extra: {
       youtube: "#FF0001"
     }
-  }
+  },
+  fonts: {
+    mainFont: "Gayathri",
+    secondaryFont: "Gayathri"
+  },
+  spacings: {
+    logoWidth: "75px",
+    layoutMargin: "150px",
+    headerHeight: "70px"
+  },
+  breakpoints
 };
 
 export default theme;

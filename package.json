@@ -4,10 +4,14 @@
   "private": true,
   "dependencies": {
     "react": "^16.9.0",
+    "react-awesome-slider": "github:pepocivs/react-awesome-slider#fix-jpeg-support",
     "react-breakpoints": "^3.0.3",
     "react-dom": "^16.9.0",
+    "react-helmet": "^5.2.1",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "redux": "^4.0.4",
     "styled-components": "^4.3.2",
     "webfontloader": "^1.6.28"
   },
