@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 2;
     margin: 0;
     padding: 0;
-    background-color: ${theme.colors.light};
+    background-color: ${theme.colors.white};
   }
   a, a:visited, a:hover, a:active {
     text-decoration: none;

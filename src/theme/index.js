@@ -10,13 +10,13 @@ const theme = {
     light: "#F7F7F7",
     dark: "#4A4A4A",
     white: "#FFFFFF",
-    gray: "#EFECEC",
+    grey: "#EFECEC",
     extra: {
       youtube: "#FF0001"
     }
   },
   fonts: {
-    mainFont: "Gayathri",
+    mainFont: "Acme",
     secondaryFont: "Gayathri"
   },
   spacings: {

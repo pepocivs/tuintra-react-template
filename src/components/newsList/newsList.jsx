@@ -3,22 +3,30 @@ import styled from "styled-components";
 
 /** Styles */
 const NewContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-areas: "summary picture";
+  grid-template-columns: 1fr 250px;
+  grid-gap: 10px;
   margin: 20px 0px;
-  padding: 0px 20px;
+  padding: 10px 20px;
+  border-bottom: 1px solid ${({theme}) => theme.colors.grey};
 `;
 
 const NewContent = styled.div`
+  grid-area: summary;
   margin-right: 30px;
   h2 {
     font-weight: bold;
     text-transform: uppercase;
     margin-top: 0;
   }
+  h2, p {
+    line-height: 1;
+  }
 `;
 
 const ImageContainer = styled.div`
+  grid-area: picture;
   height: 200px;
   width: 250px;
 `;

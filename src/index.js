@@ -8,7 +8,7 @@ import App from "components/App/App";
 
 WebFont.load({
   google: {
-    families: ["Gayathri:100,400,700"]
+    families: ["Gayathri:100,400,700", "Acme"]
   }
 });
 
