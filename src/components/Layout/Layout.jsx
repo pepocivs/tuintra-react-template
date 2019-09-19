@@ -13,9 +13,10 @@ import Footer from 'components/Layout/Footer';
 
 /** Containers */
 import NotFound from 'components/Containers/NotFound';
-import Home from 'components/Containers/HomeContainer';
-import Teams from 'components/Containers/TeamsContainer';
-import News from 'components/Containers/NewsContainer';
+import HomeContainer from 'components/Containers/HomeContainer';
+import TeamsContainer from 'components/Containers/TeamsContainer';
+import TeamContainer from 'components/Containers/TeamContainer';
+import NewsContainer from 'components/Containers/NewsContainer';
 
 import emulatedState from 'emulatedState';
 
@@ -72,10 +73,11 @@ function Layout(stateProps) {
           </HeaderSection>
           <MainSection>
             <div className="page-body">
-              <Route path="/equipos" component={() => <Teams {...stateProps} />} />
-              <Route path="/noticias/:id?" component={() => <News {...stateProps} />} />
-              <Route path="/inicio" component={() => <Home {...stateProps} />} />
-              <Route exact path="/" component={() => <Home {...stateProps} />} />
+              <Route exact path="/equipos" component={() => <TeamsContainer {...stateProps} />} />
+              <Route path="/equipos/:id" component={() => <TeamContainer {...stateProps} />} />
+              <Route path="/noticias/:id?" component={() => <NewsContainer {...stateProps} />} />
+              <Route exact path="/inicio" component={() => <HomeContainer {...stateProps} />} />
+              <Route exact path="/" component={() => <HomeContainer {...stateProps} />} />
             </div>
           </MainSection>
           <FooterSection>
