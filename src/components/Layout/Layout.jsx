@@ -30,7 +30,10 @@ const MainContainer = styled.div`
   grid-template-rows: ${({theme}) => theme.spacings.headerHeight} 1fr auto;
   grid-gap: 10px;
   height: 100vh;
-  @media ${({theme}) => theme.breakpoints.mobileLandscape} {
+  @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape}px) {
+    grid-template-columns: ${({theme}) => `${theme.spacings.layoutSmallMargin} 1fr ${theme.spacings.layoutSmallMargin}`};
+  }
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
     grid-template-columns: 0px 1fr 0px;
   }
 `;
@@ -59,7 +62,7 @@ function Layout(stateProps) {
           <HeaderSection>
             <Media>
               {({ breakpoints, currentBreakpoint }) =>
-                breakpoints[currentBreakpoint] > breakpoints.mobileLandscape ? (
+                breakpoints[currentBreakpoint] >= breakpoints.tablet ? (
                   <Menu clubInfo={stateProps.clubInfo} />
                 ) : (
                   <h1>Mobile stuff {breakpoints.mobileLandscape}</h1>

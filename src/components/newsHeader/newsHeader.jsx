@@ -9,6 +9,9 @@ const SliderContainer = styled.div`
   left: 0;
   width: 100%;
   top: ${({theme}) => theme.spacings.headerHeight};
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+    position: initial;
+  }
 `;
 
 const AwesomeSliderStyled = styled(AwesomeSlider)`

@@ -17,6 +17,12 @@ const Row = styled.div`
 	grid-template-rows: ${({theme}) => theme.spacings.headerHeight};
 	grid-gap: 10px;
 	overflow: hidden;
+	@media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape}px) {
+    grid-template-columns: ${({theme}) => `${theme.spacings.layoutSmallMargin} ${theme.spacings.logoWidth} 1fr ${theme.spacings.layoutSmallMargin}`};
+  }
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+    grid-template-columns: 0px ${({theme}) => theme.spacings.logoWidth} 1fr 0px;
+  }
 `;
 const Logo = styled.img`
 	grid-area: logo;
