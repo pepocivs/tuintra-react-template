@@ -18,27 +18,13 @@ function TeamContainer(props) {
 	 
 	return (
 		<>
-      <Media>
-        {({ breakpoints, currentBreakpoint }) =>
-          breakpoints[currentBreakpoint] >= breakpoints.tablet ? (
-            <Card
-              bgImage={selectedTeam.picture}
-              title={selectedTeam.teamName}
-              subtitle={`${selectedTeam.category} ${selectedTeam.gender}`}
-              width="100%"
-              height="350px">
-            </Card>
-          ) : (
-            <Card
-              bgImage={selectedTeam.picture}
-              title={selectedTeam.teamName}
-              subtitle={`${selectedTeam.category} ${selectedTeam.gender}`}
-              width="100%"
-              height="240px">
-            </Card>
-          )
-        }
-      </Media>
+      <Card
+        bgImage={selectedTeam.picture}
+        title={selectedTeam.teamName}
+        subtitle={`${selectedTeam.category} ${selectedTeam.gender}`}
+        width="100%"
+        height="50vw">
+      </Card>
 			<PlayersContainer>
 				{selectedTeam.staff.map(staff => {
 					return (
