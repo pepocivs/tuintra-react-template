@@ -16,7 +16,6 @@ const CardImage = styled.div`
 `;
 
 const CardDescription = styled.div`
-	line-height: 1;
 	position: relative;
 	top: calc(${({height}) => height} - 55px);
 	h2, p {

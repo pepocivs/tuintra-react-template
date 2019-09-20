@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: ${theme.fonts.mainFont};
-    line-height: 2;
+    line-height: 1;
     margin: 0;
     padding: 0;
     background-color: ${theme.colors.white};

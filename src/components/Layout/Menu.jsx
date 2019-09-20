@@ -38,16 +38,20 @@ const NavHolder = styled.div`
 		overflow: hidden;
 		display: flex;
 		margin: 0px;
+		padding-inline-start: 0px;
 	}
-	li{
-		height: 15pt;
+	a {
+		display: flex;
+		align-items: center;
 		font-weight: bold;
 		text-transform: uppercase;
+		height: ${({theme}) => theme.spacings.headerHeight};
 	}
-	li a{
-		padding: 20px;
+	a li {
+		padding: 0 20px;
 		text-decoration: none;
 		color: #FFFFFF;
+		text-align: center;
 	}
 `;
 	
@@ -63,9 +67,11 @@ function Menu(props) {
 						{
 							clubInfo.menu.map(menuItem => {
 								if(menuItem.visible && menuItem.father === "0")
-									return <li key={menuItem._id}>
-										<Link to={`/${menuItem.file}`}>{menuItem.title}</Link>
-									</li>
+									return (
+										<Link key={menuItem._id} to={`/${menuItem.file}`}>
+											<li>{menuItem.title}</li>
+										</Link>
+									);
 								return '';
 							})
 						}

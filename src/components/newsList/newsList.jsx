@@ -20,9 +20,6 @@ const NewContent = styled.div`
     text-transform: uppercase;
     margin-top: 0;
   }
-  h2, p {
-    line-height: 1;
-  }
 `;
 
 const ImageContainer = styled.div`
