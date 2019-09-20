@@ -17,7 +17,7 @@ const theme = {
   spacings: {
     logoWidth: "75px",
     layoutMargin: "150px",
-    layoutSmallMargin: "75px",
+    layoutSmallMargin: "90px",
     headerHeight: "70px"
   },
   breakpoints

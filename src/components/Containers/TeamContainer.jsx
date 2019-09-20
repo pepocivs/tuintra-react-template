@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Media } from "react-breakpoints";
 
 /** Custom Components */
 import Card from "components/Card/Card";
@@ -32,7 +31,7 @@ function TeamContainer(props) {
               key={staff._id}
               bgImage={staff.picture}
               title={staff.name.public}
-              subtitle={`#${staff.number} ${(staff.rol) ? `- ${staff.rol}` : ''}`}
+              subtitle={staff.rol}
               width="150px"
               height="200px">
             </Card>
