@@ -64,7 +64,7 @@ function Menu(props) {
 							clubInfo.menu.map(menuItem => {
 								if(menuItem.visible && menuItem.father === "0")
 									return <li key={menuItem._id}>
-										<Link to={menuItem.file}>{menuItem.title}</Link>
+										<Link to={`/${menuItem.file}`}>{menuItem.title}</Link>
 									</li>
 								return '';
 							})
