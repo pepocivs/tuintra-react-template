@@ -6,6 +6,7 @@ export default [
     gender: "Masculino",
     sport: "Hockey Hierba",
     scope: "Nacional",
+    icon: "fieldHockey",
     teams: []
   },
   {
@@ -13,8 +14,9 @@ export default [
     competitionName: "1ª División",
     category: "Senior",
     gender: "Masculino",
-    sport: "Hockey Hierba",
+    sport: "Hockey Sala",
     scope: "Territorial",
+    icon: "indoorHockey",
     teams: []
   },
   {
@@ -24,15 +26,7 @@ export default [
     gender: "Masculino",
     sport: "Hockey Hierba",
     scope: "Territorial",
-    teams: []
-  },
-  {
-    _id: 446,
-    competitionName: "Liga",
-    category: "Juvenil",
-    gender: "Masculino",
-    sport: "Hockey Hierba",
-    scope: "Territorial",
+    icon: "fieldHockey",
     teams: []
   },
   {
@@ -42,33 +36,7 @@ export default [
     gender: "Masculino",
     sport: "Hockey Hierba",
     scope: "Territorial",
-    teams: []
-  },
-  {
-    _id: 450,
-    competitionName: "Copa FHCV",
-    category: "Cadete",
-    gender: "Masculino",
-    sport: "Hockey Hierba",
-    scope: "Territorial",
-    teams: []
-  },
-  {
-    _id: 452,
-    competitionName: "Copa FHCV",
-    category: "Infantil",
-    gender: "Masculino",
-    sport: "Hockey Hierba",
-    scope: "Territorial",
-    teams: []
-  },
-  {
-    _id: 447,
-    competitionName: "Liga",
-    category: "Juvenil",
-    gender: "Femenino",
-    sport: "Hockey Hierba",
-    scope: "Territorial",
+    icon: "fieldHockey",
     teams: []
   },
   {
@@ -78,6 +46,37 @@ export default [
     gender: "Femenino",
     sport: "Hockey Hierba",
     scope: "Territorial",
+    icon: "fieldHockey",
+    teams: []
+  },
+  {
+    _id: 446,
+    competitionName: "Liga",
+    category: "Juvenil",
+    gender: "Masculino",
+    sport: "Hockey Hierba",
+    scope: "Territorial",
+    icon: "fieldHockey",
+    teams: []
+  },
+  {
+    _id: 447,
+    competitionName: "Liga",
+    category: "Juvenil",
+    gender: "Femenino",
+    sport: "Hockey Hierba",
+    scope: "Territorial",
+    icon: "fieldHockey",
+    teams: []
+  },
+  {
+    _id: 450,
+    competitionName: "Copa FHCV",
+    category: "Cadete",
+    gender: "Masculino",
+    sport: "Hockey Hierba",
+    scope: "Territorial",
+    icon: "fieldHockey",
     teams: []
   },
   {
@@ -87,6 +86,17 @@ export default [
     gender: "Femenino",
     sport: "Hockey Hierba",
     scope: "Territorial",
+    icon: "fieldHockey",
+    teams: []
+  },
+  {
+    _id: 452,
+    competitionName: "Copa FHCV",
+    category: "Infantil",
+    gender: "Masculino",
+    sport: "Hockey Hierba",
+    scope: "Territorial",
+    icon: "fieldHockey",
     teams: []
   },
   {
@@ -96,6 +106,7 @@ export default [
     gender: "Femenino",
     sport: "Hockey Hierba",
     scope: "Territorial",
+    icon: "fieldHockey",
     teams: []
   }
 ];

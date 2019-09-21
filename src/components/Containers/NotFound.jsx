@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 
-function NotFound(props) {
-  const { title, subtitle } = props;
+function NotFound({ title, subtitle }) {
   const Container = styled.div`
     position: relative;
     height: 100vh;

@@ -12,9 +12,7 @@ const PlayersContainer = styled.div`
   margin-top: 20px;
 `;
 
-function TeamContainer(props) {
-	const { selectedTeam } = props;
-	 
+function TeamContainer({ selectedTeam }) {
 	return (
 		<>
       <Card

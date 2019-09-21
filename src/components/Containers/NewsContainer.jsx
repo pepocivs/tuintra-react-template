@@ -1,6 +1,6 @@
 import React from "react";
-import NewsList from "components/newsList/newsList";
-import NewsHead from "components/newsHeader/newsHeader";
+import NewsList from "components/NewsList/NewsList";
+import NewsHead from "components/NewsHeader/NewsHeader";
 import styled from "styled-components";
 
 const NewsContainerStyled = styled.div`

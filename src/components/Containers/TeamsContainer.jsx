@@ -11,24 +11,21 @@ const TeamContainer = styled.div`
   grid-column-gap: 20px;
 `;
 
-function TeamsContainer(props) {
-	const { teams } = props;
-	 
+function TeamsContainer({ teams }) {
 	return (
 		<>
 			<h2>Equipos</h2>
 			<TeamContainer>
 				{teams.map(team => {
 					return (
-						<div key={team._id}>
-							<Card
-								bgImage={team.picture}
-								title={team.teamName}
-								subtitle={`${team.category} ${team.gender}`}
-								width="250px"
-								height="178px">
-							</Card>
-						</div>
+						<Card
+							key={team._id}
+							bgImage={team.picture}
+							title={team.teamName}
+							subtitle={`${team.category} ${team.gender}`}
+							width="250px"
+							height="178px">
+						</Card>
 					);
 				})}
 			</TeamContainer>

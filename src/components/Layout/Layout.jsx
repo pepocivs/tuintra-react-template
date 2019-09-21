@@ -17,8 +17,8 @@ import HomeContainer from 'components/Containers/HomeContainer';
 import TeamsContainer from 'components/Containers/TeamsContainer';
 import TeamContainer from 'components/Containers/TeamContainer';
 import NewsContainer from 'components/Containers/NewsContainer';
-
-import emulatedState from 'emulatedState';
+import CompetitionsContainer from 'components/Containers/CompetitionsContainer';
+import CompetitionContainer from 'components/Containers/CompetitionContainer';
 
 /** Styles */
 const MainContainer = styled.div`
@@ -48,8 +48,7 @@ const FooterSection = styled.footer`
   grid-area: footer;
 `;
 
-function Layout(stateProps) {
-  stateProps = emulatedState;
+function Layout({stateProps}) {
   if (stateProps.clubInfo && Object.keys(stateProps.clubInfo).length > 0) {
     return (
       <Router>
@@ -76,6 +75,8 @@ function Layout(stateProps) {
               <Route exact path="/equipos" component={() => <TeamsContainer {...stateProps} />} />
               <Route path="/equipos/:id" component={() => <TeamContainer {...stateProps} />} />
               <Route path="/noticias/:id?" component={() => <NewsContainer {...stateProps} />} />
+              <Route exact path="/competiciones" component={() => <CompetitionsContainer {...stateProps} />} />
+              <Route path="/competiciones/:id" component={() => <CompetitionContainer {...stateProps} />} />
               <Route exact path="/inicio" component={() => <HomeContainer {...stateProps} />} />
               <Route exact path="/" component={() => <HomeContainer {...stateProps} />} />
             </div>
