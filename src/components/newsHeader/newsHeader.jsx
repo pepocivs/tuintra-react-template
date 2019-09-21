@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import AwesomeSlider from 'react-awesome-slider';
 import styled from "styled-components";
 import 'react-awesome-slider/dist/styles.css';

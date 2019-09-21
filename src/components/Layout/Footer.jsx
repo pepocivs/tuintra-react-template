@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import FooterSeparator from './FooterSeparator';
 import styled from "styled-components";
 
