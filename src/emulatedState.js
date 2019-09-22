@@ -6,12 +6,14 @@ import selectedCompetition from "mockData/competition";
 import selectedTeam from "mockData/team";
 import selectedCalendar from "mockData/calendar";
 import selectedStanding from "mockData/standing";
+import history from "mockData/history";
 
 export default {
   clubInfo,
   news,
   teams,
   competitions,
+  history,
   selectedCompetition,
   selectedTeam,
   selectedCalendar,

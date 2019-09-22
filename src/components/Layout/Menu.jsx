@@ -46,6 +46,7 @@ const NavHolder = styled.div`
 		font-weight: bold;
 		text-transform: uppercase;
 		height: ${({theme}) => theme.spacings.headerHeight};
+		cursor: pointer;
 	}
 	a li {
 		padding: 0 20px;

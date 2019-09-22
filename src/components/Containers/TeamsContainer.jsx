@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 /** Custom Components */
@@ -18,14 +19,16 @@ function TeamsContainer({ teams }) {
 			<TeamContainer>
 				{teams.map(team => {
 					return (
-						<Card
-							key={team._id}
-							bgImage={team.picture}
-							title={team.teamName}
-							subtitle={`${team.category} ${team.gender}`}
-							width="250px"
-							height="178px">
-						</Card>
+            <Link key={team._id} to={`/equipos/${team._id}`}>
+							<Card
+								key={team._id}
+								bgImage={team.picture}
+								title={team.teamName}
+								subtitle={`${team.category} ${team.gender}`}
+								width="250px"
+								height="178px">
+							</Card>
+						</Link>
 					);
 				})}
 			</TeamContainer>

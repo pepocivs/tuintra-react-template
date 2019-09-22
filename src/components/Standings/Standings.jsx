@@ -39,7 +39,7 @@ export default function Standings({standing}) {
       <TableHead>Gc</TableHead>
       <TableHead>Ptos</TableHead>
       {standing.map(row => (
-        <>
+        <div key={row._id}>
           <div>{row.position}</div>
           <Shield src={row.teamData.shield[100]} alt={row.teamData.name} />
           <div>{row.teamData.name}</div>
@@ -50,7 +50,7 @@ export default function Standings({standing}) {
           <InfoCell>{row.goalsAgainst}</InfoCell>
           <InfoCell>{row.goalsDifference}</InfoCell>
           <HighligtedCell>{row.points}</HighligtedCell>
-        </>
+        </div>
       ))}
     </StandingContainer>
   )

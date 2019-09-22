@@ -19,6 +19,7 @@ import TeamContainer from 'components/Containers/TeamContainer';
 import NewsContainer from 'components/Containers/NewsContainer';
 import CompetitionsContainer from 'components/Containers/CompetitionsContainer';
 import CompetitionContainer from 'components/Containers/CompetitionContainer';
+import OurClubContainer from 'components/Containers/OurClubContainer';
 
 /** Styles */
 const MainContainer = styled.div`
@@ -78,6 +79,7 @@ function Layout({stateProps}) {
               <Route exact path="/competiciones" component={() => <CompetitionsContainer {...stateProps} />} />
               <Route path="/competiciones/:id" component={() => <CompetitionContainer {...stateProps} />} />
               <Route exact path="/inicio" component={() => <HomeContainer {...stateProps} />} />
+              <Route exact path="/club" component={() => <OurClubContainer {...stateProps} />} />
               <Route exact path="/" component={() => <HomeContainer {...stateProps} />} />
             </div>
           </MainSection>

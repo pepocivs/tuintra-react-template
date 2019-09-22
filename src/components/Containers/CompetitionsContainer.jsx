@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 /** Custom Components */
@@ -20,14 +21,16 @@ function CompetitionsContainer({competitions}) {
       <CompetitionContainer>
         {competitions.map(competition => {
           return (
-            <Card
-              key={competition._id}
-              bgImage={`/assets/${competition.icon}.png`}
-              title={competition.competitionName}
-              subtitle={`${competition.category} ${competition.gender}`}
-              width="150px"
-              height="150px">
-            </Card>
+            <Link key={competition._id} to={`/competiciones/${competition._id}`}>
+							<Card
+                bgImage={`/assets/${competition.icon}.png`}
+                title={competition.competitionName}
+                subtitle={`${competition.category} ${competition.gender}`}
+                width="150px"
+                height="150px">
+              </Card>
+            </Link>
+            
           )
         })}
       </CompetitionContainer>
