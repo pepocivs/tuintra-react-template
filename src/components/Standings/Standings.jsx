@@ -6,6 +6,7 @@ const StandingContainer = styled.div`
   grid-template-columns: 20px 25px 5fr repeat(7, 1fr);
   align-items: center;
   grid-gap: 5px 10px;
+  margin-bottom: 5px;
 `;
 
 const TableHead = styled.div`
@@ -27,19 +28,21 @@ const Shield = styled.img`
 
 export default function Standings({standing}) {
   return (
-    <StandingContainer>
-      <TableHead></TableHead>
-      <TableHead></TableHead>
-      <TableHead>Equipo</TableHead>
-      <TableHead>Pj</TableHead>
-      <TableHead>Pg</TableHead>
-      <TableHead>Pe</TableHead>
-      <TableHead>Pp</TableHead>
-      <TableHead>Gf</TableHead>
-      <TableHead>Gc</TableHead>
-      <TableHead>Ptos</TableHead>
+    <>
+      <StandingContainer>
+        <TableHead></TableHead>
+        <TableHead></TableHead>
+        <TableHead>Equipo</TableHead>
+        <TableHead>Pj</TableHead>
+        <TableHead>Pg</TableHead>
+        <TableHead>Pe</TableHead>
+        <TableHead>Pp</TableHead>
+        <TableHead>Gf</TableHead>
+        <TableHead>Gc</TableHead>
+        <TableHead>Ptos</TableHead>
+      </StandingContainer>
       {standing.map(row => (
-        <div key={row._id}>
+        <StandingContainer key={row.position}>
           <div>{row.position}</div>
           <Shield src={row.teamData.shield[100]} alt={row.teamData.name} />
           <div>{row.teamData.name}</div>
@@ -50,8 +53,8 @@ export default function Standings({standing}) {
           <InfoCell>{row.goalsAgainst}</InfoCell>
           <InfoCell>{row.goalsDifference}</InfoCell>
           <HighligtedCell>{row.points}</HighligtedCell>
-        </div>
+        </StandingContainer>
       ))}
-    </StandingContainer>
+    </>
   )
 }

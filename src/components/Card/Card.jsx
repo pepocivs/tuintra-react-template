@@ -21,7 +21,8 @@ const CardDescription = styled.div`
 	top: calc(${({height}) => height} - 55px);
 	h2, p {
 		margin: 0;
-		color: ${({theme}) => theme.colors.white};
+    color: ${({theme}) => theme.colors.white};
+    border-bottom: 0;    
 	}
 `;
 

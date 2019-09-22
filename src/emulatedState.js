@@ -7,6 +7,8 @@ import selectedTeam from "mockData/team";
 import selectedCalendar from "mockData/calendar";
 import selectedStanding from "mockData/standing";
 import history from "mockData/history";
+import links from "mockData/links";
+import footerLinks from "mockData/footerLinks";
 
 export default {
   clubInfo,
@@ -14,6 +16,8 @@ export default {
   teams,
   competitions,
   history,
+  links,
+  footerLinks,
   selectedCompetition,
   selectedTeam,
   selectedCalendar,

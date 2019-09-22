@@ -10,7 +10,6 @@ function CompetitionContainer({selectedCompetition, selectedCalendar, selectedSt
     <>
       <h2>{selectedCompetition.competitionName}</h2>
       <TeamsExpositor teams={selectedCompetition.teams}></TeamsExpositor>
-      <br />
       <Schedule calendar={selectedCalendar}></Schedule>
       <br />
       <Standings standing={selectedStanding}></Standings>

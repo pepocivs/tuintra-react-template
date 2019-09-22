@@ -8,12 +8,6 @@ const GameRow = styled.div`
   grid-gap: 0 10px;
 `;
 
-const GameDayContainer = styled.div`
-  h3 {
-    border-bottom: 2px solid ${({theme}) => theme.clubOptions.secundary_color_web};
-  }
-`;
-
 const ScheduleRow = styled.div`
   padding: 10px 0;
   border-bottom: 1px solid ${({theme}) => theme.colors.grey};
@@ -54,11 +48,11 @@ const ExtraInfo = styled.div`
 
 function ScheduleDay({ScheduleDayBundle, gameDay}) {
   return (
-    <GameDayContainer>
+    <div>
       <h3>Jornada {gameDay}</h3>
       {ScheduleDayBundle.map(game => 
         <ScheduleRow key={game._id}>
-          <ExtraInfo>{game.date} {game.time}</ExtraInfo>
+          <ExtraInfo>{game.date} - {game.time}</ExtraInfo>
           <GameRow>
             <TeamShield src={game.localShield} alt={game.local}/>
             <TeamName position="left">{game.local}</TeamName>
@@ -69,7 +63,7 @@ function ScheduleDay({ScheduleDayBundle, gameDay}) {
           <ExtraInfo>{game.facility}</ExtraInfo>
         </ScheduleRow>
       )}
-    </GameDayContainer>
+    </div>
   )
 }
 

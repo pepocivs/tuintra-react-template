@@ -19,6 +19,7 @@ const NewContent = styled.div`
     font-weight: bold;
     text-transform: uppercase;
     margin-top: 0;
+    border-bottom: 0;
   }
 `;
 
