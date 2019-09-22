@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: ${theme.colors.white};
-    color: ${({theme}) => theme.colors.dark};4
+    color: ${({theme}) => theme.colors.dark};
   }
   a, a:visited, a:hover, a:active {
     text-decoration: none;
@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     outline:0;
   }
-  h1, h2, h3, h4 {
+  h3, h4 {
     border-bottom: 2px solid ${({theme}) => theme.clubOptions.secundary_color_web};
   }
 `;

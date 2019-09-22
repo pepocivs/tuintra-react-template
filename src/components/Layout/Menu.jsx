@@ -56,9 +56,7 @@ const NavHolder = styled.div`
 	}
 `;
 	
-function Menu(props) {
-	const { clubInfo } = props;
-
+function Menu({ clubInfo, menu }) {
 	return (
 		<MenuNav color={clubInfo.options.principal_color_web}>
 			<Row>
@@ -66,7 +64,7 @@ function Menu(props) {
 				<NavHolder>
 					<ul>
 						{
-							clubInfo.menu.map(menuItem => {
+							menu.map(menuItem => {
 								if(menuItem.visible && menuItem.father === "0")
 									return (
 										<Link key={menuItem._id} to={`/${menuItem.file}`}>

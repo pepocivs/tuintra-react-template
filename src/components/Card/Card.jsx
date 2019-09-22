@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CardImage = styled.div`
-	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) ${({gradient}) => gradient}%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) ${({gradient}) => gradient}%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(${({gradient}) => gradient}%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 1))), url(${({src}) => src}) no-repeat;
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) ${({gradient}) => gradient}%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) ${({gradient}) => gradient}%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
@@ -22,13 +22,17 @@ const CardDescription = styled.div`
 	h2, p {
 		margin: 0;
     color: ${({theme}) => theme.colors.white};
-    border-bottom: 0;    
-	}
+    min-height: 20px; 
+  }
 `;
 
-function Card(props) {
-  const {bgImage, title, subtitle, width, height, radius} = props;
-  const gradient = (width > height) ? 30 : 50;
+const OuterText = styled.p`
+  margin: 5px 0px;
+  text-align: center;
+`;
+
+function Card({bgImage, title, subtitle, outerText, width, height, radius, shadow = true}) {
+  const gradient = (shadow) ? (width > height) ? 30 : 50 : 100;
   return (
     <>
       <CardImage
@@ -36,12 +40,14 @@ function Card(props) {
         width={width}
         height={height}
         radius={radius}
-        gradient={gradient}>
+        gradient={gradient}
+        shadow={shadow}>
         <CardDescription height={height}>
           <h2>{title}</h2>
           <p>{subtitle}</p>
         </CardDescription>
       </CardImage>
+      <OuterText>{outerText}</OuterText>
     </>
   )
 }

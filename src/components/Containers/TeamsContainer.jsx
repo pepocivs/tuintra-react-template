@@ -8,8 +8,7 @@ import Card from "components/Card/Card";
 const TeamContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 250px);
-  grid-row-gap: 20px;
-  grid-column-gap: 20px;
+  grid-gap: 20px;
 `;
 
 function TeamsContainer({ teams }) {

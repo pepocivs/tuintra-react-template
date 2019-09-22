@@ -9,6 +9,8 @@ import selectedStanding from "mockData/standing";
 import history from "mockData/history";
 import links from "mockData/links";
 import footerLinks from "mockData/footerLinks";
+import menu from "mockData/menu";
+import subMenu from "mockData/subMenu";
 
 export default {
   clubInfo,
@@ -18,6 +20,8 @@ export default {
   history,
   links,
   footerLinks,
+  menu,
+  subMenu,
   selectedCompetition,
   selectedTeam,
   selectedCalendar,

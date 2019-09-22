@@ -1,11 +1,32 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-function OurClubContainer({history}) {
+/** Custom components */
+import Card from "components/Card/Card";
+
+const SubmenuContainer = styled.div`
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, 100px);
+  justify-content: center;
+`;
+
+function OurClubContainer({subMenu}) {
   return (
-    <>
-      <h1>{history.title}</h1>
-      <div dangerouslySetInnerHTML={{__html: history.content}}></div>
-    </>
+    <SubmenuContainer>
+      {subMenu.map(menu => (
+        <Link key={menu._id} to={`/club/${menu.file}`}>
+          <Card
+            title=""
+            subtitle={menu.title}
+            bgImage={`/assets/icons/${menu.link}.png`}
+            width="100px"
+            height="100px">
+          </Card>
+        </Link>
+      ))}
+    </SubmenuContainer>
   )
 }
 
