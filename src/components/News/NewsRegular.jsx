@@ -40,7 +40,7 @@ const NewImage = styled.img`
   box-sizing: inherit;
 `;
 
-function NewsList(props) {
+function NewsRegular(props) {
   const { news } = props;
   return (
     <>
@@ -61,4 +61,4 @@ function NewsList(props) {
   );
 }
 
-export default NewsList;
+export default NewsRegular;

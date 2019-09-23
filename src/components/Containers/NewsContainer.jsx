@@ -1,33 +1,15 @@
 import React from "react";
-import NewsList from "components/NewsList/NewsList";
-import NewsHead from "components/NewsHeader/NewsHeader";
-import styled from "styled-components";
+import NewList from "components/News/NewList";
+import New from "components/News/New";
 
-const NewsContainerStyled = styled.div`
-  position: sticky;
-  margin: 300px auto 0 auto;
-  background-color: white;
-  padding-top: 20px;
-  z-index: 4;
-  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
-    margin: 50px auto;
-    padding-top: 0px;
-  }
-`;
-
-function NewsContainer(props) {
+function NewsContainer({match, news, selectedNew}) {
   const nHighLightedNews = 3;
-  const news = props.news.slice(nHighLightedNews);
-  const highLightedNews = props.news.slice(0, nHighLightedNews);
-
-  return (
-    <>
-      <NewsHead news={highLightedNews} />
-      <NewsContainerStyled>
-        <NewsList news={news} />
-      </NewsContainerStyled>
-    </>
-  );
+  const regularNews = news.slice(nHighLightedNews);
+  const highLightedNews = news.slice(0, nHighLightedNews);
+  const slug = match.params.slug;
+  return (!!slug)
+    ? <New selectedNew={selectedNew} />
+    : <NewList highLightedNews={highLightedNews} regularNews={regularNews} />;
 }
 
 export default NewsContainer;

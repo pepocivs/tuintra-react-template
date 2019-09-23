@@ -8,7 +8,8 @@ const theme = {
     light: "#F7F7F7",
     dark: "#4A4A4A",
     white: "#FFFFFF",
-    grey: "#EFECEC"
+    grey: "#EFECEC",
+    darkGrey: "#B7B7B7"
   },
   fonts: {
     mainFont: "Acme",

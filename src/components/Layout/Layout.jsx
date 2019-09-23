@@ -74,7 +74,7 @@ function Layout({stateProps}) {
               {
                 stateProps.menu.map(menuItem => {
                   const Component = getComponentByRoute(menuItem.file)
-                  return <Route key={menuItem._id} path={`/${menuItem.file}`} component={() => <Component {...stateProps} />} />
+                  return <Route key={menuItem._id} path={`/${menuItem.file}/:id?/:lang?/:slug?`} component={(props) => <Component {...props} {...stateProps} />} />
                 })
               }
             </Switch>

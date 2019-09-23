@@ -8,8 +8,8 @@ import Submenu from "components/Layout/Submenu";
 import getComponentByRoute from "helpers/componentByRoutes";
 
 function SubSection(props) {
-  const subsection = props.match.params.subsection;
   const { menu, match } = props;
+  const subsection = match.params.subsection;
   const selectedMenu = menu.find(menuItem => menuItem.file === subsection);
   const childrens = (selectedMenu) ? selectedMenu.children : [];
 

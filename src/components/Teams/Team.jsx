@@ -12,7 +12,7 @@ const PlayersContainer = styled.div`
   margin-top: 20px;
 `;
 
-function TeamContainer({ selectedTeam }) {
+function Team({ selectedTeam }) {
 	return (
 		<>
       <Card
@@ -54,5 +54,5 @@ function TeamContainer({ selectedTeam }) {
 	)
 }
 
-export default TeamContainer;
+export default Team;
 

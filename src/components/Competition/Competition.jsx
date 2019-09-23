@@ -5,7 +5,7 @@ import TeamsExpositor from "components/TeamsExpositor/TeamsExpositor";
 import Schedule from "components/Schedule/Schedule";
 import Standings from "components/Standings/Standings";
 
-function CompetitionContainer({selectedCompetition, selectedCalendar, selectedStanding}) {
+function Competition({selectedCompetition, selectedCalendar, selectedStanding}) {
   return (
     <>
       <h2>{selectedCompetition.competitionName}</h2>
@@ -17,4 +17,4 @@ function CompetitionContainer({selectedCompetition, selectedCalendar, selectedSt
   )
 }
 
-export default CompetitionContainer;
+export default Competition;

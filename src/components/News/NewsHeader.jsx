@@ -57,8 +57,7 @@ const AwesomeSliderStyled = styled(AwesomeSlider)`
   }
 `;
 
-function NewsHeader(props) {
-  const { news } = props;
+function NewsHeader({ news }) {
   return (
     <SliderContainer>
       <AwesomeSliderStyled>
