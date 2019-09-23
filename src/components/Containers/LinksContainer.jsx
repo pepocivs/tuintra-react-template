@@ -19,7 +19,7 @@ function LinksContainer({links}) {
             <h3>{categoryLink.categoryName}</h3>
             <LinkContainer>
               {categoryLink.links.map(link => (
-                <a href={`http://${link.url}`} rel="noopener noreferrer" target="_blank">
+                <a key={link.linkName} href={`http://${link.url}`} rel="noopener noreferrer" target="_blank">
                   <Card
                     outerText={link.linkName}
                     bgImage={link.image}

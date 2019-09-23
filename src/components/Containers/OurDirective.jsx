@@ -12,7 +12,7 @@ const DirectorsContainer = styled.div`
   margin-top: 20px;
 `;
 
-export default function OurDirective({directors}) {
+function OurDirective({directors}) {
   return (
     <>
       <h1>Nuestra directiva</h1>
@@ -33,3 +33,5 @@ export default function OurDirective({directors}) {
     </>
   )
 }
+
+export default OurDirective;
