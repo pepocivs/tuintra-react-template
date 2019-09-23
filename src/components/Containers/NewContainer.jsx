@@ -1,10 +1,20 @@
-import React from 'react'
+import React from "react";
 
-function NewContainer() {
+/** Custom components */
+import Card from "components/Card/Card";
+
+function NewContainer({selectedNew}) {
   return (
-    <div>
-      Concrete New
-    </div>
+    <>
+      <Card
+        bgImage={selectedNew.image}
+        title={selectedNew.title}
+        subtitle={selectedNew.subtitle}
+        width="100%"
+        height="40vw">
+      </Card>
+      <div dangerouslySetInnerHTML={{__html: selectedNew.new}}></div>
+    </>
   )
 }
 

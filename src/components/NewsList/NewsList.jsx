@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 /** Styles */
-const NewContainer = styled.div`
+const NewContainer = styled(Link)`
   display: grid;
   grid-template-areas: "summary picture";
   grid-template-columns: 1fr 250px;
@@ -45,7 +46,7 @@ function NewsList(props) {
     <>
       {news.map(article => {
         return (
-          <NewContainer key={article._id}>
+          <NewContainer key={article._id} to={article.url}>
             <NewContent>
               <h2>{article.title}</h2>
               <p>{article.subtitle}</p>

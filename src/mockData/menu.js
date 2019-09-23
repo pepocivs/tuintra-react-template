@@ -49,7 +49,28 @@ export default [
     file: "equipos",
     module: { _id: "7", name: "Mis equipos", icon: "group" },
     position: "10",
-    children: []
+    children: [{
+      _id: "10",
+      father: "4",
+      visible: true,
+      title: "Palmarés",
+      link: "our_cups",
+      file: "palmares",
+      module: { _id: "5", name: "Palmarés e Historia", icon: "cup" },
+      position: "7",
+      children: []
+    },
+    {
+      _id: "11",
+      father: "4",
+      visible: true,
+      title: "Intranet",
+      link: "intranet",
+      file: "intranet",
+      module: { _id: "", name: "", icon: "" },
+      position: "8",
+      children: []
+    }]
   },
   {
     _id: "4",
@@ -81,17 +102,6 @@ export default [
         file: "intranet",
         module: { _id: "", name: "", icon: "" },
         position: "8",
-        children: []
-      },
-      {
-        _id: "6",
-        father: "4",
-        visible: true,
-        title: "Contacto",
-        link: "contact",
-        file: "contacto",
-        module: { _id: "", name: "", icon: "" },
-        position: "9",
         children: []
       },
       {
@@ -130,18 +140,29 @@ export default [
         module: { _id: "5", name: "Palmarés e Historia", icon: "cup" },
         position: "6",
         children: []
+      },
+      {
+        _id: "5",
+        father: "4",
+        visible: true,
+        title: "Enlaces",
+        link: "links",
+        file: "links",
+        module: { _id: "16", name: "Enlaces web", icon: "link" },
+        position: "11",
+        children: []
       }
     ]
   },
   {
-    _id: "5",
+    _id: "6",
     father: "0",
     visible: true,
-    title: "Enlaces",
-    link: "links",
-    file: "links",
-    module: { _id: "16", name: "Enlaces web", icon: "link" },
-    position: "11",
+    title: "Contacto",
+    link: "contact",
+    file: "contacto",
+    module: { _id: "", name: "", icon: "" },
+    position: "9",
     children: []
-  }
+  },
 ];

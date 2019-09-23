@@ -17,7 +17,7 @@ export default [
     },
     author: "Pepo",
     date: "2018-09-17T08:27:00.000Z",
-    url: "/tuintra-images/images//noticias/2018-09-17/es/3-puntos-de-ilusion"
+    url: "/noticias/2018-09-17/es/3-puntos-de-ilusion"
   },
   {
     _id: 435,
@@ -38,7 +38,7 @@ export default [
     author: "Pepo",
     date: "2018-04-06T12:34:00.000Z",
     url:
-      "/tuintra-images/images//noticias/2018-04-06/es/somos-de-division-de-honor"
+      "/noticias/2018-04-06/es/somos-de-division-de-honor"
   },
   {
     _id: 434,
@@ -60,7 +60,7 @@ export default [
     author: null,
     date: "2018-03-17T13:07:00.000Z",
     url:
-      "/tuintra-images/images//noticias/2018-04-17/es/mas-fuertes-contigo-hockey-en-la-escuela"
+      "/noticias/2018-04-17/es/mas-fuertes-contigo-hockey-en-la-escuela"
   },
   {
     _id: 433,
@@ -82,7 +82,7 @@ export default [
     author: null,
     date: "2018-02-28T09:49:00.000Z",
     url:
-      "/tuintra-images/images//noticias/2018-02-28/es/el-rol-activo-de-las-mujeres-en-el-hockey"
+      "/noticias/2018-02-28/es/el-rol-activo-de-las-mujeres-en-el-hockey"
   },
   {
     _id: 432,
@@ -104,7 +104,7 @@ export default [
     author: null,
     date: "2018-01-28T04:07:00.000Z",
     url:
-      "/tuintra-images/images//noticias/2018-01-28/es/los-valores-del-hockey-deportividad"
+      "/noticias/2018-01-28/es/los-valores-del-hockey-deportividad"
   },
   {
     _id: 430,
@@ -125,7 +125,7 @@ export default [
     author: null,
     date: "2017-11-26T08:24:00.000Z",
     url:
-      "/tuintra-images/images//noticias/2017-11-26/es/sector-juveniles-hierba"
+      "/noticias/2017-11-26/es/sector-juveniles-hierba"
   },
   {
     _id: 429,
@@ -146,7 +146,7 @@ export default [
     author: null,
     date: "2017-11-25T14:20:00.000Z",
     url:
-      "/tuintra-images/images//noticias/2017-11-25/es/juveniles-sector-copa-de-espana"
+      "/noticias/2017-11-25/es/juveniles-sector-copa-de-espana"
   },
   {
     _id: 427,
@@ -166,7 +166,7 @@ export default [
     },
     author: null,
     date: "2017-11-18T13:43:00.000Z",
-    url: "/tuintra-images/images//noticias/2017-11-18/es/senior-femenino"
+    url: "/noticias/2017-11-18/es/senior-femenino"
   },
   {
     _id: 426,
@@ -188,7 +188,7 @@ export default [
     author: null,
     date: "2017-11-02T06:10:00.000Z",
     url:
-      "/tuintra-images/images//noticias/2017-11-02/es/escuelas-deportivas-municipales-hockey-en-la-escuela"
+      "/noticias/2017-11-02/es/escuelas-deportivas-municipales-hockey-en-la-escuela"
   },
   {
     _id: 425,
@@ -208,6 +208,6 @@ export default [
     },
     author: null,
     date: "2017-10-24T12:40:00.000Z",
-    url: "/tuintra-images/images//noticias/2017-10-24/es/infantil-femenino"
+    url: "/noticias/2017-10-24/es/infantil-femenino"
   }
 ];

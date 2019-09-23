@@ -1,5 +1,6 @@
 import clubInfo from "mockData/clubInfo";
 import news from "mockData/news";
+import selectedNew from "mockData/new";
 import teams from "mockData/teams";
 import competitions from "mockData/competitions";
 import selectedCompetition from "mockData/competition";
@@ -16,6 +17,7 @@ import directors from "mockData/directors";
 export default {
   clubInfo,
   news,
+  selectedNew,
   teams,
   competitions,
   history,
