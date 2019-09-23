@@ -1,6 +1,6 @@
 import React from "react";
 
-function OurHistory({history}) {
+function HistoryContainer({history}) {
   return (
     <>
       <h1>{history.title}</h1>
@@ -9,4 +9,4 @@ function OurHistory({history}) {
   )
 }
 
-export default OurHistory;
+export default HistoryContainer;

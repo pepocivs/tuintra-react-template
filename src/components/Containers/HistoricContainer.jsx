@@ -10,7 +10,7 @@ const SeasonContainer = styled.div`
   grid-template-columns: repeat(auto-fit, 100px);
 `;
 
-function OurPalmares({historic}) {
+function HistoricContainer({historic}) {
   return (
     <>
       <h1>Palmarés</h1>
@@ -40,4 +40,4 @@ function OurPalmares({historic}) {
     </>
   )
 }
-export default OurPalmares;
+export default HistoricContainer;

@@ -17,15 +17,16 @@ import HomeContainer from 'components/Containers/HomeContainer';
 import TeamsContainer from 'components/Containers/TeamsContainer';
 import TeamContainer from 'components/Containers/TeamContainer';
 import NewsContainer from 'components/Containers/NewsContainer';
+import NewContainer from 'components/Containers/NewContainer';
 import CompetitionsContainer from 'components/Containers/CompetitionsContainer';
 import CompetitionContainer from 'components/Containers/CompetitionContainer';
-import OurClubContainer from 'components/Containers/OurClubContainer';
+import ClubContainer from 'components/Containers/ClubContainer';
 import LinksContainer from 'components/Containers/LinksContainer';
 import ContactContainer from 'components/Containers/ContactContainer';
-import OurHistory from 'components/Containers/OurHistory';
-import OurDocumentation from 'components/Containers/OurDocumentation';
-import OurDirective from 'components/Containers/OurDirective';
-import OurPalmares from 'components/Containers/OurPalmares';
+import HistoryContainer from 'components/Containers/HistoryContainer';
+import DocumentationContainer from 'components/Containers/DocumentationContainer';
+import DirectiveContainer from 'components/Containers/DirectiveContainer';
+import HistoricContainer from 'components/Containers/HistoricContainer';
 
 /** Styles */
 const MainContainer = styled.div`
@@ -82,15 +83,15 @@ function Layout({stateProps}) {
               <Route exact path="/equipos" component={() => <TeamsContainer {...stateProps} />} />
               <Route path="/equipos/:id" component={() => <TeamContainer {...stateProps} />} />
               <Route path="/noticias" component={() => <NewsContainer {...stateProps} />} />
-              <Route path="/noticias/:id" component={() => <NewsContainer {...stateProps} />} />
+              <Route path="/noticias/:id" component={() => <NewContainer {...stateProps} />} />
               <Route exact path="/competiciones" component={() => <CompetitionsContainer {...stateProps} />} />
               <Route path="/competiciones/:id" component={() => <CompetitionContainer {...stateProps} />} />
               <Route path="/contacto" component={() => <ContactContainer {...stateProps} />} />
-              <Route path="/club" component={() => <OurClubContainer {...stateProps} />} />
-              <Route exact path="/club/historia" component={() => <OurHistory {...stateProps} />} />
-              <Route exact path="/club/documentos" component={() => <OurDocumentation {...stateProps} />} />
-              <Route exact path="/club/directiva" component={() => <OurDirective {...stateProps} />} />
-              <Route exact path="/club/palmares" component={() => <OurPalmares {...stateProps} />} />
+              <Route path="/club" component={() => <ClubContainer sections={[]} {...stateProps} />} />
+              <Route exact path="/club/historia" component={() => <HistoryContainer {...stateProps} />} />
+              <Route exact path="/club/documentos" component={() => <DocumentationContainer {...stateProps} />} />
+              <Route exact path="/club/directvia" component={() => <DirectiveContainer {...stateProps} />} />
+              <Route exact path="/club/palmares" component={() => <HistoricContainer {...stateProps} />} />
               <Route exact path="/club/links" component={() => <LinksContainer {...stateProps} />} />
               <Route exact path="/inicio" component={() => <HomeContainer {...stateProps} />} />
               <Route exact path="/" component={() => <HomeContainer {...stateProps} />} />

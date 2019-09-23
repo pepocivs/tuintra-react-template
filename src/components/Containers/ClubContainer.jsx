@@ -12,7 +12,7 @@ const SubmenuContainer = styled.div`
   justify-content: center;
 `;
 
-function OurClubContainer({subMenu}) {
+function ClubContainer({subMenu}) {
   return (
     <SubmenuContainer>
       {subMenu.map(menu => (
@@ -30,4 +30,4 @@ function OurClubContainer({subMenu}) {
   )
 }
 
-export default OurClubContainer;
+export default ClubContainer;
