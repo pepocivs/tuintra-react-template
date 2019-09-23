@@ -80,7 +80,7 @@ function Layout({stateProps}) {
             </Media>
           </HeaderSection>
           <MainSection>
-            <Submenu menu={stateProps.menu} />
+            <Route path="/:subsection" component={(props) =>  <Submenu menu={stateProps.menu} {...props}/>}></Route>
             <Switch>
               <Route path="/equipos/:id" component={() => <TeamContainer {...stateProps} />} />
               <Route path="/noticias/:date/:language/:slug" component={() => <NewContainer {...stateProps} />} />

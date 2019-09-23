@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -13,24 +13,15 @@ const SubmenuContainer = styled.div`
   justify-content: center;
 `;
 
-class Submenu extends Component {
-  constructor(props) {
-    super();
-    this.menu = props.menu;
-    this.subMenu = [];
-  }
-
-  componentWillMount() {
-    this.parent = location.pathname.split('/')[1];
-    const selectedMenu = this.menu.find(menuItem => menuItem.file === this.parent);
-    this.subMenu = (selectedMenu) ? selectedMenu.children : [];
-  }
-
-  render() {
+function Submenu(props) {
+  const subsection = props.match.params.subsection;
+  const { menu } = props;
+  const selectedMenu = menu.find(menuItem => menuItem.file === subsection);
+  const subMenu = (selectedMenu) ? selectedMenu.children : [];
     return (
       <SubmenuContainer>
-        {this.subMenu.map(menu => (
-          <Link key={menu._id} to={`/${this.parent}${(this.parent) ? '/' : ''}${menu.file}`}>
+        {subMenu.map(menu => (
+          <Link key={menu._id} to={`/${subsection}/${menu.file}`}>
             <Card
               title=""
               subtitle={menu.title}
@@ -43,7 +34,7 @@ class Submenu extends Component {
       </SubmenuContainer>
     )
   }
-}
+
 
 export default Submenu;
 
