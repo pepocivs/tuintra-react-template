@@ -12,7 +12,6 @@ import links from "mockData/links";
 import footerLinks from "mockData/footerLinks";
 import menu from "mockData/menu";
 import directors from "mockData/directors";
-import subMenu from "mockData/subMenu";
 
 export default {
   clubInfo,
@@ -25,7 +24,6 @@ export default {
   links,
   footerLinks,
   menu,
-  subMenu,
   selectedCompetition,
   selectedTeam,
   selectedCalendar,
