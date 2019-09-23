@@ -22,7 +22,10 @@ const CardDescription = styled.div`
 	h2, p {
 		margin: 0;
     color: ${({theme}) => theme.colors.white};
-    min-height: 20px; 
+    min-height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 `;
 
@@ -32,9 +35,9 @@ const OuterText = styled.p`
 `;
 
 function Card({bgImage, title, subtitle, outerText, width, height, radius, shadow = true}) {
-  const gradient = (shadow) ? (width > height) ? 30 : 50 : 100;
+  const gradient = (shadow) ? (width > height) ? 30 : 60 : 100;
   return (
-    <>
+    <div>
       <CardImage
         src={bgImage}
         width={width}
@@ -48,7 +51,7 @@ function Card({bgImage, title, subtitle, outerText, width, height, radius, shado
         </CardDescription>
       </CardImage>
       <OuterText>{outerText}</OuterText>
-    </>
+    </div>
   )
 }
 

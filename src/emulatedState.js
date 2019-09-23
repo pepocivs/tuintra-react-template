@@ -7,9 +7,11 @@ import selectedTeam from "mockData/team";
 import selectedCalendar from "mockData/calendar";
 import selectedStanding from "mockData/standing";
 import history from "mockData/history";
+import historic from "mockData/historic";
 import links from "mockData/links";
 import footerLinks from "mockData/footerLinks";
 import menu from "mockData/menu";
+import directors from "mockData/directors";
 import subMenu from "mockData/subMenu";
 
 export default {
@@ -18,6 +20,8 @@ export default {
   teams,
   competitions,
   history,
+  historic,
+  directors,
   links,
   footerLinks,
   menu,

@@ -130,7 +130,7 @@ export default {
       name: { public: "Xema C." },
       birthDate: "1990-06-28",
       number: "23",
-      picture: null,
+      picture: "/tuintra-images/images/general/p_nofoto.png",
       rol: "Central",
       gender: ""
     },
@@ -139,7 +139,7 @@ export default {
       name: { public: "Benjamin NS" },
       birthDate: "1997-10-08",
       number: "9",
-      picture: null,
+      picture: "/tuintra-images/images/general/p_nofoto.png",
       rol: "Delantero centro",
       gender: ""
     }
@@ -157,14 +157,14 @@ export default {
       _id: "334",
       name: { public: "Toni Esteve" },
       birthDate: "1965-11-24",
-      picture: null,
+      picture: "/tuintra-images/images/general/p_nofoto.png",
       rol: "Asistente"
     },
     {
       _id: "432",
       name: { public: "Ximo P." },
       birthDate: "1965-04-27",
-      picture: null,
+      picture: "/tuintra-images/images/general/p_nofoto.png",
       rol: "Jefe de equipo"
     }
   ]
