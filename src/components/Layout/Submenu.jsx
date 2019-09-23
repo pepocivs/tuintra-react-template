@@ -13,11 +13,7 @@ const SubmenuContainer = styled.div`
   justify-content: center;
 `;
 
-function Submenu(props) {
-  const subsection = props.match.params.subsection;
-  const { menu } = props;
-  const selectedMenu = menu.find(menuItem => menuItem.file === subsection);
-  const subMenu = (selectedMenu) ? selectedMenu.children : [];
+function Submenu({subMenu, subsection}) {  
     return (
       <SubmenuContainer>
         {subMenu.map(menu => (

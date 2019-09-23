@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 /** Style Imports*/
 import styled from "styled-components";
@@ -10,24 +10,13 @@ import GlobalStyle from "./GlobalStyle";
 /** Custom Components*/
 import Menu from 'components/Layout/Menu';
 import Footer from 'components/Layout/Footer';
-import Submenu from 'components/Layout/Submenu';
+import SubSection from 'components/Layout/SubSection';
 
 /** Containers */
 import NotFound from 'components/Containers/NotFound';
-import HomeContainer from 'components/Containers/HomeContainer';
-import TeamsContainer from 'components/Containers/TeamsContainer';
-import TeamContainer from 'components/Containers/TeamContainer';
-import NewsContainer from 'components/Containers/NewsContainer';
-import NewContainer from 'components/Containers/NewContainer';
-import CompetitionsContainer from 'components/Containers/CompetitionsContainer';
-import CompetitionContainer from 'components/Containers/CompetitionContainer';
-import ClubContainer from 'components/Containers/ClubContainer';
-import LinksContainer from 'components/Containers/LinksContainer';
-import ContactContainer from 'components/Containers/ContactContainer';
-import HistoryContainer from 'components/Containers/HistoryContainer';
-import DocumentationContainer from 'components/Containers/DocumentationContainer';
-import DirectiveContainer from 'components/Containers/DirectiveContainer';
-import HistoricContainer from 'components/Containers/HistoricContainer';
+
+/** Helpers */
+import getComponentByRoute from "helpers/componentByRoutes";
 
 /** Styles */
 const MainContainer = styled.div`
@@ -60,7 +49,7 @@ const FooterSection = styled.footer`
 function Layout({stateProps}) {
   if (stateProps.clubInfo && Object.keys(stateProps.clubInfo).length > 0) {
     return (
-      <Router>
+      <>
         <GlobalStyle />
         <Helmet>
           <link rel="shortcut icon" href={stateProps.clubInfo.options.favicon || './favicon.ico'} />
@@ -80,31 +69,21 @@ function Layout({stateProps}) {
             </Media>
           </HeaderSection>
           <MainSection>
-            <Route path="/:subsection" component={(props) =>  <Submenu menu={stateProps.menu} {...props}/>}></Route>
+            <Route path="/:subsection" component={(props) =>  <SubSection menu={stateProps.menu} {...props} {...stateProps}/>}></Route>
             <Switch>
-              <Route path="/equipos/:id" component={() => <TeamContainer {...stateProps} />} />
-              <Route path="/noticias/:date/:language/:slug" component={() => <NewContainer {...stateProps} />} />
-              <Route path="/competiciones/:id" component={() => <CompetitionContainer {...stateProps} />} />
-              <Route exact path="/equipos" component={() => <TeamsContainer {...stateProps} />} />
-              <Route path="/noticias" component={() => <NewsContainer {...stateProps} />} />
-              <Route exact path="/competiciones" component={() => <CompetitionsContainer {...stateProps} />} />
-              <Route path="/contacto" component={() => <ContactContainer {...stateProps} />} />
-              <Route path="/club/historia" component={() => <HistoryContainer {...stateProps} />} />
-              <Route path="/club/documentos" component={() => <DocumentationContainer {...stateProps} />} />
-              <Route path="/club/directiva" component={() => <DirectiveContainer {...stateProps} />} />
-              <Route path="/club/palmares" component={() => <HistoricContainer {...stateProps} />} />
-              <Route path="/club/links" component={() => <LinksContainer {...stateProps} />} />
-              <Route exact path="/club" component={() => <ClubContainer sections={[]} {...stateProps} />} />
-              <Route exact path="/inicio" component={() => <HomeContainer {...stateProps} />} />
-              <Route exact path="/" component={() => <HomeContainer {...stateProps} />} />
-              <Route component={() => <NotFound title="404" subtitle="La página solicitada no está disponible" />} />
+              {
+                stateProps.menu.map(menuItem => {
+                  const Component = getComponentByRoute(menuItem.file)
+                  return <Route key={menuItem._id} path={`/${menuItem.file}`} component={() => <Component {...stateProps} />} />
+                })
+              }
             </Switch>
           </MainSection>
           <FooterSection>
             <Footer {...stateProps} />
           </FooterSection>
         </MainContainer>
-      </Router>
+      </>
     );
   }
   return (<NotFound title="Error" subtitle="No se ha podido conectar con la BBDD" />);

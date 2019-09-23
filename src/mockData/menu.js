@@ -49,28 +49,7 @@ export default [
     file: "equipos",
     module: { _id: "7", name: "Mis equipos", icon: "group" },
     position: "10",
-    children: [{
-      _id: "10",
-      father: "4",
-      visible: true,
-      title: "Palmarés",
-      link: "our_cups",
-      file: "palmares",
-      module: { _id: "5", name: "Palmarés e Historia", icon: "cup" },
-      position: "7",
-      children: []
-    },
-    {
-      _id: "11",
-      father: "4",
-      visible: true,
-      title: "Intranet",
-      link: "intranet",
-      file: "intranet",
-      module: { _id: "", name: "", icon: "" },
-      position: "8",
-      children: []
-    }]
+    children: []
   },
   {
     _id: "4",

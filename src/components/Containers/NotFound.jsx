@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function NotFound({ title, subtitle }) {
+function NotFound({ title = "404", subtitle = "Página no encontrada" }) {
   const Container = styled.div`
     position: relative;
     height: 100vh;
@@ -59,7 +59,6 @@ function NotFound({ title, subtitle }) {
   `;
 
   const Title = styled.h1`
-    font-family: 'Gayathri', sans-serif;
     font-size: 86px;
     font-weight: 700;
     margin-top: 0;
@@ -68,7 +67,6 @@ function NotFound({ title, subtitle }) {
   `;
 
   const SubTitle = styled.h2`
-    font-family: 'Gayathri', sans-serif;
     font-size: 26px;
     margin: 0;
     font-weight: 700;
