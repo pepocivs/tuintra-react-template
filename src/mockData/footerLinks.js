@@ -58,12 +58,6 @@ export default [
           "/tuintra-images/images/tui_23_2484f8d7c4be54e4bcb650b53653df04/enlaces/fdm.jpg"
       },
       {
-        linkName: "Office Box",
-        url: "",
-        image:
-          "/tuintra-images/images/tui_23_2484f8d7c4be54e4bcb650b53653df04/enlaces/officebox.jpg"
-      },
-      {
         linkName: "La Caixa - Obra Social",
         url: "http://www.lacaixa.es",
         image:
@@ -80,12 +74,6 @@ export default [
         url: "",
         image:
           "/tuintra-images/images/tui_23_2484f8d7c4be54e4bcb650b53653df04/enlaces/1000armarios.jpg"
-      },
-      {
-        linkName: "LOS ÁNGELES",
-        url: "http://www.ceilosangelesvalencia.com/",
-        image:
-          "/tuintra-images/images/tui_23_2484f8d7c4be54e4bcb650b53653df04/enlaces/1ee450a6ad8706b6c915669d37319b25.png"
       },
       {
         linkName: "GevalMedia",
