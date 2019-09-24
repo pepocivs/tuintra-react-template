@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 /** Custom components */
-import Card from "components/Card/Card";
+import Card from "components/UI/Card/Card";
 
 const SubmenuContainer = styled.div`
   display: grid;

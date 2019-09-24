@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 /** Custom components */
-import Card from "components/Card/Card";
+import Card from "components/UI/Card/Card";
 
 const Author = styled.div`
   text-align: right;

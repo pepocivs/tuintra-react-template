@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 /** Custom Component */
-import Card from "components/Card/Card";
+import Card from "components/UI/Card/Card";
+import Title from "components/UI/Title/Title";
 
 const LinkContainer = styled.div`
   display: grid;
@@ -13,7 +14,7 @@ const LinkContainer = styled.div`
 function LinksContainer({links}) {
   return (
     <>
-      <h1>Enlaces</h1>
+      <Title shadow="Enlaces">Enlaces</Title>
         {links.map(categoryLink => (
           <div key={categoryLink.categoryId}>
             <h3>{categoryLink.categoryName}</h3>

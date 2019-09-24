@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 /** Custom Component */
-import Card from "components/Card/Card";
+import Card from "components/UI/Card/Card";
+import Title from "components/UI/Title/Title";
 
 const SeasonContainer = styled.div`
   display: grid;
@@ -13,7 +14,7 @@ const SeasonContainer = styled.div`
 function HistoricContainer({historic}) {
   return (
     <>
-      <h1>Palmarés</h1>
+      <Title shadow="Histórico competiciones">Palmarés</Title>
       {Object.keys(historic).map(season => (
         <div key={season}>
         <h3>{season}</h3>

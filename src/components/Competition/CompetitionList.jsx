@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 /** Custom Components */
-import Card from "components/Card/Card";
+import Title from "components/UI/Title/Title";
+import Card from "components/UI/Card/Card";
 
 const CompetitionContainer = styled.div`
 	display: grid;
@@ -17,7 +18,7 @@ const CompetitionContainer = styled.div`
 function CompetitionList({competitions}) {
   return (
     <>
-      <h2>Competiciones</h2>
+      <Title shadow="Competiciones">Competiciones</Title>
       <CompetitionContainer>
         {competitions.map(competition => {
           return (

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 /** Custom Components */
-import Card from "components/Card/Card";
+import Card from "components/UI/Card/Card";
+import Title from "components/UI/Title/Title";
 
 const TeamContainer = styled.div`
   display: grid;
@@ -14,7 +15,7 @@ const TeamContainer = styled.div`
 function TeamList({ teams }) {
 	return (
 		<>
-			<h2>Equipos</h2>
+			<Title shadow="Nuestros equipos">Equipos</Title>
 			<TeamContainer>
 				{teams.map(team => {
 					return (

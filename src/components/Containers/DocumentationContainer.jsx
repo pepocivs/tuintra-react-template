@@ -1,10 +1,11 @@
 import React from "react";
 
+/** Custom Components */
+import Title from "components/UI/Title/Title";
+
 function DocumentationContainer() {
   return (
-    <h1>
-      Documentación
-    </h1>
+    <Title shadow="Documentación Oficial">Documentación</Title>
   )
 }
 

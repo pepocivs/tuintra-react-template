@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 /** Custom Components */
-import Card from "components/Card/Card";
+import Card from "components/UI/Card/Card";
+import Title from "components/UI/Title/Title";
 
 const DirectorsContainer = styled.div`
   display: grid;
@@ -15,7 +16,7 @@ const DirectorsContainer = styled.div`
 function DirectiveContainer({directors}) {
   return (
     <>
-      <h1>Nuestra directiva</h1>
+      <Title shadow="Nuestra Directiva">Directiva</Title>
       <DirectorsContainer>
 				{directors.map(director => {
 					return (
