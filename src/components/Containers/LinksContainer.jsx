@@ -9,6 +9,7 @@ const LinkContainer = styled.div`
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, 100px);
+  justify-content: space-between;
 `;
 
 function LinksContainer({links}) {

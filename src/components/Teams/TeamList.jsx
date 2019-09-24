@@ -9,7 +9,8 @@ import Title from "components/UI/Title/Title";
 const TeamContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);
-  grid-gap: 20px;
+	grid-row-gap: 20px;
+	justify-content: space-between;
 `;
 
 function TeamList({ teams }) {

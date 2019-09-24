@@ -10,7 +10,7 @@ const CompetitionContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 150px);
   grid-row-gap: 20px;
-  grid-column-gap: 20px;
+  justify-content: space-between;
   text-align: center;
   font-size: 10px;
 `;

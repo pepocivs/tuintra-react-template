@@ -7,8 +7,9 @@ import Title from "components/UI/Title/Title";
 
 const SeasonContainer = styled.div`
   display: grid;
-  grid-gap: 20px;
+  grid-row-gap: 20px;
   grid-template-columns: repeat(auto-fit, 100px);
+  justify-content: space-between;
 `;
 
 function HistoricContainer({historic}) {
