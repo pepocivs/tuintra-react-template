@@ -9,7 +9,8 @@ import GlobalStyle from "./GlobalStyle";
 
 /** Custom Components*/
 import Menu from 'components/Layout/Menu';
-import Footer from 'components/Layout/Footer';
+import TopFooter from 'components/Layout/Footer/TopFooter';
+import BottomFooter from 'components/Layout/Footer/BottomFooter';
 import SubSection from 'components/Layout/SubSection';
 
 /** Containers */
@@ -80,7 +81,8 @@ function Layout({stateProps}) {
             </Switch>
           </MainSection>
           <FooterSection>
-            <Footer {...stateProps} />
+            <TopFooter footerLinks={stateProps.footerLinks} />
+            <BottomFooter clubInfo={stateProps.clubInfo} />
           </FooterSection>
         </MainContainer>
       </>
