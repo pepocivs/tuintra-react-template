@@ -49,6 +49,7 @@ const FooterSection = styled.footer`
 
 function Layout({stateProps}) {
   if (stateProps.clubInfo && Object.keys(stateProps.clubInfo).length > 0) {
+    const Home = getComponentByRoute('inicio');
     return (
       <>
         <GlobalStyle />
@@ -72,6 +73,7 @@ function Layout({stateProps}) {
           <MainSection>
             <Route path="/:subsection" component={(props) =>  <SubSection menu={stateProps.menu} {...props} {...stateProps}/>}></Route>
             <Switch>
+              <Route exact path="/" component={() => <Home {...stateProps} />} />
               {
                 stateProps.menu.map(menuItem => {
                   const Component = getComponentByRoute(menuItem.file)
