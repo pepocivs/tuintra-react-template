@@ -21,8 +21,9 @@ const FlexFooter = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
   justify-content: space-between;
-  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
-    grid-template-columns: 1fr;
+  @media (max-width: ${({theme}) => theme.breakpoints.mobileLandscape}px) {
+    grid-template-columns: auto;
+    justify-content: center;
   }
 `;
 
@@ -46,6 +47,9 @@ const Quote = styled.div`
   color: ${({bgColor}) => (isDarkColor(bgColor)) ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)"};
   font-size: 55px;
   text-align: center;
+  @media (max-width: ${({theme}) => theme.breakpoints.mobileLandscape}px) {
+    font-size: 30px;
+  }
 `;
 
 const ClubInfoRow = styled.p`
