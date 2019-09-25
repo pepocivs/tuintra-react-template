@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "color": "^3.1.2",
     "react": "^16.9.0",
     "react-awesome-slider": "github:pepocivs/react-awesome-slider#fix-jpeg-support",
     "react-breakpoints": "^3.0.3",

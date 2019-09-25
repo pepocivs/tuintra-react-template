@@ -75,7 +75,7 @@ export default {
       content: {
         title: "",
         link: "",
-        content: "Nunca pares... Juega!"
+        content: "Més forts amb tu!"
       },
       order: "0"
     },

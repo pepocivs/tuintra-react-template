@@ -78,6 +78,7 @@ function Layout({stateProps}) {
                   return <Route key={menuItem._id} path={`/${menuItem.file}/:id?/:lang?/:slug?`} component={(props) => <Component {...props} {...stateProps} />} />
                 })
               }
+              <Route component={() => <NotFound />} />
             </Switch>
           </MainSection>
           <FooterSection>

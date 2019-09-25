@@ -5,7 +5,6 @@ function NotFound({ title = "404", subtitle = "Página no encontrada" }) {
   const Container = styled.div`
     position: relative;
     height: 100vh;
-    background-color: #fafbfd;
   `;
   const Content = styled.div`
     position: absolute;

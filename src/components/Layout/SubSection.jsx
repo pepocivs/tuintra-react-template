@@ -19,7 +19,7 @@ function SubSection(props) {
       <Switch>
         {
           childrens.map(children => {
-            const Component = getComponentByRoute(children.file)
+            const Component = getComponentByRoute(children.file);
             return <Route key={children._id} path={`${match.path}/${children.file}`} component={() => <Component {...props} />} />
           })
         }

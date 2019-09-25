@@ -132,16 +132,5 @@ export default [
         children: []
       }
     ]
-  },
-  {
-    _id: "6",
-    father: "0",
-    visible: true,
-    title: "Contacto",
-    link: "contact",
-    file: "contacto",
-    module: { _id: "", name: "", icon: "" },
-    position: "9",
-    children: []
-  },
+  }
 ];
