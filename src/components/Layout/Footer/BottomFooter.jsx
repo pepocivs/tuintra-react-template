@@ -92,7 +92,7 @@ function BottomFooter({ clubInfo }) {
             <SocialContainer>
               {socialNetworks.map(network => {
                 return (clubInfo.options[network]) 
-                  ? <a href={clubInfo.options[network]} target="_blank" rel="noopener noreferrer"><SvgIcon name={network} /></a>
+                  ? <a key={network} href={clubInfo.options[network]} target="_blank" rel="noopener noreferrer"><SvgIcon name={network} /></a>
                   : '';
               })}
             </SocialContainer>

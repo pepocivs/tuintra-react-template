@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import ReactBreakpoints from "react-breakpoints";
@@ -13,7 +13,12 @@ import theme from "theme";
 /** Custom Layout */
 import Layout from "components/Layout/Layout";
 
-function App() {
+function App(props) {
+  const { fetchClubData } = props;
+  useEffect(() => {
+    fetchClubData();
+  }, [fetchClubData]);
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={{...theme, clubOptions: emulatedState.clubInfo.options}}>
