@@ -6,8 +6,8 @@ import fetchTeams from "./api";
 
 export function* fetchTeamsSaga() {
   try {
-    const links = yield call(fetchTeams);
-    yield put(actions.fetchTeamsSuccess(links.data));
+    const teams = yield call(fetchTeams);
+    yield put(actions.fetchTeamsSuccess(teams.data));
   } catch (e) {
     yield put(actions.fetchTeamsFailure(e.message));
   }

@@ -65,6 +65,7 @@ function Layout({stateProps}) {
     const widgets = stateProps.widgets;
     const footerLinks = stateProps.links.data.footerLinks;
     const Home = getComponentByRoute('inicio');
+    debugger;
     return (
       <>
         <GlobalStyle />

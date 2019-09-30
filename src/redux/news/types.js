@@ -1,0 +1,11 @@
+const FETCH_NEWS = "NEWS/FETCH";
+const FETCH_NEWS_SUCCESS = "NEWS/FETCH_SUCCESS";
+const FETCH_NEWS_FAILURE = "NEWS/FETCH_FAILURE";
+
+const types = {
+  FETCH_NEWS,
+  FETCH_NEWS_SUCCESS,
+  FETCH_NEWS_FAILURE
+};
+
+export default types;
