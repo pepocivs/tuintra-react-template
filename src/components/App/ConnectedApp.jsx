@@ -5,7 +5,6 @@ import App from "./App";
 /** ACTIONS */
 import actionsClubInfo from "../../redux/clubInfo/actions";
 import actionsLinks from "../../redux/links/actions";
-import actionsTeams from "../../redux/teams/actions";
 
 /** SELECTORS */
 import {
@@ -22,13 +21,6 @@ import {
   getLinksError,
   getLinksHasError
 } from "../../redux/links/selectors";
-import {
-  getTeams,
-  getTeamsLoading,
-  getTeamsReady,
-  getTeamsError,
-  getTeamsHasError
-} from "../../redux/teams/selectors";
 
 const mapStateToProps = (state, props) => ({
   clubInfo: {
@@ -36,7 +28,7 @@ const mapStateToProps = (state, props) => ({
     loading: getClubDataLoading(state),
     ready: getClubDataReady(state),
     error: getClubDataError(state),
-    hasError: getClubDataHasError()
+    hasError: getClubDataHasError(state)
   },
   menu: (getClubData(state)) ? getClubData(state).menu : [],
   widgets: (getClubData(state)) ? getClubData(state).widgets : [],
@@ -45,21 +37,13 @@ const mapStateToProps = (state, props) => ({
     loading: getLinksLoading(state),
     ready: getLinksReady(state),
     error: getLinksError(state),
-    hasError: getLinksHasError()
-  },
-  teams: {
-    data: getTeams(state),
-    loading: getTeamsLoading(state),
-    ready: getTeamsReady(state),
-    error: getTeamsError(state),
-    hasError: getTeamsHasError()
-  },
+    hasError: getLinksHasError(state)
+  }
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchClubData: () => dispatch(actionsClubInfo.fetchClubData()),
-  fetchLinks: () => dispatch(actionsLinks.fetchLinks()),
-  fetchTeams: () => dispatch(actionsTeams.fetchTeams()),
+  fetchLinks: () => dispatch(actionsLinks.fetchLinks())
 });
 
 export default connect(

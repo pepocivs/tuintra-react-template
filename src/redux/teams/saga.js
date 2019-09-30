@@ -4,9 +4,9 @@ import actions from "./actions";
 import types from "./types";
 import fetchTeams from "./api";
 
-export function* fetchTeamsSaga() {
+export function* fetchTeamsSaga({ payload: { teamId } }) {
   try {
-    const teams = yield call(fetchTeams);
+    const teams = yield call(fetchTeams, teamId);
     yield put(actions.fetchTeamsSuccess(teams.data));
   } catch (e) {
     yield put(actions.fetchTeamsFailure(e.message));

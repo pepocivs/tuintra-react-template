@@ -21,12 +21,12 @@ const mapStateToProps = (state, props) => ({
     loading: getTeamsLoading(state),
     ready: getTeamsReady(state),
     error: getTeamsError(state),
-    hasError: getTeamsHasError()
+    hasError: getTeamsHasError(state)
   },
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTeams: () => dispatch(actionsTeams.fetchTeams()),
+  fetchTeams: teamId => dispatch(actionsTeams.fetchTeams(teamId)),
 });
 
 export default connect(

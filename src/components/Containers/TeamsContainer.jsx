@@ -4,17 +4,15 @@ import React, { useEffect } from "react";
 import Team from "components/Teams/Team";
 import TeamList from "components/Teams/TeamList";
 
-function TeamsContainer(props) {
-  const { match, teams, selectedTeam, fetchTeams } = props;
+function TeamsContainer({ match, fetchTeams, teams = []}) {
   const teamId = match.params.id;
   useEffect(() => {
     fetchTeams(teamId);
   }, [fetchTeams, teamId]);
-  debugger;
   if (!teams.ready) return null;
   return (!!teamId)
-    ? <Team selectedTeam={selectedTeam} />
-    : <TeamList teams={teams} />;
+    ? <Team selectedTeam={teams.data[0]} />
+    : <TeamList teams={teams.data} />;
 }
 
 export default TeamsContainer;

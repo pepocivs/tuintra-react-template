@@ -1,7 +1,8 @@
 import types from "./types";
 
-const fetchNews = () => ({
-  type: types.FETCH_NEWS
+const fetchNews = newSlug => ({
+  type: types.FETCH_NEWS,
+  payload: { newSlug }
 });
 
 const fetchNewsSuccess = data => ({

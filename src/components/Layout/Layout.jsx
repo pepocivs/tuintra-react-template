@@ -65,7 +65,7 @@ function Layout({stateProps}) {
     const widgets = stateProps.widgets;
     const footerLinks = stateProps.links.data.footerLinks;
     const Home = getComponentByRoute('inicio');
-    debugger;
+
     return (
       <>
         <GlobalStyle />
@@ -93,7 +93,7 @@ function Layout({stateProps}) {
               {
                 menu.map(menuItem => {
                   const Component = getComponentByRoute(menuItem.file);
-                  return <Route key={menuItem._id} path={`/${menuItem.file}/:id?/:lang?/:slug?`} component={(props) => <Component {...props} {...stateProps} />} />
+                  return <Route key={menuItem._id} path={`/${menuItem.file}/:id?/:lang?/:slug?`} component={Component} />
                 })
               }
               <Route component={() => <NotFound />} />

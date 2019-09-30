@@ -1,7 +1,8 @@
 import types from "./types";
 
-const fetchTeams = () => ({
-  type: types.FETCH_TEAMS
+const fetchTeams = teamId => ({
+  type: types.FETCH_TEAMS,
+  payload: { teamId }
 });
 
 const fetchTeamsSuccess = data => ({
