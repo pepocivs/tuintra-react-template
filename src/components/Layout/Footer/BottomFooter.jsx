@@ -71,8 +71,8 @@ const SocialContainer = styled.div`
   }
 `;
 
-function BottomFooter({ clubInfo }) {
-  const quote = clubInfo.widgets.find(widget => widget.position === 'cita');
+function BottomFooter({ clubInfo, widgets }) {
+  const quote = widgets.find(widget => widget.position === 'cita');
   const bgColor = clubInfo.options.secundary_color_web;
   const socialNetworks = ["instagram", "facebook", "youtube", "twitter", "flickr"];
   return (

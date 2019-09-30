@@ -7,7 +7,7 @@ import rootReducer from "./reducer";
 import rootSaga from "./saga";
 
 const persistConfig = {
-  key: "clubData:",
+  key: "tuintraData:",
   storage,
   whitelist: []
 };

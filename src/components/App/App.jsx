@@ -14,16 +14,17 @@ import theme from "theme";
 import Layout from "components/Layout/Layout";
 
 function App(props) {
-  const { fetchClubData } = props;
+  const { fetchClubData, fetchLinks } = props;
   useEffect(() => {
     fetchClubData();
-  }, [fetchClubData]);
+    fetchLinks();
+  }, [fetchClubData, fetchLinks]);
 
   return (
     <BrowserRouter>
       <ThemeProvider theme={{...theme, clubOptions: emulatedState.clubInfo.options}}>
         <ReactBreakpoints breakpoints={breakpoints}>
-          <Layout stateProps={emulatedState}/>
+          <Layout stateProps={props}/>
         </ReactBreakpoints>
       </ThemeProvider>
     </BrowserRouter>

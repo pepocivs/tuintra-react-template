@@ -15,6 +15,7 @@ import SubSection from 'components/Layout/SubSection';
 
 /** Containers */
 import NotFound from 'components/Containers/NotFound';
+import Loading from 'components/Containers/Loading';
 
 /** Helpers */
 import getComponentByRoute from "helpers/componentByRoutes";
@@ -47,23 +48,37 @@ const FooterSection = styled.footer`
   grid-area: footer;
 `;
 
+function checkProperty(property, props, statements) {
+  let checker = true;
+  // eslint-disable-next-line array-callback-return
+  statements.map(statement => {
+    if (!props[statement][property]) checker = false;
+  })
+  return checker;
+}
+
 function Layout({stateProps}) {
-  if (stateProps.clubInfo && Object.keys(stateProps.clubInfo).length > 0) {
+  const requiredProps = ['clubInfo', 'links'];
+  if (checkProperty('ready', stateProps, requiredProps)) {
+    const clubInfo = stateProps.clubInfo.data;
+    const menu = stateProps.menu;
+    const widgets = stateProps.widgets;
+    const footerLinks = stateProps.links.data.footerLinks;
     const Home = getComponentByRoute('inicio');
     return (
       <>
         <GlobalStyle />
         <Helmet>
-          <link rel="shortcut icon" href={stateProps.clubInfo.options.favicon || './favicon.ico'} />
-          <meta name="theme-color" content={stateProps.clubInfo.options.principal_color_web} />
-          <title>{stateProps.clubInfo.clubName}</title>
+          <link rel="shortcut icon" href={clubInfo.options.favicon || './favicon.ico'} />
+          <meta name="theme-color" content={clubInfo.options.principal_color_web} />
+          <title>{clubInfo.clubName}</title>
         </Helmet>
         <MainContainer>
           <HeaderSection>
             <Media>
               {({ breakpoints, currentBreakpoint }) =>
                 breakpoints[currentBreakpoint] >= breakpoints.tablet ? (
-                  <Menu clubInfo={stateProps.clubInfo} menu={stateProps.menu}/>
+                  <Menu clubInfo={clubInfo} menu={menu}/>
                 ) : (
                   <h1>Mobile stuff {breakpoints.mobileLandscape}</h1>
                 )
@@ -71,12 +86,12 @@ function Layout({stateProps}) {
             </Media>
           </HeaderSection>
           <MainSection>
-            <Route path="/:subsection" component={(props) =>  <SubSection menu={stateProps.menu} {...props} {...stateProps}/>}></Route>
+            <Route path="/:subsection" component={(props) =>  <SubSection menu={menu} {...props} />}></Route>
             <Switch>
-              <Route exact path="/" component={() => <Home {...stateProps} />} />
+              <Route exact path="/" component={() => <Home />} />
               {
-                stateProps.menu.map(menuItem => {
-                  const Component = getComponentByRoute(menuItem.file)
+                menu.map(menuItem => {
+                  const Component = getComponentByRoute(menuItem.file);
                   return <Route key={menuItem._id} path={`/${menuItem.file}/:id?/:lang?/:slug?`} component={(props) => <Component {...props} {...stateProps} />} />
                 })
               }
@@ -84,13 +99,18 @@ function Layout({stateProps}) {
             </Switch>
           </MainSection>
           <FooterSection>
-            <TopFooter footerLinks={stateProps.footerLinks} />
-            <BottomFooter clubInfo={stateProps.clubInfo} />
+            <TopFooter footerLinks={footerLinks} />
+            <BottomFooter clubInfo={clubInfo} widgets={widgets} />
           </FooterSection>
         </MainContainer>
       </>
     );
+  } else if (checkProperty('loading', stateProps, requiredProps)) {
+    return (<Loading />);
+  } else if (checkProperty('hasError', stateProps, requiredProps)) {
+    return (<NotFound title="Error" subtitle="No se ha podido conectar con la BBDD" />);
+  } else {
+    return "";
   }
-  return (<NotFound title="Error" subtitle="No se ha podido conectar con la BBDD" />);
 }
 export default Layout;

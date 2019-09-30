@@ -1,29 +1,28 @@
 import types from "./types";
-import formatter from "./formatter";
 
 const initialState = {
   data: {},
-  ready: false,
   loading: false,
+  ready: false,
   error: null
 };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case types.FETCH_CLUBDATA: {
+    case types.FETCH_TEAMS: {
       return {
         ...initialState,
         loading: true
       };
     }
-    case types.FETCH_CLUBDATA_SUCCESS: {
+    case types.FETCH_TEAMS_SUCCESS: {
       return {
         loading: false,
         ready: true,
-        data: formatter(payload.data)
+        data: payload.data
       };
     }
-    case types.FETCH_CLUBDATA_FAILURE: {
+    case types.FETCH_TEAMS_FAILURE: {
       return {
         loading: false,
         error: payload.error
