@@ -7,7 +7,7 @@ function Schedule({calendar}) {
   return (
     <>
       {Object.keys(calendar).map(gameDay => 
-        <ScheduleDay key={gameDay} gameDay={gameDay} ScheduleDayBundle={calendar[gameDay]} />
+        <ScheduleDay key={`day${gameDay}`} gameDay={gameDay} ScheduleDayBundle={calendar[gameDay]} />
       )}
     </>
   )

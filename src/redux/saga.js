@@ -5,13 +5,19 @@ import { watchFetchClubInfo } from "./clubInfo/saga";
 import { watchFetchLinks } from "./links/saga";
 import { watchFetchTeams } from "./teams/saga";
 import { watchFetchNews } from "./news/saga";
+import { watchFetchCompetitions } from "./competitions/saga";
+import { watchFetchCalendar } from "./calendar/saga";
+import { watchFetchStanding } from "./standing/saga";
 
 const rootSaga = function* rootSaga() {
   yield all([
     watchFetchClubInfo(),
     watchFetchLinks(),
     watchFetchTeams(),
-    watchFetchNews()
+    watchFetchNews(),
+    watchFetchCompetitions(),
+    watchFetchCalendar(),
+    watchFetchStanding()
   ]);
 };
 

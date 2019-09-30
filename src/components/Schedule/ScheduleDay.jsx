@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Moment from 'react-moment';
 
 const GameRow = styled.div`
   display: grid;
@@ -52,13 +53,13 @@ function ScheduleDay({ScheduleDayBundle, gameDay}) {
       <h3>Jornada {gameDay}</h3>
       {ScheduleDayBundle.map(game => 
         <ScheduleRow key={game._id}>
-          <ExtraInfo>{game.date} - {game.time}</ExtraInfo>
+          <ExtraInfo><Moment format="DD/MM/YYYY - HH:mm" date={game.date}/></ExtraInfo>
           <GameRow>
-            <TeamShield src={game.localShield} alt={game.local}/>
-            <TeamName position="left">{game.local}</TeamName>
+            <TeamShield src={game.local.shield[100]} alt={game.local.name}/>
+            <TeamName position="left">{game.local.name}</TeamName>
             <Score>{game.localScore} - {game.awayScore}</Score>
-            <TeamName position="right">{game.away}</TeamName>
-            <TeamShield src={game.awayShield} alt={game.away}/>
+            <TeamName position="right">{game.away.name}</TeamName>
+            <TeamShield src={game.away.shield[100]} alt={game.away.name}/>
           </GameRow>
           <ExtraInfo>{game.facility}</ExtraInfo>
         </ScheduleRow>

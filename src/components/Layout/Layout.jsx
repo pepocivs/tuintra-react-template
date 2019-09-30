@@ -19,6 +19,7 @@ import Loading from 'components/Containers/Loading';
 
 /** Helpers */
 import getComponentByRoute from "helpers/componentByRoutes";
+import checkProperty from "helpers/checkProperty";
 
 /** Styles */
 const MainContainer = styled.div`
@@ -47,15 +48,6 @@ const MainSection = styled.main`
 const FooterSection = styled.footer`
   grid-area: footer;
 `;
-
-function checkProperty(property, props, statements) {
-  let checker = true;
-  // eslint-disable-next-line array-callback-return
-  statements.map(statement => {
-    if (!props[statement][property]) checker = false;
-  })
-  return checker;
-}
 
 function Layout({stateProps}) {
   const requiredProps = ['clubInfo', 'links'];
