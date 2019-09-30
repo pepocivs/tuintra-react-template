@@ -13,10 +13,11 @@ const LinkContainer = styled.div`
 `;
 
 function LinksContainer({links}) {
+  if (!links.ready) return null;
   return (
     <>
       <Title shadow="Enlaces">Enlaces</Title>
-        {links.map(categoryLink => (
+        {links.data.links.map(categoryLink => (
           <div key={categoryLink.categoryId}>
             <h3>{categoryLink.categoryName}</h3>
             <LinkContainer>
