@@ -13,17 +13,16 @@ const DirectorsContainer = styled.div`
   margin-top: 20px;
 `;
 
-function DirectiveContainer({fetchDirective, directive = []}) {
+function DirectiveContainer({fetchPeople, directive}) {
   useEffect(() => {
-    fetchDirective();
-  }, [fetchDirective]);
+    fetchPeople();
+  }, [fetchPeople]);
   if (!directive.ready) return null;
   return (
     <>
       <Title shadow="Nuestra Directiva">Directiva</Title>
       <DirectorsContainer>
 				{directive.data.map(director => {
-          if (!director.directorData) return null;
 					return (
             <Card
               key={director._id}

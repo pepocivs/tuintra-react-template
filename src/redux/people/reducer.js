@@ -9,20 +9,20 @@ const initialState = {
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case types.FETCH_DIRECTIVE: {
+    case types.FETCH_PEOPLE: {
       return {
         ...initialState,
         loading: true
       };
     }
-    case types.FETCH_DIRECTIVE_SUCCESS: {
+    case types.FETCH_PEOPLE_SUCCESS: {
       return {
         loading: false,
         ready: true,
         data: payload.data
       };
     }
-    case types.FETCH_DIRECTIVE_FAILURE: {
+    case types.FETCH_PEOPLE_FAILURE: {
       return {
         loading: false,
         error: payload.error

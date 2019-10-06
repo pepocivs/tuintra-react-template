@@ -1,7 +1,7 @@
 import axios from "axios";
 import clubInfo from "helpers/clubInfo";
 
-const fetchDirective = () =>
+const fetchPeople = () =>
   axios.get(`${clubInfo.apiHost}/${clubInfo.subdomain}/people`);
 
-export default fetchDirective;
+export default fetchPeople;
