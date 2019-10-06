@@ -7,6 +7,8 @@ const theme = {
     warning: "#F6AB00",
     light: "#F7F7F7",
     dark: "#4A4A4A",
+    lightBlack: "#606060",
+    black: "#303030",
     white: "#FFFFFF",
     grey: "#EFECEC",
     darkGrey: "#B7B7B7"

@@ -7,13 +7,13 @@ import Submenu from "components/Layout/Submenu";
 /** Helpers */
 import getComponentByRoute from "helpers/componentByRoutes";
 
-function SubSection({ menu, subsection, path }) {
+function SubSection({ menu, subsection, path, page }) {
   const selectedMenu = menu.find(menuItem => menuItem.file === subsection);
   const childrens = (selectedMenu) ? selectedMenu.children : [];
 
   return (
     <>
-      <Submenu subsection={subsection} subMenu={childrens} />
+      <Submenu subsection={subsection} page={page} subMenu={childrens} />
       <Switch>
         {
           childrens.map(children => {
