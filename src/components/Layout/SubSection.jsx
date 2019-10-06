@@ -7,11 +7,10 @@ import Submenu from "components/Layout/Submenu";
 /** Helpers */
 import getComponentByRoute from "helpers/componentByRoutes";
 
-function SubSection(props) {
-  const { menu, match } = props;
-  const subsection = match.params.subsection;
+function SubSection({ menu, subsection, path }) {
   const selectedMenu = menu.find(menuItem => menuItem.file === subsection);
   const childrens = (selectedMenu) ? selectedMenu.children : [];
+  debugger;
 
   return (
     <>
@@ -20,7 +19,7 @@ function SubSection(props) {
         {
           childrens.map(children => {
             const Component = getComponentByRoute(children.file);
-            return <Route key={children._id} path={`${match.path}/${children.file}`} component={() => <Component {...props} />} />
+            return <Route key={children._id} path={`${path}/${children.file}`} component={Component} />
           })
         }
       </Switch>

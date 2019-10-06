@@ -57,7 +57,6 @@ function Layout({stateProps}) {
     const widgets = stateProps.widgets;
     const footerLinks = stateProps.links.data.footerLinks;
     const Home = getComponentByRoute('inicio');
-
     return (
       <>
         <GlobalStyle />
@@ -79,7 +78,13 @@ function Layout({stateProps}) {
             </Media>
           </HeaderSection>
           <MainSection>
-            <Route path="/:subsection" component={(props) =>  <SubSection menu={menu} {...props} />}></Route>
+            <Route path="/:subsection" component={(props) => 
+              <SubSection 
+                menu={menu}
+                subsection={props.match.params.subsection}
+                path={props.match.path} />
+              }>
+            </Route>
             <Switch>
               <Route exact path="/" component={() => <Home />} />
               {
