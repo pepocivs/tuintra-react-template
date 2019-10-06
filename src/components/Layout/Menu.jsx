@@ -5,7 +5,7 @@ import styled from "styled-components";
 /** Styles */
 const MenuNav = styled.div`
 	height: ${({theme}) => theme.spacings.headerHeight};
-	background-color: ${({color}) => color};
+	background-color: ${({theme}) => theme.clubOptions.principal_color_web};
 	position: fixed;
 	width: 100%;
 	z-index: 20;
@@ -58,20 +58,19 @@ const NavHolder = styled.div`
 	
 function Menu({ clubInfo, menu }) {
 	return (
-		<MenuNav color={clubInfo.options.principal_color_web}>
+		<MenuNav>
 			<Row>
 				<Logo src={clubInfo.options.clubs_logo} />
 				<NavHolder>
 					<ul>
 						{
 							menu.map(menuItem => {
-								if(menuItem.visible)
-									return (
-										<Link key={menuItem._id} to={`/${menuItem.file}`}>
-											<li>{menuItem.title}</li>
-										</Link>
-									);
-								return '';
+								if(!menuItem.visible) return null;
+								return (
+									<Link key={menuItem._id} to={`/${menuItem.file}`}>
+										<li>{menuItem.title}</li>
+									</Link>
+								);
 							})
 						}
 					</ul>

@@ -2,19 +2,9 @@ export default (data) => {
   if (!data[0]) return [];
   return {
     clubInfo: getClubInfo(data[0]),
-    menu: getMenu(data[0].menu, "0"),
+    menu: data[0].menu,
     widgets: data[0].widgets
   };
-}
-
-function getMenu(menu, parent) {
-  const filteredMenu = menu.filter(item => item.father === parent);
-  return filteredMenu.map(item => {
-    return {
-      ...item,
-      children: getMenu(menu, item._id)
-    }
-  })
 }
 
 function getClubInfo(data) {

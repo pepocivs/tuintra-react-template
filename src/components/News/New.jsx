@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Moment from 'react-moment';
 
 /** Custom components */
 import Card from "components/UI/Card/Card";
@@ -27,7 +28,7 @@ function New({selectedNew}) {
       </Card>
       <div dangerouslySetInnerHTML={{__html: decode(selectedNew.new)}}></div>
       <Author>
-        {selectedNew.author} - {selectedNew.date}
+        {selectedNew.author} - <Moment format="DD/MM/YYYY" date={selectedNew.date}/>
       </Author>
     </>
   )

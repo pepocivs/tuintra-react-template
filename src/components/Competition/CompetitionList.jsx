@@ -24,7 +24,7 @@ function CompetitionList({competitions}) {
           return (
             <Link key={competition._id} to={`/competiciones/${competition._id}`}>
 							<Card
-                bgImage={`/assets/${competition.icon}.png`}
+                bgImage={`/assets/competitions/${competition.icon}`}
                 title={competition.competitionName}
                 subtitle={`${competition.category} ${competition.gender}`}
                 width="150px"

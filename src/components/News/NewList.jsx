@@ -17,12 +17,12 @@ const NewsContainerStyled = styled.div`
   }
 `;
 
-function NewList({highLightedNews, regularNews}) {
+function NewList({highLightedNews, regularNews, prefix}) {
   return (
     <>
       <NewsHeader news={highLightedNews} />
       <NewsContainerStyled>
-        <NewsRegular news={regularNews} />
+        <NewsRegular news={regularNews} prefix={prefix} />
       </NewsContainerStyled>
     </>
   )

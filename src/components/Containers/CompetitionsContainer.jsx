@@ -1,18 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 /** Custom Components */
 import Competition from "components/Competition/Competition";
 import CompetitionList from "components/Competition/CompetitionList";
 
+/** Helpers */
+import checkProperty from "helpers/checkProperty";
 
-function CompetitionsContainer({match, competitions, selectedCompetition, selectedCalendar, selectedStanding}) {
+function CompetitionsContainer(props) {
+  const {
+    match,
+    fetchCompetitions,
+    fetchCalendar,
+    fetchStanding,
+    competitions,
+    calendar,
+    standing
+  } = props;
   const competitionId = match.params.id;
-  return (!!competitionId)
-    ? <Competition 
-      selectedCompetition={selectedCompetition} 
-      selectedCalendar={selectedCalendar}
-      selectedStanding={selectedStanding} />
-    : <CompetitionList competitions={competitions} />;
+  useEffect(() => {
+    fetchCompetitions(competitionId);
+    if (competitionId) {
+      fetchCalendar(competitionId);
+      fetchStanding(competitionId);
+    }
+  }, [fetchCompetitions, fetchCalendar, fetchStanding, competitionId]);
+
+  if (!competitions.ready) return null;
+
+  if (!!competitionId && checkProperty('ready', props, ['calendar', 'standing'])) {
+    return ( 
+      <Competition 
+        selectedCompetition={competitions.data[0]} 
+        selectedCalendar={calendar.data}
+        selectedStanding={standing.data}
+      />
+    )
+  } else {
+    return <CompetitionList competitions={competitions.data} />;
+  }
 }
 
 export default CompetitionsContainer;

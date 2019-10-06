@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+/** Custom components */
+import Alert from "components/UI/Alert/Alert";
+
 const StandingContainer = styled.div`
   display: grid;
   grid-template-columns: 20px 25px 5fr repeat(7, 1fr);
@@ -27,6 +30,7 @@ const Shield = styled.img`
 `;
 
 export default function Standings({standing}) {
+  if (standing.length === 0) return <Alert msg="Clasificación no disponible" />
   return (
     <>
       <StandingContainer>

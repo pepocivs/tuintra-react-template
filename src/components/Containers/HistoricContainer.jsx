@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 /** Custom Component */
@@ -11,15 +11,19 @@ const SeasonContainer = styled.div`
   grid-template-columns: repeat(auto-fit, 100px);
 `;
 
-function HistoricContainer({historic}) {
+function HistoricContainer({fetchHistoric, historic}) {
+  useEffect(() => {
+    fetchHistoric();
+  }, [fetchHistoric]);
+  if (!historic.ready) return null;
   return (
     <>
       <Title shadow="Histórico competiciones">Palmarés</Title>
-      {Object.keys(historic).map(season => (
+      {Object.keys(historic.data).map(season => (
         <div key={season}>
         <h3>{season}</h3>
         <SeasonContainer>
-          {historic[season].map(yearResults => {
+          {historic.data[season].map(yearResults => {
             const position = (yearResults.position <= 3) ? yearResults.position : 4;
             const image = `/assets/historic/${yearResults.ambit.toLowerCase()}-${position}.png`;
             return (

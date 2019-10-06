@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 /** Custom Components */
@@ -13,16 +13,20 @@ const DirectorsContainer = styled.div`
   margin-top: 20px;
 `;
 
-function DirectiveContainer({directors}) {
+function DirectiveContainer({fetchPeople, directive}) {
+  useEffect(() => {
+    fetchPeople();
+  }, [fetchPeople]);
+  if (!directive.ready) return null;
   return (
     <>
       <Title shadow="Nuestra Directiva">Directiva</Title>
       <DirectorsContainer>
-				{directors.map(director => {
+				{directive.data.map(director => {
 					return (
             <Card
               key={director._id}
-              bgImage={director.directorData.picture}
+              bgImage={director.directorData.picture || '/assets/general/p_nofoto.png'}
               title={director.name.public}
               subtitle={director.directorData.position}
               width="150px"

@@ -4,29 +4,26 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 /** Custom components */
-import Card from "components/UI/Card/Card";
+import Highlighted from "components/UI/Highlighted/Highlighted";
 
 const SubmenuContainer = styled.div`
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 15px;
   grid-template-columns: repeat(auto-fit, 100px);
   justify-content: center;
 `;
 
-function Submenu({subMenu, subsection}) {  
+function Submenu({subMenu, subsection, page}) {  
     return (
       <SubmenuContainer>
-        {subMenu.map(menu => (
-          <Link key={menu._id} to={`/${subsection}/${menu.file}`}>
-            <Card
-              title=""
-              subtitle={menu.title}
-              bgImage={`/assets/icons/${menu.link}.png`}
-              width="100px"
-              height="100px">
-            </Card>
-          </Link>
-        ))}
+        {subMenu.map(menu => {
+          if(!menu.visible) return null;
+          return (
+            <Link key={menu._id} to={`/${subsection}/${menu.file}`}>
+              <Highlighted selected={(page === menu.file)}>{menu.title}</Highlighted>
+            </Link>
+          )
+        })}
       </SubmenuContainer>
     )
   }

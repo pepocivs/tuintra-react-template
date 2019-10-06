@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+/** Custom components */
 import NewList from "components/News/NewList";
 import New from "components/News/New";
 
-function NewsContainer({match, news, selectedNew}) {
+function NewsContainer({match, fetchNews, news = []}) {
+  const newSlug = (match.params.slug) ? `/${match.params.id}/${match.params.lang}/${match.params.slug}` : null;
+  useEffect(() => {
+    fetchNews(newSlug);
+  }, [fetchNews, newSlug]);
+  if (!news.ready) return null;
+
   const nHighLightedNews = 3;
-  const regularNews = news.slice(nHighLightedNews);
-  const highLightedNews = news.slice(0, nHighLightedNews);
-  const slug = match.params.slug;
-  return (!!slug)
-    ? <New selectedNew={selectedNew} />
-    : <NewList highLightedNews={highLightedNews} regularNews={regularNews} />;
+  const regularNews = news.data.slice(nHighLightedNews);
+  const highLightedNews = news.data.slice(0, nHighLightedNews);
+
+  return (!!newSlug)
+    ? <New selectedNew={news.data[0]} />
+    : <NewList highLightedNews={highLightedNews} regularNews={regularNews} prefix={match.url} />;
 }
 
 export default NewsContainer;

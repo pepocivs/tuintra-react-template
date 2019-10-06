@@ -16,7 +16,7 @@ function Team({ selectedTeam }) {
 	return (
 		<>
       <Card
-        bgImage={selectedTeam.picture}
+        bgImage={selectedTeam.picture || '/assets/general/e_nofoto.jpg'}
         title={selectedTeam.teamName}
         subtitle={`${selectedTeam.category} ${selectedTeam.gender}`}
         width="100%"
@@ -27,7 +27,7 @@ function Team({ selectedTeam }) {
 					return (
             <Card
               key={staff._id}
-              bgImage={staff.picture}
+              bgImage={staff.picture || '/assets/general/p_nofoto.png'}
               title={staff.name.public}
               subtitle={staff.rol}
               width="150px"
@@ -41,7 +41,7 @@ function Team({ selectedTeam }) {
 					return (
             <Card
               key={player._id}
-              bgImage={player.picture}
+              bgImage={player.picture || '/assets/general/p_nofoto.png'}
               title={player.name.public}
               subtitle={`#${player.number} ${(player.rol) ? `- ${player.rol}` : ''}`}
               width="150px"

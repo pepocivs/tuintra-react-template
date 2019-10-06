@@ -3,6 +3,7 @@ import formatter from "./formatter";
 
 const initialState = {
   data: {},
+  ready: false,
   loading: false,
   error: null
 };
@@ -18,6 +19,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case types.FETCH_CLUBDATA_SUCCESS: {
       return {
         loading: false,
+        ready: true,
         data: formatter(payload.data)
       };
     }

@@ -40,13 +40,12 @@ const NewImage = styled.img`
   box-sizing: inherit;
 `;
 
-function NewsRegular(props) {
-  const { news } = props;
+function NewsRegular({ news, prefix }) {
   return (
     <>
       {news.map(article => {
         return (
-          <NewContainer key={article._id} to={article.url}>
+          <NewContainer key={article._id} to={`${prefix}${article.slug}`}>
             <NewContent>
               <h2>{article.title}</h2>
               <p>{article.subtitle}</p>
