@@ -10,7 +10,6 @@ import getComponentByRoute from "helpers/componentByRoutes";
 function SubSection({ menu, subsection, path }) {
   const selectedMenu = menu.find(menuItem => menuItem.file === subsection);
   const childrens = (selectedMenu) ? selectedMenu.children : [];
-  debugger;
 
   return (
     <>

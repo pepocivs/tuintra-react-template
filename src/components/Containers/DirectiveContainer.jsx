@@ -16,7 +16,6 @@ const DirectorsContainer = styled.div`
 function DirectiveContainer({fetchDirective, directive = []}) {
   useEffect(() => {
     fetchDirective();
-    debugger;
   }, [fetchDirective]);
   if (!directive.ready) return null;
   return (
