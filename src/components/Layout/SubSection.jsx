@@ -28,8 +28,9 @@ function SubSection({ menu, match }) {
       <Switch>
         {
           childrens.map(children => {
-            const Component = getComponentByRoute(children.file);
-            return <Route key={children._id} path={`${path}/${children.file}`} component={Component} />
+            const route = children.file.split('/')[0];
+            const Component = getComponentByRoute(route);
+            return <Route key={children._id} path={`${path}/${route}`} component={Component} />
           })
         }
       </Switch>

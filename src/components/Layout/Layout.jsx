@@ -84,8 +84,9 @@ function Layout({stateProps}) {
               <Route exact path="/" component={Home} />
               {
                 menu.map(menuItem => {
-                  const Component = getComponentByRoute(menuItem.file);
-                  return <Route key={menuItem._id} path={`/${menuItem.file}/:id?/:lang?/:slug?`} component={Component} />
+                  const route = menuItem.file.split('/')[0];
+                  const Component = getComponentByRoute(route);
+                  return <Route key={menuItem._id} path={`/${route}/:id?/:lang?/:slug?`} component={Component} />
                 })
               }
               <Route component={NotFound} />

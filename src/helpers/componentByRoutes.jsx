@@ -2,7 +2,6 @@
 import HomeContainer from "components/Containers/HomeContainer";
 import ClubContainer from "components/Containers/ClubContainer";
 import ContactContainer from "components/Containers/ContactContainer";
-import HistoryContainer from "components/Containers/HistoryContainer";
 import DocumentationContainer from "components/Containers/DocumentationContainer";
 import NotFound from 'components/Containers/NotFound';
 
@@ -13,6 +12,7 @@ import CompetitionsContainer from "components/Connectors/ConnectedCompetitions";
 import LinksContainer from "components/Connectors/ConnectedLinks";
 import DirectiveContainer from "components/Connectors/ConnectedDirective";
 import HistoricContainer from "components/Connectors/ConnectedHistoric";
+import PagesContainer from "components/Connectors/ConnectedPages";
 
 const components = {
   equipos: TeamsContainer,
@@ -20,11 +20,12 @@ const components = {
   competiciones: CompetitionsContainer,
   contacto: ContactContainer,
   club: ClubContainer,
-  historia: HistoryContainer,
+  historia: PagesContainer,
   documentos: DocumentationContainer,
   directiva: DirectiveContainer,
   palmares: HistoricContainer,
   links: LinksContainer,
+  page: PagesContainer,
   inicio: HomeContainer
 };
 

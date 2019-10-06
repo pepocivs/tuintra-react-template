@@ -16,7 +16,6 @@ function HistoricContainer({fetchHistoric, historic}) {
     fetchHistoric();
   }, [fetchHistoric]);
   if (!historic.ready) return null;
-  debugger;
   return (
     <>
       <Title shadow="Histórico competiciones">Palmarés</Title>
