@@ -7,6 +7,7 @@ import news from "redux/news/reducer";
 import competitions from "redux/competitions/reducer";
 import calendar from "redux/calendar/reducer";
 import standing from "redux/standing/reducer";
+import directive from "redux/directive/reducer";
 
 const rootReducer = combineReducers({
   clubData,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   competitions,
   calendar,
   standing,
+  directive,
 });
 
 export default rootReducer;

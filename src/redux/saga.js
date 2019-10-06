@@ -8,6 +8,7 @@ import { watchFetchNews } from "./news/saga";
 import { watchFetchCompetitions } from "./competitions/saga";
 import { watchFetchCalendar } from "./calendar/saga";
 import { watchFetchStanding } from "./standing/saga";
+import { watchFetchDirective } from "./directive/saga";
 
 const rootSaga = function* rootSaga() {
   yield all([
@@ -17,7 +18,8 @@ const rootSaga = function* rootSaga() {
     watchFetchNews(),
     watchFetchCompetitions(),
     watchFetchCalendar(),
-    watchFetchStanding()
+    watchFetchStanding(),
+    watchFetchDirective()
   ]);
 };
 
