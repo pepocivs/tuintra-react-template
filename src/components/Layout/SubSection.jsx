@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import { withRouter } from "react-router"
 
 /** Custom components */
 import Submenu from "components/Layout/Submenu";
@@ -7,7 +9,16 @@ import Submenu from "components/Layout/Submenu";
 /** Helpers */
 import getComponentByRoute from "helpers/componentByRoutes";
 
-function SubSection({ menu, subsection, path, page }) {
+import { getMenu } from "../../redux/clubInfo/selectors";
+
+const mapStateToProps = (state, props) => ({
+  menu: getMenu(state),
+});
+
+function SubSection({ menu, match }) {
+  const subsection = match.params.subsection;
+  const page = match.params.page;
+  const path = match.path;
   const selectedMenu = menu.find(menuItem => menuItem.file === subsection);
   const childrens = (selectedMenu) ? selectedMenu.children : [];
 
@@ -26,4 +37,4 @@ function SubSection({ menu, subsection, path, page }) {
   )
 }
 
-export default SubSection
+export default connect(mapStateToProps)(withRouter(SubSection));

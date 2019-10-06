@@ -22,11 +22,12 @@ function DirectiveContainer({fetchDirective, directive = []}) {
     <>
       <Title shadow="Nuestra Directiva">Directiva</Title>
       <DirectorsContainer>
-				{directive.map(director => {
+				{directive.data.map(director => {
+          if (!director.directorData) return null;
 					return (
             <Card
               key={director._id}
-              bgImage={director.directorData.picture}
+              bgImage={director.directorData.picture || '/assets/general/p_nofoto.png'}
               title={director.name.public}
               subtitle={director.directorData.position}
               width="150px"

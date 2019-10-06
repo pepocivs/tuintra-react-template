@@ -11,8 +11,14 @@ const getClubDataHasError = createSelector(
   error => !isEmpty(error)
 );
 
+const getMenu = createSelector(
+  getClubData,
+  data => get(data, "menu", [])
+);
+
 export {
   getClubData,
+  getMenu,
   getClubDataLoading,
   getClubDataReady,
   getClubDataError,
