@@ -6,7 +6,7 @@ import store from "redux/store";
 import * as serviceWorker from "./serviceWorker";
 
 /** Custom Components */
-import ConnectedApp from "components/App/ConnectedApp";
+import ConnectedApp from "components/Connectors/ConnectedApp";
 
 WebFont.load({
   google: {
