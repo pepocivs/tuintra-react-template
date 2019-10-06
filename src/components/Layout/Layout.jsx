@@ -61,7 +61,7 @@ function Layout({stateProps}) {
       <>
         <GlobalStyle />
         <Helmet>
-          <link rel="shortcut icon" href={clubInfo.options.favicon || './favicon.ico'} />
+          <link rel="shortcut icon" href={clubInfo.options.favicon || './logo.png'} />
           <meta name="theme-color" content={clubInfo.options.principal_color_web} />
           <title>{clubInfo.clubName}</title>
         </Helmet>
@@ -81,14 +81,14 @@ function Layout({stateProps}) {
             <Route path="/:subsection/:page?" component={SubSection}>
             </Route>
             <Switch>
-              <Route exact path="/" component={() => <Home />} />
+              <Route exact path="/" component={Home} />
               {
                 menu.map(menuItem => {
                   const Component = getComponentByRoute(menuItem.file);
                   return <Route key={menuItem._id} path={`/${menuItem.file}/:id?/:lang?/:slug?`} component={Component} />
                 })
               }
-              <Route component={() => <NotFound />} />
+              <Route component={NotFound} />
             </Switch>
           </MainSection>
           <FooterSection>
