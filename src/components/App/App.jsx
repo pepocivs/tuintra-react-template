@@ -5,7 +5,6 @@ import ReactBreakpoints from "react-breakpoints";
 
 /** Helpers */
 import breakpoints from "helpers/breakpoints";
-import emulatedState from 'emulatedState';
 
 /** Custom Theme */
 import theme from "theme";
