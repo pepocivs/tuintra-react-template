@@ -1,7 +1,7 @@
 import axios from "axios";
 import clubInfo from "helpers/clubInfo";
 
-const fetchClubData = () =>
+const fetchLinks = () =>
   axios.get(`${clubInfo.apiHost}/${clubInfo.subdomain}/links`);
 
-export default fetchClubData;
+export default fetchLinks;

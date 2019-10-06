@@ -23,7 +23,7 @@ function TeamList({ teams }) {
             <Link key={team._id} to={`/equipos/${team._id}`}>
 							<Card
 								key={team._id}
-								bgImage={team.picture}
+								bgImage={team.picture || '/assets/general/e_nofoto.jpg'}
 								title={team.teamName}
 								subtitle={`${team.category} ${team.gender}`}
 								width="250px"
