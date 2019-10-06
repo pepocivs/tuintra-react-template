@@ -65,13 +65,12 @@ function Menu({ clubInfo, menu }) {
 					<ul>
 						{
 							menu.map(menuItem => {
-								if(menuItem.visible)
-									return (
-										<Link key={menuItem._id} to={`/${menuItem.file}`}>
-											<li>{menuItem.title}</li>
-										</Link>
-									);
-								return '';
+								if(!menuItem.visible) return null;
+								return (
+									<Link key={menuItem._id} to={`/${menuItem.file}`}>
+										<li>{menuItem.title}</li>
+									</Link>
+								);
 							})
 						}
 					</ul>

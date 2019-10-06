@@ -16,11 +16,14 @@ const SubmenuContainer = styled.div`
 function Submenu({subMenu, subsection, page}) {  
     return (
       <SubmenuContainer>
-        {subMenu.map(menu => (
-          <Link key={menu._id} to={`/${subsection}/${menu.file}`}>
-            <Highlighted selected={(page === menu.file)}>{menu.title}</Highlighted>
-          </Link>
-        ))}
+        {subMenu.map(menu => {
+          if(!menu.visible) return null;
+          return (
+            <Link key={menu._id} to={`/${subsection}/${menu.file}`}>
+              <Highlighted selected={(page === menu.file)}>{menu.title}</Highlighted>
+            </Link>
+          )
+        })}
       </SubmenuContainer>
     )
   }

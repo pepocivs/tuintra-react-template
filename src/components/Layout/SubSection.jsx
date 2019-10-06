@@ -28,6 +28,7 @@ function SubSection({ menu, match }) {
       <Switch>
         {
           childrens.map(children => {
+            if(!children.visible) return null;
             const route = children.file.split('/')[0];
             const Component = getComponentByRoute(route);
             return <Route key={children._id} path={`${path}/${route}`} component={Component} />
