@@ -20,7 +20,7 @@ function App(props) {
     fetchClubData();
     fetchLinks();
   }, [fetchClubData, fetchLinks]);
-  if (!clubInfo.data) {
+  if (!clubInfo.ready) {
     return (
       <Loading 
         color="#f28c12"
