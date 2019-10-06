@@ -9,7 +9,7 @@ function PageContainer({fetchPages, pages, match}) {
   const pageId = match.params.id || 1;
   useEffect(() => {
     fetchPages(pageId);
-  }, [fetchPages]);
+  }, [fetchPages, pageId]);
   if (!pages.ready) return null;
   return (
     <>
