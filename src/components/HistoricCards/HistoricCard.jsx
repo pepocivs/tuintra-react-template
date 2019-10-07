@@ -51,7 +51,7 @@ const Key = styled.span`
   font-weight: 900;
   font-size: 20px;
 `;
-const Seasons = styled.div`
+const Seasons = styled.span`
   color: ${({theme}) => theme.clubOptions.secundary_color_web};
 `;
 
@@ -69,6 +69,7 @@ function HistoricCard({reverse, title, positions}) {
           return (
             <p key={position}>
               <Key><TitleCount>{trophys}</TitleCount> - {getPosition(position, trophys)}:</Key>
+              <br />
               <Seasons>{positions[position].join(', ')}</Seasons>
             </p>);
         })}
