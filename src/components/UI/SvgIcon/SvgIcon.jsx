@@ -8,9 +8,13 @@ import Twitter from "./icons/twitter";
 import Instagram from "./icons/instagram";
 import Youtube from "./icons/youtube";
 import Flickr from "./icons/flickr";
+import Diploma from "./icons/diploma";
+import LigaNacional from "./icons/ligaNacional";
+import Liga from "./icons/liga";
+import Copa from "./icons/copa";
 
-function SvgIcon({name, color}) {
-  return getSvgComponent(name)({color});
+function SvgIcon({name, color, bgColor, secondaryBgColor}) {
+  return getSvgComponent(name)({color, bgColor, secondaryBgColor});
 }
 
 function getSvgComponent(name) {
@@ -24,7 +28,11 @@ function getSvgComponent(name) {
     instagram: Instagram,
     twitter: Twitter,
     youtube: Youtube,
-    flickr: Flickr
+    flickr: Flickr,
+    diploma: Diploma,
+    ligaNacional: LigaNacional,
+    liga: Liga,
+    copa: Copa
   }
   return components[name] || Address;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import { withRouter } from "react-router"
+import { withRouter } from "react-router";
 
 /** Custom components */
 import Submenu from "components/Layout/Submenu";
@@ -31,7 +31,7 @@ function SubSection({ menu, match }) {
             if(!children.visible) return null;
             const route = children.file.split('/')[0];
             const Component = getComponentByRoute(route);
-            return <Route key={children._id} path={`${path}/${route}`} component={Component} />
+            return <Route key={children._id} path={`${path}/${route}/:id?`} component={Component} />
           })
         }
       </Switch>

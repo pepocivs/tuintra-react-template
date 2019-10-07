@@ -1,21 +1,14 @@
 /* eslint-disable no-restricted-globals */
 import React from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 /** Custom components */
 import Highlighted from "components/UI/Highlighted/Highlighted";
-
-const SubmenuContainer = styled.div`
-  display: grid;
-  grid-gap: 15px;
-  grid-template-columns: repeat(auto-fit, 100px);
-  justify-content: center;
-`;
+import GridBox from "components/UI/GridBox/GridBox";
 
 function Submenu({subMenu, subsection, page}) {  
     return (
-      <SubmenuContainer>
+      <GridBox>
         {subMenu.map(menu => {
           if(!menu.visible) return null;
           return (
@@ -24,7 +17,7 @@ function Submenu({subMenu, subsection, page}) {
             </Link>
           )
         })}
-      </SubmenuContainer>
+      </GridBox>
     )
   }
 
