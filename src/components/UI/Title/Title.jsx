@@ -12,6 +12,12 @@ const TitleContainer = styled.h1`
     white-space: nowrap;
     letter-spacing: -2;
     color: rgba(0, 0, 0, 0.04);
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
   }
 `;
 
