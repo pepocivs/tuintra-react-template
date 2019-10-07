@@ -9,7 +9,13 @@ const StandingContainer = styled.div`
   grid-template-columns: 20px 25px 5fr repeat(7, 1fr);
   align-items: center;
   grid-gap: 5px 10px;
-  margin-bottom: 5px;
+  padding: 5px;
+  background-color: ${({theme, header, reverse}) => (header) 
+    ? theme.clubOptions.secundary_color_web 
+    : (reverse) 
+      ? theme.colors.grey 
+      : theme.colors.light
+  };
 `;
 
 const TableHead = styled.div`
@@ -33,7 +39,7 @@ export default function Standings({standing}) {
   if (standing.length === 0) return <Alert msg="Clasificación no disponible" />
   return (
     <>
-      <StandingContainer>
+      <StandingContainer header={true}>
         <TableHead></TableHead>
         <TableHead></TableHead>
         <TableHead>Equipo</TableHead>
@@ -45,9 +51,9 @@ export default function Standings({standing}) {
         <TableHead>Gc</TableHead>
         <TableHead>Ptos</TableHead>
       </StandingContainer>
-      {standing.map(row => (
-        <StandingContainer key={row.position}>
-          <div>{row.position}</div>
+      {standing.map((row, index) => (
+        <StandingContainer key={row.position} reverse={(index % 2 === 0)}>
+          <div>{row.position}º</div>
           <Shield src={row.teamData.shield[100]} alt={row.teamData.name} />
           <div>{row.teamData.name}</div>
           <InfoCell>{row.winGames}</InfoCell>
