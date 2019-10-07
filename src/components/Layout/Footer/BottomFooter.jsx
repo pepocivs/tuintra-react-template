@@ -91,8 +91,8 @@ function BottomFooter({ clubInfo, widgets }) {
             <h1>Síguenos</h1>
             <SocialContainer>
               {socialNetworks.map(network => {
-                return (clubInfo.options[network]) 
-                  ? <a key={network} href={clubInfo.options[network]} target="_blank" rel="noopener noreferrer"><SvgIcon name={network} /></a>
+                return (clubInfo.social[network]) 
+                  ? <a key={network} href={clubInfo.social[network]} target="_blank" rel="noopener noreferrer"><SvgIcon name={network} /></a>
                   : '';
               })}
             </SocialContainer>
