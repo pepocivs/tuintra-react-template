@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 
 /** Custom components */
 import Card from "components/UI/Card/Card";
+import NotFound from "components/Containers/NotFound";
 
 const Author = styled.div`
   text-align: right;
@@ -16,7 +17,8 @@ const decode = (str) => {
   }).replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
 }
 
-function New({selectedNew}) {
+function New({ selectedNew }) {
+  if (!selectedNew) return (<NotFound />);
   return (
     <>
       <Card

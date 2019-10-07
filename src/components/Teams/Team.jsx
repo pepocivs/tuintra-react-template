@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 /** Custom Components */
 import Card from "components/UI/Card/Card";
+import NotFound from "components/Containers/NotFound";
 
 const PlayersContainer = styled.div`
 	display: grid;
@@ -13,6 +14,7 @@ const PlayersContainer = styled.div`
 `;
 
 function Team({ selectedTeam }) {
+  if (!selectedTeam) return (<NotFound />);
 	return (
 		<>
       <Card
