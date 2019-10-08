@@ -1,7 +1,8 @@
 import types from "./types";
 
-const fetchPeople = () => ({
-  type: types.FETCH_PEOPLE
+const fetchPeople = (params) => ({
+  type: types.FETCH_PEOPLE,
+  payload: { params }
 });
 
 const fetchPeopleSuccess = data => ({

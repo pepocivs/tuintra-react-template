@@ -1,16 +1,67 @@
 import React from "react";
+import styled from "styled-components";
 
 /** Custom components */
-import Title from "components/UI/Title/Title";
+import GetWidget from "components/Widgets/GetWidget";
 
-function HomeContainer() {
+const HomeGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  height: calc(100vh - ${({theme}) => theme.spacings.headerHeight});
+  grid-template-areas:
+    "medio-izquierda medio-centro medio-derecha"
+    "destacado destacado destacado"
+    "pie-izquierda pie-centro pie-derecha";
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+    grid-template-areas:
+    "medio-izquierda"
+    "medio-centro"
+    "medio-derecha"
+    "destacado"
+    "pie-izquierda"
+    "pie-centro"
+    "pie-derecha";
+    grid-template-columns: 1fr;
+  }
+`;
+
+const WidgetMI = styled.div`
+  grid-area: medio-izquierda;
+`;
+const WidgetMC = styled.div`
+  grid-area: medio-centro;
+`;
+const WidgetMD = styled.div`
+  grid-area: medio-derecha;
+`;
+const WidgetD = styled.div`
+  grid-area: destacado;
+`;
+const WidgetPI = styled.div`
+  grid-area: pie-izquierda;
+`;
+const WidgetPC = styled.div`
+  grid-area: pie-centro;
+`;
+const WidgetPD = styled.div`
+  grid-area: pie-derecha;
+`;
+
+function HomeContainer({clubInfo}) {
+  if (!clubInfo.ready) return null;
+  const widgets = clubInfo.data.widgets;
   return (
-    <div>
-      <Title shadow="Home">Inicio</Title>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus egestas rutrum libero sit amet dignissim. Integer porttitor urna sed felis egestas malesuada. Vivamus elementum turpis neque, in tincidunt sem varius vel. Nulla sed nulla et quam malesuada gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque egestas sed odio quis pharetra. Duis lobortis dui justo, vel tempus risus tristique sit amet.</p>
-      <p>Quisque sit amet ligula gravida, tincidunt lorem nec, sagittis odio. Donec a lacinia nibh. Ut eros velit, pulvinar eu ex vitae, porta convallis nibh. Suspendisse potenti. Nam quis consectetur mauris, vel suscipit lorem. Etiam a risus ac nunc commodo tincidunt. Morbi tincidunt volutpat efficitur. Suspendisse eu diam vel leo ultrices congue non in est. Curabitur sagittis vulputate nisl nec efficitur. Sed vehicula tempus dapibus. Duis volutpat lobortis massa a cursus. Morbi aliquet ornare diam, ac ultricies tellus ullamcorper a. Etiam vitae nisi in lorem tincidunt feugiat sit amet vitae metus. Phasellus non tristique nulla. Cras in neque justo.</p>
-      <p>Etiam arcu ipsum, sollicitudin nec ex nec, tempus ultrices magna. Nam fermentum augue et turpis suscipit, quis hendrerit orci malesuada. Morbi dapibus interdum diam eu dignissim. Nulla venenatis erat id tortor ornare varius. Sed eget mauris dolor. Donec nec justo id libero pharetra blandit. Ut vestibulum enim sollicitudin, mollis nibh eu, ornare lorem. Sed bibendum tortor dui, ut euismod diam imperdiet ut. Nulla facilisi. Nam volutpat enim vel sapien ullamcorper imperdiet. Mauris eleifend eros vel nibh consequat, et commodo tortor tristique. In sed odio non ex finibus porta. Donec facilisis ipsum sit amet felis tincidunt, vel eleifend nulla laoreet. Curabitur dictum molestie tortor, at suscipit diam suscipit vel.</p>
-    </div>
+    <HomeGridContainer>
+      <WidgetMI><GetWidget widget={widgets.find(widget => widget.position === 'medio-izquierda')} /></WidgetMI>
+      <WidgetMC><GetWidget widget={widgets.find(widget => widget.position === 'medio-centro')} /></WidgetMC>
+      <WidgetMD><GetWidget widget={widgets.find(widget => widget.position === 'medio-derecha')} /></WidgetMD>
+      <WidgetD><GetWidget widget={widgets.find(widget => widget.position === 'destacado')} /></WidgetD>
+      <WidgetPI><GetWidget widget={widgets.find(widget => widget.position === 'pie-izquierda')} /></WidgetPI>
+      <WidgetPC><GetWidget widget={widgets.find(widget => widget.position === 'pie-centro')} /></WidgetPC>
+      <WidgetPD><GetWidget widget={widgets.find(widget => widget.position === 'pie-derecha')} /></WidgetPD>
+    </HomeGridContainer>
   )
 }
 
