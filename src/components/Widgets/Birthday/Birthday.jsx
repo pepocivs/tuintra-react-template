@@ -49,7 +49,7 @@ const BirthdayInfo = styled.div`
   align-self: center;
 `;
 
-function Birthday({fetchPeople, birthdays, content}) {
+function Birthday({fetchPeople, birthdays, content = 'si'}) {
   useEffect(() => {
     fetchPeople('birthdays');
   }, [fetchPeople]);
@@ -58,6 +58,7 @@ function Birthday({fetchPeople, birthdays, content}) {
   return (
     <>
       {birthdays.data.map(birthday => {
+        if (!birthday.isActive) return null;
         return (
           <BirthdayBox key={birthday._id}>
             <Picture src={(birthday.playerData) ? birthday.playerData.picture || '/assets/general/p_nofoto.png' : '/assets/general/p_nofoto.png' } />
