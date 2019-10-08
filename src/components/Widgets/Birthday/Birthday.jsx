@@ -13,8 +13,6 @@ import {
   getPeopleError,
   getPeopleHasError
 } from "../../../redux/people/selectors";
-import theme from "theme";
-
 
 const mapStateToProps = (state, props) => ({
   birthdays: {
@@ -35,7 +33,7 @@ const BirthdayBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
   margin-bottom: 5px;
-  background-color: ${({theme}) => theme.colors.grey};
+  background-color: ${({theme}) => theme.colors.light};
 `;
 
 const Picture = styled.img`
