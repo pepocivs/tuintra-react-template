@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 /** Custom components */
-import Title from "components/UI/Title/Title";
+import Alert from "components/UI/Alert/Alert";
 
 /** ACTIONS */
 import actionsPeople from "../../../redux/people/actions";
@@ -56,9 +56,14 @@ function Birthday({fetchPeople, birthdays, widgetInfo}) {
   }, [fetchPeople]);
   if (!birthdays.ready) return null;
   const showAge = (widgetInfo.content === 'si');
+  if(Object.keys(birthdays.data).length === 0) {
+    return (
+      <Alert icon="info" iconColor="#aec6cf" msg="No hay próximos cumpleaños" />
+    );
+  }
   return (
     <>
-      <Title small>{widgetInfo.title}</Title>
+      <h2>{widgetInfo.title}</h2>
       {birthdays.data.map(birthday => {
         if (!birthday.isActive) return null;
         return (

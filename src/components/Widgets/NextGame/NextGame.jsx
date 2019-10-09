@@ -6,7 +6,6 @@ import 'moment/locale/es';
 
 /** Custom components */
 import Alert from "components/UI/Alert/Alert";
-import Title from "components/UI/Title/Title";
 
 /** ACTIONS */
 import actionsCalendar from "../../../redux/calendar/actions";
@@ -90,7 +89,7 @@ function NextGame({fetchCalendar, calendar, widgetInfo}) {
   );
   return (
     <>
-      <Title small>{widgetInfo.title}</Title>
+      <h2>{widgetInfo.title}</h2>
       {nextGames.map(game => {
         return (
           <ScheduleBox key={game._id}>

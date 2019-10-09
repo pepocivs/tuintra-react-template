@@ -11,7 +11,7 @@ function GetWidget({widget}) {
     case 'nextgame':
       return <NextGame widgetInfo={widget.content} />
     default:
-      return (<div>{widget.type}</div>);
+      return (<h2>{widget.content.title}</h2>);
   }
 }
 
