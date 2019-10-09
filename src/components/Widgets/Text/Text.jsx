@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const cleanString = (str) => str.replace(/'cd'/g, '"');
+const cleanString = (str) => str.replace(/'cd'/g, '"').replace(/'cs'/g, "'");
 
 const HtmlPrint = styled.div`
   img {
