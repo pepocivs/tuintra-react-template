@@ -67,7 +67,7 @@ const TeamShield = styled.img`
 `;
 
 const ExtraInfo = styled.div`
-  font-size: ${({big}) => (big) ? "20px" : "10px"};
+  font-size: ${({big}) => (big) ? "15px" : "10px"};
   text-transform: ${({uppercase}) => (uppercase) ? "uppercase" : "initial"};
   font-style: italic;
   text-align: center;
@@ -95,14 +95,14 @@ function NextGame({fetchCalendar, calendar, widgetInfo}) {
           <ScheduleBox key={game._id}>
             <ExtraInfo big uppercase><Moment format="dddd, DD MMMM" date={game.date}/></ExtraInfo>
             <ExtraInfo big><Moment format="hh:mm" date={game.date}/>h</ExtraInfo>
-            <ExtraInfo>{game.competition.name} {game.competition.category} {game.competition.gender}</ExtraInfo>
+            <ExtraInfo>{game.facility}</ExtraInfo>
             <GameRow>
               <TeamShield src={game.local.shield[100]} alt={game.local.name}/>
               <TeamShield src={game.away.shield[100]} alt={game.away.name}/>
               <TeamName position="left">{game.local.name}</TeamName>
               <TeamName position="right">{game.away.name}</TeamName>
             </GameRow>
-            <ExtraInfo>{game.facility}</ExtraInfo>
+            <ExtraInfo>{game.competition.name} {game.competition.category} {game.competition.gender}</ExtraInfo>
           </ScheduleBox>
         )
       })}

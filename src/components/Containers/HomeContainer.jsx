@@ -9,7 +9,7 @@ const HomeGridContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 10px;
-  height: calc(100vh - ${({theme}) => theme.spacings.headerHeight});
+  min-height: calc(100vh - ${({theme}) => theme.spacings.headerHeight});
   grid-template-areas:
     "medio-izquierda medio-centro medio-derecha"
     "destacado destacado destacado"
