@@ -30,6 +30,9 @@ import {
   getStandingHasError
 } from "../../redux/standing/selectors";
 
+/** Formatters */
+import { groupByDay } from "../../redux/calendar/formatter";
+
 
 const mapStateToProps = (state, props) => ({
   competitions: {
@@ -40,7 +43,7 @@ const mapStateToProps = (state, props) => ({
     hasError: getCompetitionsHasError(state)
   },
   calendar: {
-    data: getCalendar(state),
+    data: groupByDay(getCalendar(state)),
     loading: getCalendarLoading(state),
     ready: getCalendarReady(state),
     error: getCalendarError(state),
@@ -57,7 +60,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchCompetitions: competitionId => dispatch(actionsCompetitions.fetchCompetitions(competitionId)),
-  fetchCalendar: competitionId => dispatch(actionsCalendar.fetchCalendar(competitionId)),
+  fetchCalendar: queryParams => dispatch(actionsCalendar.fetchCalendar(queryParams)),
   fetchStanding: competitionId => dispatch(actionsStanding.fetchStanding(competitionId))
 });
 

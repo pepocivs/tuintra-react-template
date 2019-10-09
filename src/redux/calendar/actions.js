@@ -1,8 +1,8 @@
 import types from "./types";
 
-const fetchCalendar = competitionId => ({
+const fetchCalendar = queryParams => ({
   type: types.FETCH_CALENDAR,
-  payload: { competitionId }
+  payload: { queryParams }
 });
 
 const fetchCalendarSuccess = data => ({

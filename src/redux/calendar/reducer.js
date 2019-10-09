@@ -1,5 +1,4 @@
 import types from "./types";
-import formatter from "./formatter";
 
 const initialState = {
   data: {},
@@ -20,7 +19,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         loading: false,
         ready: true,
-        data: formatter(payload.data)
+        data: payload.data
       };
     }
     case types.FETCH_CALENDAR_FAILURE: {

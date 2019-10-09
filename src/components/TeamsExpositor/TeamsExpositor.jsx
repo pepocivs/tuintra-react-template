@@ -19,8 +19,11 @@ const TeamShield = styled.img`
 function TeamsExpositor({teams}) {
   return (
     <ShieldContainer>
-      {teams.map(team => 
-        <TeamShield key={team._id} src={team.shield[100]} alt={team.teamName}></TeamShield>  
+      {teams.map(team => {
+        return (team.type !== "3") 
+          ? <TeamShield key={team._id} src={team.shield[100]} alt={team.teamName}></TeamShield>
+          : null
+      }
       )}
     </ShieldContainer>
   )

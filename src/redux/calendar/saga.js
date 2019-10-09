@@ -4,10 +4,10 @@ import actions from "./actions";
 import types from "./types";
 import fetchCalendar from "./api";
 
-export function* fetchCalendarSaga({ payload: { competitionId } }) {
+export function* fetchCalendarSaga({ payload: { queryParams } }) {
   try {
-    const calendar = yield call(fetchCalendar, competitionId);
-    yield put(actions.fetchCalendarSuccess(calendar.data));
+    const calendar = yield call(fetchCalendar, queryParams);
+    yield put(actions.fetchCalendarSuccess(calendar.data, queryParams));
   } catch (e) {
     yield put(actions.fetchCalendarFailure(e.message));
   }

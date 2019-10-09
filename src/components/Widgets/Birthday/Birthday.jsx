@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
+/** Custom components */
+import Title from "components/UI/Title/Title";
+
 /** ACTIONS */
 import actionsPeople from "../../../redux/people/actions";
 
@@ -47,14 +50,15 @@ const BirthdayInfo = styled.div`
   align-self: center;
 `;
 
-function Birthday({fetchPeople, birthdays, content = 'si'}) {
+function Birthday({fetchPeople, birthdays, widgetInfo}) {
   useEffect(() => {
     fetchPeople('birthdays');
   }, [fetchPeople]);
   if (!birthdays.ready) return null;
-  const showAge = (content === 'si');
+  const showAge = (widgetInfo.content === 'si');
   return (
     <>
+      <Title small>{widgetInfo.title}</Title>
       {birthdays.data.map(birthday => {
         if (!birthday.isActive) return null;
         return (

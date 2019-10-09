@@ -21,7 +21,7 @@ function CompetitionsContainer(props) {
   useEffect(() => {
     fetchCompetitions(competitionId);
     if (competitionId) {
-      fetchCalendar(competitionId);
+      fetchCalendar({competitionId});
       fetchStanding(competitionId);
     }
   }, [fetchCompetitions, fetchCalendar, fetchStanding, competitionId]);

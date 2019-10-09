@@ -12,6 +12,7 @@ import Diploma from "./icons/diploma";
 import LigaNacional from "./icons/ligaNacional";
 import Liga from "./icons/liga";
 import Copa from "./icons/copa";
+import Info from "./icons/info";
 
 function SvgIcon({name, color, bgColor, secondaryBgColor}) {
   return getSvgComponent(name)({color, bgColor, secondaryBgColor});
@@ -32,7 +33,8 @@ function getSvgComponent(name) {
     diploma: Diploma,
     ligaNacional: LigaNacional,
     liga: Liga,
-    copa: Copa
+    copa: Copa,
+    info: Info
   }
   return components[name] || Address;
 }

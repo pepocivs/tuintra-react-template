@@ -1,4 +1,4 @@
 export default {
-  apiHost: 'http://localhost:4000',
+  apiHost: 'https://api.tuintra.com',
   subdomain: 'ginerdelosrios.es'
 }
