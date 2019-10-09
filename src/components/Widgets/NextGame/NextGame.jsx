@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 import 'moment/locale/es';
 
 /** Custom components */
-import SvgIcon from "components/UI/SvgIcon/SvgIcon";
+import Alert from "components/UI/Alert/Alert";
 import Title from "components/UI/Title/Title";
 
 /** ACTIONS */
@@ -74,16 +74,6 @@ const ExtraInfo = styled.div`
   text-align: center;
 `;
 
-const AlertBox = styled.div`
-  background-color: ${({theme}) => theme.colors.light};
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  div, svg {
-    justify-self: center;
-    align-self: center;
-  }
-`;
-
 function NextGame({fetchCalendar, calendar, widgetInfo}) {
   useEffect(() => {
     fetchCalendar({nDays: 7});
@@ -91,10 +81,7 @@ function NextGame({fetchCalendar, calendar, widgetInfo}) {
   if (!calendar.ready) return null;
   if(Object.keys(calendar.data).length === 0) {
     return (
-      <AlertBox>
-        <SvgIcon name="info" color="#aec6cf" />
-        <div>No hay próximos partidos la próxima semana</div>
-      </AlertBox>
+      <Alert icon="info" iconColor="#aec6cf" msg="No hay próximos partidos la próxima semana" />
     );
   }
   const nextGames = calendar.data.filter(game => 
