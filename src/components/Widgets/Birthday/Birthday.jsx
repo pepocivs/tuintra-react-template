@@ -37,6 +37,7 @@ const BirthdayBox = styled.div`
   grid-template-columns: 1fr 4fr;
   margin-bottom: 5px;
   background-color: ${({theme}) => theme.colors.light};
+  border-bottom: 1px solid ${({theme}) => theme.colors.grey};
 `;
 
 const Picture = styled.img`
@@ -98,8 +99,7 @@ function getNextString(birthday) {
 function getAge(birthday) {
   const ageDifMs = Date.now() - new Date(birthday).getTime();
   const ageDate = new Date(ageDifMs);
-  const addition = (daysUntilNext(birthday) === 0) ? 0 : 1;
-  return ((Math.abs(ageDate.getUTCFullYear() - 1970)) + addition);
+  return ((Math.abs(ageDate.getUTCFullYear() - 1970)) + 1);
 }
 
 export default connect(
