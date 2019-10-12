@@ -37,6 +37,10 @@ const Shield = styled.img`
   width: 25px;
 `;
 
+const TeamName = styled.div`
+  font-size: ${({minified}) => (minified) ? '10px': 'initial'};
+`;
+
 export default function Standings({standing, minified = false}) {
   if (standing.standings.length === 0) return <Alert msg="Clasificación no disponible" />
   return (
@@ -58,7 +62,7 @@ export default function Standings({standing, minified = false}) {
         <StandingContainer key={row.position} reverse={(index % 2 === 0)} minified={minified}>
           <InfoCell minified={minified}>{row.position}º</InfoCell>
           <Shield src={row.teamData.shield[100]} alt={row.teamData.name} />
-          <div>{row.teamData.name}</div>
+          <TeamName minified={minified}>{row.teamData.name}</TeamName>
           <InfoCell minified={minified}>{row.winGames+row.tieGames+row.loseGames}</InfoCell>
           <InfoCell>{row.winGames}</InfoCell>
           <InfoCell>{row.tieGames}</InfoCell>
