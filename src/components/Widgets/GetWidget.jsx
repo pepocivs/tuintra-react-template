@@ -3,6 +3,7 @@ import React from "react";
 import Birthday from "./Birthday/Birthday";
 import NextGame from "./NextGame/NextGame";
 import Text from "./Text/Text";
+import StandingContainer from "./Standing/StandingContainer";
 
 function GetWidget({widget}) {
   if (!widget) return null;
@@ -13,6 +14,8 @@ function GetWidget({widget}) {
       return <NextGame widgetInfo={widget.content} />
     case 'text':
       return <Text widgetInfo={widget.content} />
+    case 'standings':
+      return <StandingContainer widgetInfo={widget.content} />
     default:
       return (<h2>{widget.content.title}</h2>);
   }

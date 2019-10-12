@@ -6,7 +6,7 @@ import Alert from "components/UI/Alert/Alert";
 
 const StandingContainer = styled.div`
   display: grid;
-  grid-template-columns: 20px 25px 5fr repeat(7, 1fr);
+  grid-template-columns: ${({minified}) => (minified) ? '25px 5fr repeat(4, 1fr)': '20px 25px 5fr repeat(8, 1fr)'};
   align-items: center;
   grid-gap: 5px 10px;
   padding: 5px;
@@ -21,10 +21,12 @@ const StandingContainer = styled.div`
 const TableHead = styled.div`
   font-weight: bold;
   text-align: center;
+  display: ${({minified}) => (minified) ? 'none': 'initial'};
 `;
 
 const InfoCell = styled.div`
   text-align: center;
+  display: ${({minified}) => (minified) ? 'none': 'initial'};
 `;
 
 const HighligtedCell = styled(InfoCell)`
@@ -35,33 +37,35 @@ const Shield = styled.img`
   width: 25px;
 `;
 
-export default function Standings({standing}) {
-  if (standing.length === 0) return <Alert msg="Clasificación no disponible" />
+export default function Standings({standing, minified = false}) {
+  if (standing.standings.length === 0) return <Alert msg="Clasificación no disponible" />
   return (
     <>
-      <StandingContainer header={true}>
-        <TableHead></TableHead>
+      <StandingContainer header={true} minified={minified}>
+        <TableHead minified={minified}></TableHead>
         <TableHead></TableHead>
         <TableHead>Equipo</TableHead>
-        <TableHead>Pj</TableHead>
+        <TableHead minified={minified}>Pj</TableHead>
         <TableHead>Pg</TableHead>
         <TableHead>Pe</TableHead>
         <TableHead>Pp</TableHead>
-        <TableHead>Gf</TableHead>
-        <TableHead>Gc</TableHead>
+        <TableHead minified={minified}>Gf</TableHead>
+        <TableHead minified={minified}>Gc</TableHead>
+        <TableHead minified={minified}>Dg</TableHead>
         <TableHead>Ptos</TableHead>
       </StandingContainer>
-      {standing.map((row, index) => (
-        <StandingContainer key={row.position} reverse={(index % 2 === 0)}>
-          <div>{row.position}º</div>
+      {standing.standings.map((row, index) => (
+        <StandingContainer key={row.position} reverse={(index % 2 === 0)} minified={minified}>
+          <InfoCell minified={minified}>{row.position}º</InfoCell>
           <Shield src={row.teamData.shield[100]} alt={row.teamData.name} />
           <div>{row.teamData.name}</div>
+          <InfoCell minified={minified}>{row.winGames+row.tieGames+row.loseGames}</InfoCell>
           <InfoCell>{row.winGames}</InfoCell>
           <InfoCell>{row.tieGames}</InfoCell>
           <InfoCell>{row.loseGames}</InfoCell>
-          <InfoCell>{row.goalsFor}</InfoCell>
-          <InfoCell>{row.goalsAgainst}</InfoCell>
-          <InfoCell>{row.goalsDifference}</InfoCell>
+          <InfoCell minified={minified}>{row.goalsFor}</InfoCell>
+          <InfoCell minified={minified}>{row.goalsAgainst}</InfoCell>
+          <InfoCell minified={minified}>{row.goalsDifference}</InfoCell>
           <HighligtedCell>{row.points}</HighligtedCell>
         </StandingContainer>
       ))}
