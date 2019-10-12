@@ -5,7 +5,9 @@ import styled from "styled-components";
 import SvgIcon from "components/UI/SvgIcon/SvgIcon";
 
 const AlertBox = styled.div`
+  border-bottom: 1px solid ${({theme}) => theme.colors.grey};
   background-color: ${({theme}) => theme.colors.light};
+  margin-bottom: 5px;
   display: grid;
   grid-template-columns: 1fr 4fr;
   div, svg {
