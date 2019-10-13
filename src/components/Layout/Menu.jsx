@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+/** Helpers */
+import clubInfoDomain from "helpers/clubInfo";
+
 /** Styles */
 const MenuNav = styled.div`
 	height: ${({theme}) => theme.spacings.headerHeight};
@@ -66,11 +69,17 @@ function Menu({ clubInfo, menu }) {
 						{
 							menu.map(menuItem => {
 								if(!menuItem.visible) return null;
-								return (
-									<Link key={menuItem._id} to={`/${menuItem.file}`}>
+								return (menuItem.file !== "intranet")
+									? (
+										<Link key={menuItem._id} to={`/${menuItem.file}`}>
+											<li>{menuItem.title}</li>
+										</Link>
+									)
+									: (
+									<a key={menuItem._id} target="_blank" without rel="noopener noreferrer" href={`${clubInfoDomain.tuintraDomain}/intranet`}>
 										<li>{menuItem.title}</li>
-									</Link>
-								);
+									</a>
+									);
 							})
 						}
 					</ul>
