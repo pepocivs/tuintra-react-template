@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 /** Custom components */
-import Alert from "components/UI/Alert/Alert";
 import Standings from "components/Standings/Standings";
 
 /** ACTIONS */
@@ -32,6 +32,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 /** Styles */
+const Title = styled.h2`
+  font-size: 16px;
+`;
+
+
 function Standing({fetchStanding, standing, competitionIds}) {
   useEffect(() => {
     fetchStanding(competitionIds);
@@ -46,7 +51,7 @@ function Standing({fetchStanding, standing, competitionIds}) {
       if (!standingInfo) return null;
       return (
         <div key={competitionId}>
-          <h2>{standingInfo.name} {standingInfo.category} {standingInfo.gender}</h2>
+          <Title>{standingInfo.name} {standingInfo.category} {standingInfo.gender}</Title>
           <Standings standing={standingInfo} minified></Standings>
         </div>
       );

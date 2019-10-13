@@ -24,6 +24,10 @@ const TableHead = styled.div`
   display: ${({minified}) => (minified) ? 'none': 'initial'};
 `;
 
+const TableHeadName = styled(TableHead)`
+  min-width: 75px;
+`;
+
 const InfoCell = styled.div`
   text-align: center;
   display: ${({minified}) => (minified) ? 'none': 'initial'};
@@ -48,7 +52,7 @@ export default function Standings({standing, minified = false}) {
       <StandingContainer header={true} minified={minified}>
         <TableHead minified={minified}></TableHead>
         <TableHead></TableHead>
-        <TableHead>Equipo</TableHead>
+        <TableHeadName>Equipo</TableHeadName>
         <TableHead minified={minified}>Pj</TableHead>
         <TableHead>Pg</TableHead>
         <TableHead>Pe</TableHead>

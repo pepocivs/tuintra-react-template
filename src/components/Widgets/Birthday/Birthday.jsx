@@ -56,24 +56,24 @@ function Birthday({fetchPeople, birthdays, widgetInfo}) {
     fetchPeople('birthdays');
   }, [fetchPeople]);
   if (!birthdays.ready) return null;
-  const showAge = (widgetInfo.content === 'si');
   if(Object.keys(birthdays.data).length === 0) {
     return (
       <Alert icon="info" iconColor="#aec6cf" msg="No hay próximos cumpleaños" />
     );
   }
+  const showAge = (widgetInfo.content === 'si');
+  const formattedBirthdayData = formatBirthday(birthdays.data, showAge);
   return (
     <>
       <h2>{widgetInfo.title}</h2>
-      {birthdays.data.map(birthday => {
-        if (!birthday.isActive) return null;
+      {formattedBirthdayData.map(birthday => {
         return (
           <BirthdayBox key={birthday._id}>
-            <Picture src={(birthday.playerData) ? birthday.playerData.picture || '/assets/general/p_nofoto.png' : '/assets/general/p_nofoto.png' } />
+            <Picture src={birthday.picture} />
             <BirthdayInfo>
-              <span>{getNextString(birthday.birthDate)}</span>
+              <span>{birthday.nextString}</span>
               <br />
-              <span>{birthday.name.public} cumple {showAge ? getAge(birthday.birthDate) : ''} años!</span>
+              <span>{birthday.name.public} cumple {birthday.age} años!</span>
               <br />
               <span>¡¡¡FELICIDADES!!!</span>
             </BirthdayInfo>
@@ -84,7 +84,26 @@ function Birthday({fetchPeople, birthdays, widgetInfo}) {
   )
 }
 
-function daysUntilNext(birthday){
+function formatBirthday(birthdayData, showAge) {
+  const formattedData = birthdayData.map(data => {
+    return {
+      ...data,
+      picture: (data.playerData) ? data.playerData.picture || '/assets/general/p_nofoto.png' : '/assets/general/p_nofoto.png',
+      nextString: getNextString(data.birthDate),
+      daysUntilNext: daysUntilNext(data.birthDate),
+      age: showAge ? getAge(data.birthDate) : ''
+    }
+  });
+  return formattedData
+    .filter(data => data.isActive)
+    .sort((a, b) => (a.daysUntilNext > b.daysUntilNext) 
+      ? 1 
+      : (a.daysUntilNext < b.daysUntilNext) 
+        ? -1 
+        : 0);
+}
+
+function daysUntilNext(birthday) {
   const dateNow = new Date().setHours(0, 0, 0, 0);
   let birthDayDate = new Date(birthday).setFullYear(new Date().getFullYear());
   birthDayDate = new Date(birthDayDate).setHours(0,0,0,0);
