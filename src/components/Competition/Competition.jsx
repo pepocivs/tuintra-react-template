@@ -1,6 +1,7 @@
 import React from "react";
 
 /** Custom Components */
+import NotFound from "components/Containers/NotFound";
 import Title from "components/UI/Title/Title";
 import TeamsExpositor from "components/TeamsExpositor/TeamsExpositor";
 import Schedule from "components/Schedule/Schedule";
@@ -10,6 +11,7 @@ function Competition({selectedCompetition, selectedCalendar, selectedStanding}) 
   const standingInfo = Object.keys(selectedStanding)
     .filter(key => selectedStanding[key]._id === selectedCompetition._id)
     .map(key => selectedStanding[key])[0];
+  if (!selectedCompetition) return <NotFound />;
   return (
     <>
       <Title shadow={`${selectedCompetition.category} ${selectedCompetition.gender}`}>{selectedCompetition.competitionName}</Title>
