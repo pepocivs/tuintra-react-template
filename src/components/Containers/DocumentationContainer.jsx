@@ -26,7 +26,7 @@ function DocumentationContainer({ fetchDocuments, documents }) {
         : <DocumentContainer>
           {documents.data.map(document => {
             return (
-              <a key={document.fileName} target="_blank" rel="noopener noreferrer" href={`http://${document.link}`}>
+              <a key={document.link} target="_blank" rel="noopener noreferrer" href={`http://${document.link}`}>
                 <Card
                   bgImage={`/assets/extensions/${document.extension}.png`}
                   outerText={document.filename}

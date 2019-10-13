@@ -78,7 +78,7 @@ function NextGame({fetchCalendar, calendar, widgetInfo}) {
     fetchCalendar({nDays: 7});
   }, [fetchCalendar]);
   if (!calendar.ready) return null;
-  if(Object.keys(calendar.data).length === 0) {
+  if(Object.keys(calendar.data).length === 0 || !widgetInfo.content) {
     return (
       <>
         <h2>{widgetInfo.title}</h2>

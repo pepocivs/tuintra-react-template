@@ -7,7 +7,7 @@ import NewsHeader from "components/News/NewsHeader";
 
 const NewsContainerStyled = styled.div`
   position: sticky;
-  margin: 300px auto 0 auto;
+  margin: ${({isEmpty}) => (isEmpty) ? '500px' : '300px'} auto 0 auto;
   background-color: white;
   padding-top: 20px;
   z-index: 4;
@@ -21,7 +21,7 @@ function NewList({highLightedNews, regularNews, prefix}) {
   return (
     <>
       <NewsHeader news={highLightedNews} />
-      <NewsContainerStyled>
+      <NewsContainerStyled isEmpty={(regularNews.length === 0)}>
         <NewsRegular news={regularNews} prefix={prefix} />
       </NewsContainerStyled>
     </>
