@@ -80,7 +80,10 @@ function NextGame({fetchCalendar, calendar, widgetInfo}) {
   if (!calendar.ready) return null;
   if(Object.keys(calendar.data).length === 0) {
     return (
-      <Alert icon="info" iconColor="#aec6cf" msg="No hay próximos partidos la próxima semana" />
+      <>
+        <h2>{widgetInfo.title}</h2>
+        <Alert icon="info" iconColor="#aec6cf" msg="No hay partidos la próxima semana" />
+      </>
     );
   }
   const nextGames = calendar.data.filter(game => 

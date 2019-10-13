@@ -58,7 +58,10 @@ function Birthday({fetchPeople, birthdays, widgetInfo}) {
   if (!birthdays.ready) return null;
   if(Object.keys(birthdays.data).length === 0) {
     return (
-      <Alert icon="info" iconColor="#aec6cf" msg="No hay próximos cumpleaños" />
+      <>
+        <h2>{widgetInfo.title}</h2>
+        <Alert icon="info" iconColor="#aec6cf" msg="No hay próximos cumpleaños" />
+      </>
     );
   }
   const showAge = (widgetInfo.content === 'si');
