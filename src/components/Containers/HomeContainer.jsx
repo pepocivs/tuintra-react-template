@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 /** Custom components */
 import GetWidget from "components/Widgets/GetWidget";
+import News from "components/Widgets/News/News";
 
 const HomeGridContainer = styled.div`
+  margin: 500px auto 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
@@ -24,7 +26,10 @@ const HomeGridContainer = styled.div`
     "pie-centro"
     "pie-derecha";
     grid-template-columns: 1fr;
+    margin: 50px auto;
+    padding-top: 0px;
   }
+
 `;
 
 const WidgetMI = styled.div`
@@ -53,15 +58,18 @@ function HomeContainer({clubInfo}) {
   if (!clubInfo.ready) return null;
   const widgets = clubInfo.data.widgets;
   return (
-    <HomeGridContainer>
-      <WidgetMI><GetWidget widget={widgets.find(widget => widget.position === 'medio-izquierda')} /></WidgetMI>
-      <WidgetMC><GetWidget widget={widgets.find(widget => widget.position === 'medio-centro')} /></WidgetMC>
-      <WidgetMD><GetWidget widget={widgets.find(widget => widget.position === 'medio-derecha')} /></WidgetMD>
-      <WidgetD><GetWidget widget={widgets.find(widget => widget.position === 'destacado')} /></WidgetD>
-      <WidgetPI><GetWidget widget={widgets.find(widget => widget.position === 'pie-izquierda')} /></WidgetPI>
-      <WidgetPC><GetWidget widget={widgets.find(widget => widget.position === 'pie-centro')} /></WidgetPC>
-      <WidgetPD><GetWidget widget={widgets.find(widget => widget.position === 'pie-derecha')} /></WidgetPD>
-    </HomeGridContainer>
+    <>
+      <News></News>
+      <HomeGridContainer>
+        <WidgetMI><GetWidget widget={widgets.find(widget => widget.position === 'medio-izquierda')} /></WidgetMI>
+        <WidgetMC><GetWidget widget={widgets.find(widget => widget.position === 'medio-centro')} /></WidgetMC>
+        <WidgetMD><GetWidget widget={widgets.find(widget => widget.position === 'medio-derecha')} /></WidgetMD>
+        <WidgetD><GetWidget widget={widgets.find(widget => widget.position === 'destacado')} /></WidgetD>
+        <WidgetPI><GetWidget widget={widgets.find(widget => widget.position === 'pie-izquierda')} /></WidgetPI>
+        <WidgetPC><GetWidget widget={widgets.find(widget => widget.position === 'pie-centro')} /></WidgetPC>
+        <WidgetPD><GetWidget widget={widgets.find(widget => widget.position === 'pie-derecha')} /></WidgetPD>
+      </HomeGridContainer>
+    </>
   )
 }
 
