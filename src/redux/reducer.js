@@ -10,6 +10,7 @@ import standing from "redux/standing/reducer";
 import people from "redux/people/reducer";
 import historic from "redux/historic/reducer";
 import pages from "redux/pages/reducer";
+import documents from "redux/documents/reducer";
 
 const rootReducer = combineReducers({
   clubData,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   people,
   historic,
   pages,
+  documents,
 });
 
 export default rootReducer;
