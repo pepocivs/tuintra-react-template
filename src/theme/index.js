@@ -19,7 +19,7 @@ const theme = {
   },
   spacings: {
     logoWidth: "75px",
-    layoutMargin: "150px",
+    layoutMargin: "100px",
     layoutSmallMargin: "90px",
     headerHeight: "70px"
   },

@@ -22,7 +22,7 @@ const ClubLogo = styled.div`
   height: 50px;
   background-size: cover;
   margin: auto;
-  margin-top: -80px;
+  margin-top: -100px;
   background-image: url(${({theme, shield}) => shield || theme.clubOptions.clubs_shield});
 `;
 
