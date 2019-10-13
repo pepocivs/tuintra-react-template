@@ -4,6 +4,7 @@ import Birthday from "./Birthday/Birthday";
 import NextGame from "./NextGame/NextGame";
 import Text from "./Text/Text";
 import StandingContainer from "./Standing/StandingContainer";
+import Teams from "./Teams/Teams";
 
 function GetWidget({widget}) {
   if (!widget) return null;
@@ -16,8 +17,10 @@ function GetWidget({widget}) {
       return <Text widgetInfo={widget.content} />
     case 'standings':
       return <StandingContainer widgetInfo={widget.content} />
+    case 'team_picture':
+      return <Teams widgetInfo={widget.content} />
     default:
-      return (<h2>{widget.content.title}</h2>);
+      return null;
   }
 }
 
