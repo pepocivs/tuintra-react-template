@@ -1,6 +1,5 @@
 /** Containers */
 import ClubContainer from "components/Containers/ClubContainer";
-import DocumentationContainer from "components/Containers/DocumentationContainer";
 import NotFound from 'components/Containers/NotFound';
 
 /** Connected Containers */
@@ -13,6 +12,7 @@ import HistoricContainer from "components/Connectors/ConnectedHistoric";
 import PagesContainer from "components/Connectors/ConnectedPages";
 import ContactContainer from "components/Connectors/ConnectedContact";
 import HomeContainer from "components/Connectors/ConnectedHome";
+import DocumentationContainer from "components/Connectors/ConnectedDocumentation";
 
 const components = {
   equipos: TeamsContainer,
