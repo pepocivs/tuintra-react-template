@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { withRouter } from "react-router";
 
 /** Helpers */
 import clubInfoDomain from "helpers/clubInfo";
@@ -54,12 +55,21 @@ const NavHolder = styled.div`
 	a li {
 		padding: 0 20px;
 		text-decoration: none;
-		color: #FFFFFF;
 		text-align: center;
 	}
 `;
-	
-function Menu({ clubInfo, menu }) {
+
+const StyledLink = styled(Link)`
+	background-color: ${({selected}) => (selected) ? 'rgba(255,255,255,0.2)' : 'initial'};
+	li {
+		color: ${({selected, theme}) => (selected) ? theme.colors.light : theme.colors.white};
+
+	}
+`;
+
+function Menu({ clubInfo, menu, match }) {
+	const pathName = document.location.pathname.split("/");
+	const page = (document.location.pathname !== "/") ? pathName[1] : 'inicio';
 	return (
 		<MenuNav>
 			<Row>
@@ -71,12 +81,12 @@ function Menu({ clubInfo, menu }) {
 								if(!menuItem.visible) return null;
 								return (menuItem.file !== "intranet")
 									? (
-										<Link key={menuItem._id} to={`/${menuItem.file}`}>
+										<StyledLink selected={(page === menuItem.file)} key={menuItem._id} to={`/${menuItem.file}`}>
 											<li>{menuItem.title}</li>
-										</Link>
+										</StyledLink>
 									)
 									: (
-									<a key={menuItem._id} target="_blank" without rel="noopener noreferrer" href={`${clubInfoDomain.tuintraDomain}/intranet`}>
+									<a key={menuItem._id} target="_blank" rel="noopener noreferrer" href={`${clubInfoDomain.tuintraDomain}/intranet`}>
 										<li>{menuItem.title}</li>
 									</a>
 									);
@@ -89,4 +99,4 @@ function Menu({ clubInfo, menu }) {
 	)
 }
 
-export default Menu;
+export default withRouter(Menu);

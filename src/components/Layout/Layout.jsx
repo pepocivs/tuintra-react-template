@@ -78,8 +78,7 @@ function Layout({stateProps}) {
             </Media>
           </HeaderSection>
           <MainSection>
-            <Route path="/:subsection/:page?" component={SubSection}>
-            </Route>
+            <Route path="/:subsection/:page?" component={SubSection} />
             <Switch>
               <Route exact path="/" component={Home} />
               {

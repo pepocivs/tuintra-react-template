@@ -21,7 +21,7 @@ function Submenu({subMenu, subsection, page}) {
               </Link>
             )
             : (
-            <a key={menu._id} target="_blank" without rel="noopener noreferrer" href={`${clubInfo.tuintraDomain}/intranet`}>
+            <a key={menu._id} target="_blank" rel="noopener noreferrer" href={`${clubInfo.tuintraDomain}/intranet`}>
               <Highlighted selected={(page === menu.file)}>{menu.title}</Highlighted>              
             </a>
             );
