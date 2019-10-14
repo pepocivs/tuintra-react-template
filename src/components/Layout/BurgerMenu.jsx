@@ -33,14 +33,14 @@ const MenuStyles = {
   bmMenu: {
     background: theme.colors.dark,
     padding: '2.5em 1.5em 0',
-    fontSize: '1.15em'
+    fontSize: '1.3em'
   },
   bmMorphShape: {
     fill: theme.colors.dark,
   },
-  bmItemList: {
-    color: theme.colors.light,
-    padding: '0.8em'
+  bmItem: {
+    padding: '15px 5px',
+    color: theme.colors.light
   },
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.3)'
@@ -49,15 +49,13 @@ const MenuStyles = {
 
 const StyledLink = styled(Link)`
 	background-color: ${({selected}) => (selected) ? 'rgba(255,255,255,0.2)' : 'initial'};
-	li {
-		color: ${({selected, theme}) => (selected) ? theme.colors.light : theme.colors.white};
-	}
+	color: ${({selected, theme}) => (selected) ? theme.colors.light : theme.colors.white};
 `;
 
 function BurgerMenu({ menu, page, clubInfoDomain }) {
   return (
     <div>
-      <Menu styles={MenuStyles}>
+      <Menu disableAutoFocus styles={MenuStyles}>
         {
           menu.map(menuItem => {
             if(!menuItem.visible) return null;
