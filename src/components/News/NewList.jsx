@@ -14,6 +14,7 @@ const NewsContainerStyled = styled.div`
   @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
     margin: 50px auto;
     padding-top: 0px;
+    position: initial;
   }
 `;
 

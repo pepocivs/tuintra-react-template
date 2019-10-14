@@ -11,6 +11,9 @@ const NewContainer = styled(Link)`
   margin: 20px 0px;
   padding: 10px 20px;
   border-bottom: 1px solid ${({theme}) => theme.colors.grey};
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+    grid-template-columns: 1fr 100px;
+  }
 `;
 
 const NewContent = styled.div`
@@ -25,8 +28,12 @@ const NewContent = styled.div`
 
 const ImageContainer = styled.div`
   grid-area: picture;
-  height: 200px;
   width: 250px;
+  height: 200px;
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+    width: 100px;
+    height: 80px;
+  }
 `;
 
 const NewImage = styled.img`
