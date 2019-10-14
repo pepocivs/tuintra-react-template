@@ -50,7 +50,7 @@ function Menu({ clubInfo, menu }) {
 						breakpoints[currentBreakpoint] >= breakpoints.tablet ? (
 							<DesktopMenu page={page} menu={menu} clubInfoDomain={clubInfoDomain}/>
 						) : (
-							<BurgerMenu lubInfo={clubInfo} menu={menu} />
+							<BurgerMenu lubInfo={clubInfo} menu={menu} page={page} />
 						)
 					}
 				</Media>

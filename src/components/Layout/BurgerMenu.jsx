@@ -10,9 +10,9 @@ import theme from "../../theme/index";
 const MenuStyles = {
   bmBurgerButton: {
     position: 'fixed',
-    width: '36px',
-    height: '30px',
-    top: `calc((${theme.spacings.headerHeight} - 30px) / 2)`,
+    width: '28px',
+    height: '28px',
+    top: `calc((${theme.spacings.headerHeight} - 28px) / 2)`,
     right: '0px',
     transform: 'translate3d(-100%, 0px, 0px)'
   },
@@ -55,7 +55,10 @@ const StyledLink = styled(Link)`
 function BurgerMenu({ menu, page, clubInfoDomain }) {
   return (
     <div>
-      <Menu disableAutoFocus styles={MenuStyles}>
+      <Menu 
+        customBurgerIcon={ <img alt="Menu" src="../assets/general/burger.svg" /> }
+        disableAutoFocus 
+        styles={MenuStyles}>
         {
           menu.map(menuItem => {
             if(!menuItem.visible) return null;
