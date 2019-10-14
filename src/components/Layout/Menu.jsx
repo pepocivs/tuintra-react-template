@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Media } from "react-breakpoints";
 import { withRouter } from "react-router";
 
 /** Helpers */
 import clubInfoDomain from "helpers/clubInfo";
+
+/** MenuComponents */
+import DesktopMenu from "./DesktopMenu";
+import BurgerMenu from 'components/Layout/BurgerMenu';
 
 /** Styles */
 const MenuNav = styled.div`
@@ -34,66 +38,22 @@ const Logo = styled.img`
 	align-self: center;
 `;
 
-const NavHolder = styled.div`
-	grid-area: menu;
-	align-self: center;
-	ul{
-		list-style: none;
-		overflow: hidden;
-		display: flex;
-		margin: 0px;
-		padding-inline-start: 0px;
-	}
-	a {
-		display: flex;
-		align-items: center;
-		font-weight: bold;
-		text-transform: uppercase;
-		height: ${({theme}) => theme.spacings.headerHeight};
-		cursor: pointer;
-	}
-	a li {
-		padding: 0 20px;
-		text-decoration: none;
-		text-align: center;
-	}
-`;
-
-const StyledLink = styled(Link)`
-	background-color: ${({selected}) => (selected) ? 'rgba(255,255,255,0.2)' : 'initial'};
-	li {
-		color: ${({selected, theme}) => (selected) ? theme.colors.light : theme.colors.white};
-
-	}
-`;
-
-function Menu({ clubInfo, menu, match }) {
+function Menu({ clubInfo, menu }) {
 	const pathName = document.location.pathname.split("/");
 	const page = (document.location.pathname !== "/") ? pathName[1] : 'inicio';
 	return (
 		<MenuNav>
 			<Row>
 				<Logo src={clubInfo.options.clubs_logo} />
-				<NavHolder>
-					<ul>
-						{
-							menu.map(menuItem => {
-								if(!menuItem.visible) return null;
-								return (menuItem.file !== "intranet")
-									? (
-										<StyledLink selected={(page === menuItem.file)} key={menuItem._id} to={`/${menuItem.file}`}>
-											<li>{menuItem.title}</li>
-										</StyledLink>
-									)
-									: (
-									<a key={menuItem._id} target="_blank" rel="noopener noreferrer" href={`${clubInfoDomain.tuintraDomain}/intranet`}>
-										<li>{menuItem.title}</li>
-									</a>
-									);
-							})
-						}
-					</ul>
-				</NavHolder>
+				<Media>
+					{({ breakpoints, currentBreakpoint }) =>
+						breakpoints[currentBreakpoint] >= breakpoints.tablet ? (
+							<DesktopMenu page={page} menu={menu} clubInfoDomain={clubInfoDomain}/>
+						) : (
+							<BurgerMenu lubInfo={clubInfo} menu={menu} />
+						)
+					}
+				</Media>
 			</Row>
 		</MenuNav>
 	)

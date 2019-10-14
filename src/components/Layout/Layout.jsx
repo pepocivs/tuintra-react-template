@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 
 /** Style Imports*/
 import styled from "styled-components";
-import { Media } from "react-breakpoints";
 import GlobalStyle from "./GlobalStyle";
 
 /** Custom Components*/
@@ -37,6 +36,7 @@ const MainContainer = styled.div`
   }
   @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
     grid-template-columns: 0px 1fr 0px;
+    grid-gap: 0px;
   }
 `;
 const HeaderSection = styled.header`
@@ -67,15 +67,7 @@ function Layout({stateProps}) {
         </Helmet>
         <MainContainer>
           <HeaderSection>
-            <Media>
-              {({ breakpoints, currentBreakpoint }) =>
-                breakpoints[currentBreakpoint] >= breakpoints.tablet ? (
-                  <Menu clubInfo={clubInfo} menu={menu}/>
-                ) : (
-                  <h1>Mobile stuff {breakpoints.mobileLandscape}</h1>
-                )
-              }
-            </Media>
+            <Menu clubInfo={clubInfo} menu={menu} />
           </HeaderSection>
           <MainSection>
             <Route path="/:subsection/:page?" component={SubSection} />
