@@ -14,6 +14,18 @@ const CardImage = styled.div`
 	height: ${({height}) => height || '178px'};
 	padding: 10px;
 	border-radius: ${({radius}) => radius || '5px'};
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+    width: ${({width}) => 
+      (width && parseInt(width.substr(0, width.length - 2)) > 150) 
+        ? '100%' 
+        : width || '250px'
+    };
+	  height: ${({width, height}) => 
+      (height && width && parseInt(width.substr(0, width.length - 2)) > 150) 
+        ? '220px' 
+        : height || '178px'
+    };
+  }
 `;
 
 const CardDescription = styled.div`

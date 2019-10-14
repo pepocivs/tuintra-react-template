@@ -8,7 +8,7 @@ const TitleContainer = styled.h1`
   span {
     position: absolute;
     overflow: hidden;
-    width: 100%;
+    max-width: 100%;
     font-size: 55px;
     font-size: ${({small}) => (small) ? "40px" : "55px"};
     left: 16px;
@@ -22,6 +22,12 @@ const TitleContainer = styled.h1`
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none;
+  }
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+    font-size: ${({small}) => (small) ? "12px" : "20px"};
+    span {
+      font-size: ${({small}) => (small) ? "20px" : "40px"};
+    }
   }
 `;
 

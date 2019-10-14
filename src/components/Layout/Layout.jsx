@@ -36,7 +36,6 @@ const MainContainer = styled.div`
   }
   @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
     grid-template-columns: 0px 1fr 0px;
-    grid-gap: 0px;
   }
 `;
 const HeaderSection = styled.header`

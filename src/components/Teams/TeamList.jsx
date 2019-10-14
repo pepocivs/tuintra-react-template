@@ -11,6 +11,9 @@ const TeamContainer = styled.div`
   grid-template-columns: repeat(auto-fit, 250px);
 	grid-row-gap: 20px;
 	justify-content: space-between;
+	@media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+    grid-template-columns: repeat(auto-fit, 100%);
+  }
 `;
 
 function TeamList({ teams }) {
