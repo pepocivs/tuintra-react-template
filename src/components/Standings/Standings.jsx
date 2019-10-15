@@ -46,7 +46,7 @@ const TeamName = styled.div`
 `;
 
 export default function Standings({standing, minified = false}) {
-  if (!standing || standing.standings.length === 0) return <Alert msg="Clasificación no disponible" />
+  if (!standing || standing.length === 0) return <Alert msg="Clasificación no disponible" />
   return (
     <>
       <StandingContainer header={true} minified={minified}>
@@ -62,7 +62,7 @@ export default function Standings({standing, minified = false}) {
         <TableHead minified={minified}>Dg</TableHead>
         <TableHead>Ptos</TableHead>
       </StandingContainer>
-      {standing.standings.map((row, index) => (
+      {standing.map((row, index) => (
         <StandingContainer key={row.position} reverse={(index % 2 === 0)} minified={minified}>
           <InfoCell minified={minified}>{row.position}º</InfoCell>
           <Shield src={row.teamData.shield[100]} alt={row.teamData.name} />

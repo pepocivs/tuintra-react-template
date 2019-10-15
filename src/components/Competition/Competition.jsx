@@ -11,6 +11,12 @@ function Competition({selectedCompetition, selectedCalendar, selectedStanding}) 
   const standingInfo = Object.keys(selectedStanding)
     .filter(key => selectedStanding[key]._id === selectedCompetition._id)
     .map(key => selectedStanding[key])[0];
+  const gameDay = (standingInfo && standingInfo.standings) 
+    ? Object.keys(standingInfo.standings).slice(-1).pop() 
+    : null;
+  const currentStanding = (gameDay && standingInfo.standings[gameDay]) 
+    ? standingInfo.standings[gameDay] 
+    : [];
   if (!selectedCompetition) return <NotFound />;
   return (
     <>
@@ -18,7 +24,7 @@ function Competition({selectedCompetition, selectedCalendar, selectedStanding}) 
       <TeamsExpositor teams={selectedCompetition.teams}></TeamsExpositor>
       <Schedule calendar={selectedCalendar}></Schedule>
       <br />
-      <Standings standing={standingInfo}></Standings>
+      <Standings standing={currentStanding}></Standings>
     </>
   )
 }

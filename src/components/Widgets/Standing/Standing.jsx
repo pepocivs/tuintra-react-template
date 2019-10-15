@@ -49,10 +49,16 @@ function Standing({fetchStanding, standing, competitionIds}) {
         .filter(key => standing.data[key]._id.toString() === competitionId)
         .map(key => standing.data[key])[0];
       if (!standingInfo) return null;
+      const gameDay = (standingInfo && standingInfo.standings) 
+        ? Object.keys(standingInfo.standings).slice(-1).pop() 
+        : null;
+      const currentStanding = (gameDay && standingInfo.standings[gameDay]) 
+        ? standingInfo.standings[gameDay] 
+        : [];
       return (
         <div key={competitionId}>
           <Title>{standingInfo.name} {standingInfo.category} {standingInfo.gender}</Title>
-          <Standings standing={standingInfo} minified></Standings>
+          <Standings standing={currentStanding} minified></Standings>
         </div>
       );
     })}
