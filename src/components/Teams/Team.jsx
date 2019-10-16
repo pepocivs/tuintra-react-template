@@ -59,7 +59,7 @@ function Team({ selectedTeam }) {
 }
 
 function sortBy(members) {
-  return members.sort((a, b) => (a.rolId === "") ? -1 : parseInt(a.rolId) > parseInt(b.rolId) ? 1 : -1);
+  return members.sort((a, b) => (a.rolId === "") ? 1 : parseInt(a.rolId) > parseInt(b.rolId) ? 1 : -1);
 }
 
 export default Team;
