@@ -9,7 +9,7 @@ import actionsStanding from "../../redux/standing/actions";
 
 /** SELECTORS */
 import {
-  getCompetitions,
+  getOwnCompetitions,
   getCompetitionsLoading,
   getCompetitionsReady,
   getCompetitionsError,
@@ -36,7 +36,7 @@ import { groupByDay } from "../../redux/calendar/formatter";
 
 const mapStateToProps = (state, props) => ({
   competitions: {
-    data: getCompetitions(state),
+    data: getOwnCompetitions(state),
     loading: getCompetitionsLoading(state),
     ready: getCompetitionsReady(state),
     error: getCompetitionsError(state),
