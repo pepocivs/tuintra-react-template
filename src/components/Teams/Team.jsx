@@ -26,7 +26,7 @@ function Team({ selectedTeam }) {
       </Card>
       <h3>Staff</h3>
 			<PlayersContainer>
-				{selectedTeam.staff.map(staff => {
+				{sortBy(selectedTeam.staff).map(staff => {
 					return (
             <Card
               key={staff._id}
@@ -41,7 +41,7 @@ function Team({ selectedTeam }) {
 			</PlayersContainer>
       <h3>Plantilla</h3>
       <PlayersContainer>
-				{selectedTeam.players.map(player => {
+				{sortBy(selectedTeam.players).map(player => {
 					return (
             <Card
               key={player._id}
@@ -56,6 +56,10 @@ function Team({ selectedTeam }) {
 			</PlayersContainer>
 		</>
 	)
+}
+
+function sortBy(members) {
+  return members.sort((a, b) => (a.rolId === "") ? -1 : parseInt(a.rolId) > parseInt(b.rolId) ? 1 : -1);
 }
 
 export default Team;
