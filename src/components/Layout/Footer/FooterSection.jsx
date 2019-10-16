@@ -10,6 +10,7 @@ const FooterContent = styled.div`
 	grid-template-columns: ${({theme}) => `${theme.spacings.layoutMargin} 1fr ${theme.spacings.layoutMargin}`};
 	grid-template-rows: repeat(auto-fit, 1fr);
   padding: 10px;
+  margin-top: -1px;
   color: ${({theme}) => theme.colors.white};
   background-color: ${({color, theme}) => color || theme.colors.grey};
   @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape}px) {

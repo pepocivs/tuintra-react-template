@@ -56,6 +56,7 @@ const ClubInfoRow = styled.p`
   display: flex;
   svg {
     width: 16px;
+    height: 16px;
     margin-right: 10px;
   }
 `;
