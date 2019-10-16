@@ -8,7 +8,7 @@ import NotFound from "components/Containers/NotFound";
 const PlayersContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 150px);
-  grid-row-gap: 20px;
+  grid-gap: 20px;
 	justify-content: space-evenly;
   margin-top: 20px;
 `;
@@ -24,6 +24,7 @@ function Team({ selectedTeam }) {
         width="100%"
         height="50vw">
       </Card>
+      <h3>Staff</h3>
 			<PlayersContainer>
 				{selectedTeam.staff.map(staff => {
 					return (
@@ -38,6 +39,7 @@ function Team({ selectedTeam }) {
 					);
 				})}
 			</PlayersContainer>
+      <h3>Plantilla</h3>
       <PlayersContainer>
 				{selectedTeam.players.map(player => {
 					return (

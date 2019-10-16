@@ -8,7 +8,7 @@ import Title from "components/UI/Title/Title";
 const DirectorsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, 150px);
-  grid-row-gap: 20px;
+  grid-gap: 20px;
   justify-content: space-between;  
   margin-top: 20px;
 `;

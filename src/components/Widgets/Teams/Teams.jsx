@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch => ({
 const TeamContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);
-	grid-row-gap: 20px;
+	grid-gap: 20px;
 	justify-content: space-between;
   @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
     grid-template-columns: repeat(auto-fit, 100%);

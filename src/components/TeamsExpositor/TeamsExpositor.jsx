@@ -4,8 +4,7 @@ import styled from "styled-components";
 const ShieldContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, 40px);
-  grid-row-gap: 20px;
-  grid-column-gap: 20px;
+  grid-gap: 20px;
   justify-content: center;
   background-color: ${({theme}) => theme.colors.grey};
   border-radius: 5px;
