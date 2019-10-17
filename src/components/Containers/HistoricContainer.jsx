@@ -17,23 +17,24 @@ function HistoricContainer({fetchHistoric, historic, match}) {
   }, [fetchHistoric]);
   if (!historic.ready) return null;
   const categoryId = match.params.id || 'senior-masculino';
+  const historicData = historic.data.find(data => data.categoryName === unSlug(categoryId));
   return (
     <>
       <Title shadow="Histórico competiciones">Palmarés</Title>
       <GridBox>
-        {Object.keys(historic.data).map(category => {
-          const categorySlug = slugify(category);
+        {historic.data.map(categoryData => {
+          const categorySlug = slugify(categoryData.categoryName);
           const subSection = (match.params.subsection) ? `/${match.params.subsection}`: '';
           return (
             <Link key={categorySlug} to={`${subSection}/palmares/${categorySlug}`}>
-              <Highlighted selected={categorySlug === match.params.id}>{category}</Highlighted>
+              <Highlighted selected={categorySlug === categoryId}>{categoryData.categoryName}</Highlighted>
             </Link>
             )
           })
         }
       </GridBox>
       <br />
-      <HistoricCards leagues={historic.data[unSlug(categoryId)]}/>
+      <HistoricCards leagues={(historicData) ? historicData.historic : {} }/>
     </>
   )
 }
