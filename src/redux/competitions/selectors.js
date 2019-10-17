@@ -1,9 +1,6 @@
 import { createSelector } from "reselect";
 import { get, isEmpty } from "lodash";
-
-const sortBy = (array, key, sort = 1) => {
-  return array.sort((a, b) => (a[key] > b[key]) ? (1 * sort) : (a[key] < b[key]) ? (-1 * sort) : 0);
-}
+import sortBy from "../../helpers/sortBy";
 
 const sortCompetitions = (competitions) => {
   if (Object.keys(competitions).length === 0) return {};
