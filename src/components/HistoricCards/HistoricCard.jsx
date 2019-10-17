@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-/** Helpers */
-import { slugify } from "helpers/slugify";
-
 /** Custom components */
 import SvgIcon from "components/UI/SvgIcon/SvgIcon";
 
@@ -55,12 +52,16 @@ const Seasons = styled.span`
   color: ${({theme}) => theme.clubOptions.secundary_color_web};
 `;
 
-function HistoricCard({reverse, title, positions}) {
+function HistoricCard({reverse, title, sportId, ambit, positions}) {
   return (
     <HistoricContainer reverse={reverse}>
       <ScoreCount>
         <Victories>{(positions[1]) ? positions[1].length : 0}</Victories>
-        <SvgIcon color="#555555" secondaryBgColor={getSportColor(title)} bgColor="transparent" name={getTrophy(title)} />
+        <SvgIcon 
+          color="#555555"
+          secondaryBgColor={(sportId === 1) ? '#b9f3b9' :  '#B9D6F3'}
+          bgColor="transparent"
+          name={ambit} />
       </ScoreCount>
       <div>
         <h1>{title}</h1>
@@ -95,32 +96,6 @@ function getPosition(position, number) {
       break;
   }
   return formattedPosition;
-}
-
-function getTrophy(title) {
-  const iconEquivalences = {
-    fase: 'diploma',
-    sector: 'diploma',
-    dha: 'ligaNacional',
-    dhb: 'ligaNacional',
-    nacional: 'ligaNacional',
-    division: 'liga',
-    liga: 'liga',
-    copa: 'copa',
-    trofeo: 'copa',
-    cto: 'ligaNacional'
-  };
-  let icon = null;
-  // eslint-disable-next-line array-callback-return
-  Object.keys(iconEquivalences).map(slug => {
-    if (slugify(title).includes(slug) && !icon) 
-      icon = iconEquivalences[slug];
-  });
-  return icon;
-}
-
-function getSportColor(title) {
-  return (slugify(title).includes('sala')) ? '#B9D6F3' : '#b9f3b9';
 }
 
 export default HistoricCard;

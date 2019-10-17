@@ -1,26 +1,21 @@
 import { createSelector } from "reselect";
 import { get, isEmpty } from "lodash";
-import { sortByArray } from "../../helpers/sortBy";
-import { slugify } from "../../helpers/slugify";
+import { sortBy } from "../../helpers/sortBy";
+
+const sortHistoricDetail = (historic) => 
+  historic.map(detail => {
+    sortBy(detail.historic, 'sportId');
+    sortBy(detail.historic, 'priority');
+    return detail;
+  });
+
 
 const sortHistoric = (historic) => {
   if (Object.keys(historic).length === 0) return {};
-  const cleanedKeys = Object.keys(historic).map(key => {
-    const slugged = slugify(key).split("-");
-    return {
-      keyName: key,
-      category: slugged[0],
-      gender: slugged[1],
-    };
-  });
-  sortByArray(cleanedKeys, "gender", ["masculino", "femenino", "mixto"]);
-  sortByArray(cleanedKeys, "category", ["senior", "juvenil", "cadete", "infantil", "benjamin", "papis", "mamis"]);
-  return cleanedKeys.map(key => {
-    return {
-      categoryName: key.keyName,
-      historic: historic[key.keyName]
-    }
-  });
+  sortBy(historic, 'genderId');
+  sortBy(historic, 'categoryId');
+  sortHistoricDetail(historic);
+  return historic;
 }
 
 const getHistoric = state => sortHistoric(get(state, "historic.data"));

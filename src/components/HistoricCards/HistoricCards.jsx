@@ -3,16 +3,18 @@ import React from "react";
 /** Custom components */
 import HistoricCard from "./HistoricCard";
 
-function HistoricCards({leagues = {}}) {
+function HistoricCards({leagues = []}) {
   return (
     <>
-      {Object.keys(leagues).map((league, index) => {
+      {leagues.map((league, index) => {
         return (
           <HistoricCard
-            key={league}
+            key={league.competitionName}
             reverse={(index % 2 !== 0)}
-            title={league}
-            positions={leagues[league]}
+            title={league.competitionName}
+            sportId={league.sportId}
+            ambit={league.ambit}
+            positions={league.results}
           />
         )
         })

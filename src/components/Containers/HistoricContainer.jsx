@@ -34,7 +34,7 @@ function HistoricContainer({fetchHistoric, historic, match}) {
         }
       </GridBox>
       <br />
-      <HistoricCards leagues={(historicData) ? historicData.historic : {} }/>
+      <HistoricCards leagues={historicData.historic}/>
     </>
   )
 }
