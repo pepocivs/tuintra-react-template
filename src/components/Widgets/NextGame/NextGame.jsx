@@ -97,7 +97,7 @@ function NextGame({fetchCalendar, calendar, widgetInfo}) {
         return (
           <ScheduleBox key={game._id}>
             <ExtraInfo big uppercase><Moment format="dddd, DD MMMM" date={game.date}/></ExtraInfo>
-            <ExtraInfo big><Moment format="hh:mm" date={game.date}/>h</ExtraInfo>
+            <ExtraInfo big><Moment format="HH:mm" date={game.date}/>h</ExtraInfo>
             <ExtraInfo>{game.facility}</ExtraInfo>
             <GameRow>
               <TeamShield src={game.local.shield[100]} alt={game.local.name}/>
