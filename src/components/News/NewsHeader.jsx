@@ -16,6 +16,7 @@ const SliderContainer = styled.div`
 
 const AwesomeSliderStyled = styled(AwesomeSlider)`
   height: calc(80vh - 160px);
+  max-height: 500px;
   width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
