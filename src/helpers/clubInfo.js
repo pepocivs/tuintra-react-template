@@ -1,4 +1,4 @@
-const subdomain = 'ginerdelosrios.es';
+const subdomain = 'ginerdelosrios';
 export default {
   apiHost: 'https://api.tuintra.com',
   subdomain,
