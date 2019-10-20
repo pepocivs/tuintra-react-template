@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import ReactBreakpoints from "react-breakpoints";
+import ReactGA from "react-ga";
 
 /** Helpers */
 import breakpoints from "helpers/breakpoints";
@@ -28,6 +29,7 @@ function App(props) {
         />
     );
   }
+  ReactGA.initialize(clubInfo.data.analyticsCode);
   return (
     <BrowserRouter>
       <ThemeProvider theme={{...theme, clubOptions: clubInfo.data.options}}>
