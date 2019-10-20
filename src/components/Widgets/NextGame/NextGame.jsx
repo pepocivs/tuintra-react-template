@@ -93,6 +93,7 @@ function NextGame({fetchCalendar, calendar, widgetInfo}) {
   return (
     <>
       <h2>{widgetInfo.title}</h2>
+      {(nextGames.length === 0) ? <Alert msg="No hay partidos la próxima semana" /> : ''} 
       {nextGames.map(game => {
         return (
           <ScheduleBox key={game._id}>
