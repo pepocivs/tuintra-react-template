@@ -33,7 +33,12 @@ const StyledLink = styled(Link)`
 	background-color: ${({selected}) => (selected) ? 'rgba(255,255,255,0.2)' : 'initial'};
 	li {
 		color: ${({selected, theme}) => (selected) ? theme.colors.light : theme.colors.white};
+	}
+`;
 
+const IntranetLink = styled.a`
+	li {
+		color: ${({selected, theme}) => (selected) ? theme.colors.light : theme.colors.white};
 	}
 `;
 
@@ -51,9 +56,9 @@ function DesktopMenu({ menu, page, clubInfoDomain }) {
                 </StyledLink>
               )
               : (
-              <a key={menuItem._id} target="_blank" rel="noopener noreferrer" href={`https://${clubInfoDomain.tuintraDomain}/intranet`}>
+              <IntranetLink key={menuItem._id} target="_blank" rel="noopener noreferrer" href={`https://${clubInfoDomain.tuintraDomain}/intranet`}>
                 <li>{menuItem.title}</li>
-              </a>
+              </IntranetLink>
               );
           })
         }
