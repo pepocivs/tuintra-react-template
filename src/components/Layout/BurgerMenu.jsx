@@ -69,7 +69,7 @@ function BurgerMenu({ menu, page, clubInfoDomain }) {
                 </StyledLink>
               )
               : (
-              <a key={menuItem._id} target="_blank" rel="noopener noreferrer" href={`${clubInfoDomain.tuintraDomain}/intranet`}>
+              <a key={menuItem._id} target="_blank" rel="noopener noreferrer" href={`https://${clubInfoDomain.tuintraDomain}/intranet`}>
                 {menuItem.title}
               </a>
               );
