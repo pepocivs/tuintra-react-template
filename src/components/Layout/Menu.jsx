@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Media } from "react-breakpoints";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 
 /** Helpers */
 import clubInfoDomain from "helpers/clubInfo";
@@ -32,8 +33,12 @@ const Row = styled.div`
     grid-template-columns: 0px ${({theme}) => theme.spacings.logoWidth} 1fr 0px;
   }
 `;
-const Logo = styled.img`
+
+const StyledLink = styled(Link)`
 	grid-area: logo;
+`;
+
+const Logo = styled.img`
 	width: ${({theme}) => theme.spacings.logoWidth};
 	align-self: center;
 `;
@@ -44,7 +49,9 @@ function Menu({ clubInfo, menu }) {
 	return (
 		<MenuNav>
 			<Row>
-				<Logo src={clubInfo.options.clubs_logo} />
+				<StyledLink to="/inicio">
+					<Logo src={clubInfo.options.clubs_logo} />
+				</StyledLink>
 				<Media>
 					{({ breakpoints, currentBreakpoint }) =>
 						breakpoints[currentBreakpoint] >= breakpoints.tablet ? (
