@@ -1,6 +1,8 @@
 import React from "react";
 import AwesomeSlider from 'react-awesome-slider';
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 import 'react-awesome-slider/dist/styles.css';
 
 /** Styles */
@@ -58,6 +60,24 @@ const AwesomeSliderStyled = styled(AwesomeSlider)`
   }
 `;
 
+  const ButtonLink = styled.div`
+    color: ${({theme}) => theme.colors.black} !important;
+    text-align: center;
+    font-size: 0.8em !important;
+    text-shadow: none !important;
+    :hover {
+      color: ${({theme}) => theme.colors.dark} !important;
+    }
+  `
+  const StyledLink = styled(Link)`
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 100%;
+    background: rgba(255,255,255,0.6);
+    cursor: pointer;
+  `;
+  
 function NewsHeader({ news }) {
   return (
     <SliderContainer>
@@ -65,6 +85,9 @@ function NewsHeader({ news }) {
         {news.map((article, key) => (
           <div data-src={article.image} key={key}>
             <p>{article.title}</p>
+            <ButtonLink>
+              <StyledLink to={`/noticias${article.slug}`}>Ver Notícia</StyledLink>
+            </ButtonLink>
           </div>
         ))}
       </AwesomeSliderStyled>
