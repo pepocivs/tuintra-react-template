@@ -56,7 +56,7 @@ function BurgerMenu({ menu, page, clubInfoDomain }) {
   return (
     <div>
       <Menu 
-        customBurgerIcon={ <img alt="Menu" src="../assets/general/burger.svg" /> }
+        customBurgerIcon={ <img alt="Menu" src="/assets/general/burger.svg" /> }
         disableAutoFocus 
         styles={MenuStyles}>
         {
