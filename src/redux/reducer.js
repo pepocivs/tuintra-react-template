@@ -11,6 +11,7 @@ import people from "redux/people/reducer";
 import historic from "redux/historic/reducer";
 import pages from "redux/pages/reducer";
 import documents from "redux/documents/reducer";
+import callups from "redux/callups/reducer";
 
 const rootReducer = combineReducers({
   clubData,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   historic,
   pages,
   documents,
+  callups,
 });
 
 export default rootReducer;

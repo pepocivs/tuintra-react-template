@@ -12,6 +12,7 @@ import { watchFetchPeople } from "./people/saga";
 import { watchFetchHistoric } from "./historic/saga";
 import { watchFetchPages } from "./pages/saga";
 import { watchFetchDocuments } from "./documents/saga";
+import { watchFetchCallups } from "./callups/saga";
 
 const rootSaga = function* rootSaga() {
   yield all([
@@ -25,7 +26,8 @@ const rootSaga = function* rootSaga() {
     watchFetchPeople(),
     watchFetchHistoric(),
     watchFetchPages(),
-    watchFetchDocuments()
+    watchFetchDocuments(),
+    watchFetchCallups()
   ]);
 };
 

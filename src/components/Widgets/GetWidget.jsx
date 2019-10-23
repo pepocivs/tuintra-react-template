@@ -5,6 +5,7 @@ import NextGame from "./NextGame/NextGame";
 import Text from "./Text/Text";
 import StandingContainer from "./Standing/StandingContainer";
 import Teams from "./Teams/Teams";
+import Callups from "./Callups/Callups";
 
 function GetWidget({widget}) {
   if (!widget) return null;
@@ -19,6 +20,8 @@ function GetWidget({widget}) {
       return <StandingContainer widgetInfo={widget.content} />
     case 'team_picture':
       return <Teams widgetInfo={widget.content} />
+    case 'callups':
+      return <Callups widgetInfo={widget.content} />
     default:
       return null;
   }
