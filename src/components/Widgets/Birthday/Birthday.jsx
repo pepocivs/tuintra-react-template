@@ -115,7 +115,7 @@ function daysUntilNext(birthday) {
 
 function getNextString(birthday) {
   const daysLeft = daysUntilNext(birthday);
-  return (daysLeft === 0) ? 'Hoy' : (daysLeft === 1) ? 'Mañana' : `En ${daysLeft} días`;
+  return (daysLeft <= 0) ? 'Hoy' : (daysLeft === 1) ? 'Mañana' : `En ${daysLeft} días`;
 }
 
 function getAge(birthday) {
