@@ -110,7 +110,7 @@ function daysUntilNext(birthday) {
   const dateNow = new Date().setHours(0, 0, 0, 0);
   let birthDayDate = new Date(birthday).setFullYear(new Date().getFullYear());
   birthDayDate = new Date(birthDayDate).setHours(0,0,0,0);
-  return (birthDayDate - dateNow) / 86400000;
+  return Math.floor((birthDayDate - dateNow) / 86400000);
 }
 
 function getNextString(birthday) {
