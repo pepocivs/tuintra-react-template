@@ -19,11 +19,10 @@ function CompetitionsContainer(props) {
   } = props;
   const competitionId = match.params.id;
   useEffect(() => {
+    fetchCompetitions();
     if (competitionId) {
       fetchCalendar({competitionId});
       fetchStanding(competitionId);
-    } else {
-      fetchCompetitions();
     }
   }, [fetchCompetitions, fetchCalendar, fetchStanding, competitionId]);
 
@@ -37,8 +36,10 @@ function CompetitionsContainer(props) {
         selectedStanding={standing.data}
       />
     )
-  } else {
+  } else if (!competitionId) {
     return <CompetitionList competitions={competitions.data} />;
+  } else {
+    return null;
   }
 }
 
