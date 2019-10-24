@@ -95,7 +95,7 @@ function Layout({stateProps}) {
   } else if (checkProperty('hasError', stateProps, requiredProps)) {
     return (<NotFound title="Error" subtitle="No se ha podido conectar con la BBDD" />);
   } else {
-    return "";
+    return null;
   }
 }
 export default Layout;

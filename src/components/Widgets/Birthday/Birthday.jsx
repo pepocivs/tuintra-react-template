@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 /** Custom components */
+import Loading from "components/Containers/Loading";
 import Alert from "components/UI/Alert/Alert";
 
 /** ACTIONS */
@@ -55,7 +56,7 @@ function Birthday({fetchPeople, birthdays, widgetInfo}) {
   useEffect(() => {
     fetchPeople('birthdays');
   }, [fetchPeople]);
-  if (!birthdays.ready) return null;
+  if (!birthdays.ready) return <Loading />;
   if(Object.keys(birthdays.data).length === 0) {
     return (
       <>

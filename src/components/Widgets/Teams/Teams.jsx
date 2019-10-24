@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 /** Custom components */
+import Loading from "components/Containers/Loading";
 import Alert from "components/UI/Alert/Alert";
 import Card from "components/UI/Card/Card";
 
@@ -48,7 +49,7 @@ function Teams({fetchTeams, teams, widgetInfo}) {
   useEffect(() => {
     fetchTeams(Object.values(widgetInfo.content).join(','));
   }, [fetchTeams, widgetInfo]);
-  if (!teams.ready) return null;
+  if (!teams.ready) return <Loading />;
   if(Object.keys(teams.data).length === 0) {
     return (
       <>

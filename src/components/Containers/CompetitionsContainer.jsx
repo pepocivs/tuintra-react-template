@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 /** Custom Components */
+import Loading from "components/Containers/Loading";
 import Competition from "components/Competition/Competition";
 import CompetitionList from "components/Competition/CompetitionList";
 
@@ -26,7 +27,7 @@ function CompetitionsContainer(props) {
     }
   }, [fetchCompetitions, fetchCalendar, fetchStanding, competitionId]);
 
-  if (!competitions.ready) return null;
+  if (!competitions.ready) return <Loading />;
 
   if (!!competitionId && checkProperty('ready', props, ['calendar', 'standing'])) {
     return ( 

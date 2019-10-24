@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 
 /** Custom Components */
+import Loading from "components/Containers/Loading";
 import Card from "components/UI/Card/Card";
 import Title from "components/UI/Title/Title";
 
@@ -17,7 +18,7 @@ function DirectiveContainer({fetchPeople, directive}) {
   useEffect(() => {
     fetchPeople();
   }, [fetchPeople]);
-  if (!directive.ready) return null;
+  if (!directive.ready) return <Loading />;
   return (
     <>
       <Title shadow="Nuestra Directiva">Directiva</Title>

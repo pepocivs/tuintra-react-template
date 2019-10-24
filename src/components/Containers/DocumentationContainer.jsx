@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 
 /** Custom Components */
+import Loading from "components/Containers/Loading";
 import Title from "components/UI/Title/Title";
 import Card from "components/UI/Card/Card";
 import Alert from "components/UI/Alert/Alert";
@@ -17,7 +18,7 @@ function DocumentationContainer({ fetchDocuments, documents }) {
   useEffect(() => {
     fetchDocuments();
   }, [fetchDocuments]);
-  if (!documents.ready) return null;
+  if (!documents.ready) return <Loading />;
   return (
     <>
       <Title shadow="Documentación Oficial">Documentación</Title>

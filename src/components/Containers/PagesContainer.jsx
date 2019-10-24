@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { withRouter } from "react-router"
 
 /** Custom components */
+import Loading from "components/Containers/Loading";
 import Title from "components/UI/Title/Title";
 
 function PageContainer({fetchPages, pages, match}) {
@@ -10,7 +11,7 @@ function PageContainer({fetchPages, pages, match}) {
   useEffect(() => {
     fetchPages(pageId);
   }, [fetchPages, pageId]);
-  if (!pages.ready) return null;
+  if (!pages.ready) return <Loading />;
   return (
     <>
       <Title shadow={pages.data.title}>{pages.data.title}</Title>

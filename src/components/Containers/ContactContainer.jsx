@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 /** Custom components */
+import Loading from "components/Containers/Loading";
 import Title from "components/UI/Title/Title";
 import SvgIcon from "components/UI/SvgIcon/SvgIcon";
 
@@ -14,7 +15,7 @@ const ClubInfoRow = styled.p`
 `;
 
 export default function ContactContainer({clubInfo}) {
-  if (!clubInfo.ready) return null;
+  if (!clubInfo.ready) return <Loading />;
   return (
     <>
     <Title shadow="con nosotros">Contacta</Title>

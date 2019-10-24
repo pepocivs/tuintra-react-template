@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 import 'moment/locale/es';
 
 /** Custom components */
+import Loading from "components/Containers/Loading";
 import Alert from "components/UI/Alert/Alert";
 
 /** ACTIONS */
@@ -97,7 +98,7 @@ function Callup({fetchCallups, callups, widgetInfo}) {
   useEffect(() => {
     fetchCallups(widgetInfo.content);
   }, [fetchCallups, widgetInfo]);
-  if (!callups.ready) return null;
+  if (!callups.ready) return <Loading />;
   if(Object.keys(callups.data).length === 0 || !widgetInfo.content) {
     return (
       <>

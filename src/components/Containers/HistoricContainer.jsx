@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 
 /** Custom Component */
+import Loading from "components/Containers/Loading";
 import Highlighted from "components/UI/Highlighted/Highlighted";
 import Title from "components/UI/Title/Title";
 import GridBox from "components/UI/GridBox/GridBox";
@@ -15,7 +16,7 @@ function HistoricContainer({fetchHistoric, historic, match}) {
   useEffect(() => {
     fetchHistoric();
   }, [fetchHistoric]);
-  if (!historic.ready) return null;
+  if (!historic.ready) return <Loading />;
   const categoryId = match.params.id || 'senior-masculino';
   const historicData = historic.data.find(data => data.categoryName === unSlug(categoryId));
   return (

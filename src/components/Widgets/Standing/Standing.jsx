@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 /** Custom components */
+import Loading from "components/Containers/Loading";
 import Standings from "components/Standings/Standings";
 
 /** ACTIONS */
@@ -41,7 +42,7 @@ function Standing({fetchStanding, standing, competitionIds}) {
   useEffect(() => {
     fetchStanding(competitionIds);
   }, [fetchStanding, competitionIds]);
-  if (!standing.ready) return null;
+  if (!standing.ready) return <Loading />;
   return (
     <>
     {competitionIds.split(',').map(competitionId => {

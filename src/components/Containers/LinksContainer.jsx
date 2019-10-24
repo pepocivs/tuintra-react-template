@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 /** Custom Component */
+import Loading from "components/Containers/Loading";
 import Card from "components/UI/Card/Card";
 import Title from "components/UI/Title/Title";
 
@@ -13,7 +14,7 @@ const LinkContainer = styled.div`
 `;
 
 function LinksContainer({links}) {
-  if (!links.ready) return null;
+  if (!links.ready) return <Loading />;
   return (
     <>
       <Title shadow="Enlaces">Enlaces</Title>

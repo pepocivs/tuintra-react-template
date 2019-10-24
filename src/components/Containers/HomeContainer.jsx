@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 /** Custom components */
+import Loading from "components/Containers/Loading";
 import GetWidget from "components/Widgets/GetWidget";
 import News from "components/Widgets/News/News";
 
@@ -55,7 +56,7 @@ const WidgetPD = styled.div`
 `;
 
 function HomeContainer({clubInfo}) {
-  if (!clubInfo.ready) return null;
+  if (!clubInfo.ready) return <Loading />;
   const widgets = clubInfo.data.widgets;
   return (
     <>

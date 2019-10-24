@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 /** Custom components */
+import Loading from "components/Containers/Loading";
 import NewsHeader from "components/News/NewsHeader";
 
 /** ACTIONS */
@@ -36,7 +37,7 @@ function News({fetchNews, news}) {
   useEffect(() => {
     fetchNews();
   }, [fetchNews]);
-  if (!news.ready) return null;
+  if (!news.ready) return <Loading />;
   const highligtedNews = news.data.slice(0, 5);
   return (
     <NewsHeader news={highligtedNews} />

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 /** Custom components */
+import Loading from "components/Containers/Loading";
 import NewList from "components/News/NewList";
 import New from "components/News/New";
 
@@ -9,7 +10,7 @@ function NewsContainer({match, fetchNews, news = []}) {
   useEffect(() => {
     fetchNews(newSlug);
   }, [fetchNews, newSlug]);
-  if (!news.ready) return null;
+  if (!news.ready) return <Loading />;
 
   const nHighLightedNews = 3;
   const regularNews = news.data.slice(nHighLightedNews);
