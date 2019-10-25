@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 /** Custom Component */
 import Loading from "components/Containers/Loading";
+import Alert from "components/UI/Alert/Alert";
 import Highlighted from "components/UI/Highlighted/Highlighted";
 import Title from "components/UI/Title/Title";
 import GridBox from "components/UI/GridBox/GridBox";
@@ -17,6 +18,7 @@ function HistoricContainer({fetchHistoric, historic, match}) {
     fetchHistoric();
   }, [fetchHistoric]);
   if (!historic.ready) return <Loading />;
+  if ((Object.keys(historic.data).length === 0)) return <Alert icon="info" iconColor="#aec6cf" msg="No existe palmarés para mostrar" />
   const categoryId = match.params.id || 'senior-masculino';
   const historicData = historic.data.find(data => data.categoryName === unSlug(categoryId));
   return (
