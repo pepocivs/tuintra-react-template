@@ -21,12 +21,12 @@ const getGroupTeams = (allTeams, calendar) => {
 function Competition({selectedCompetition, selectedCalendar, selectedStanding}) {
   if (!selectedCompetition) return <NotFound />;
   return Object.keys(selectedCalendar).map(group => {
-    const groupName = (group !== 'unique') ? ` - Grupo ${group}` : '';
+    const groupName = (group === 'unique') ? '' : ` - Grupo ${group}`;
     const standingKey = geyStandingKey(selectedStanding, group);
     const currentGameDay = getLastGameDay(selectedStanding, standingKey);
-    const teams = (group !== 'unique') 
-      ? getGroupTeams(selectedCompetition.teams, selectedCalendar[group]) 
-      : selectedCompetition.teams;
+    const teams = (group === 'unique') 
+      ? selectedCompetition.teams
+      : getGroupTeams(selectedCompetition.teams, selectedCalendar[group]);
     return (
       <CompetitionDetail
         key={standingKey}
