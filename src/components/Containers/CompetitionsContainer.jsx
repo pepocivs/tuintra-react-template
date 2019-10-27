@@ -30,9 +30,10 @@ function CompetitionsContainer(props) {
   if (!competitions.ready) return <Loading />;
 
   if (!!competitionId && checkProperty('ready', props, ['calendar', 'standing'])) {
+    const selectedCompetition = competitions.data.find(comp => comp._id === parseInt(competitionId));
     return ( 
       <Competition 
-        selectedCompetition={competitions.data[0]} 
+        selectedCompetition={selectedCompetition} 
         selectedCalendar={calendar.data}
         selectedStanding={standing.data}
       />

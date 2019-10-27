@@ -2,31 +2,42 @@ import React from "react";
 
 /** Custom Components */
 import NotFound from "components/Containers/NotFound";
-import Title from "components/UI/Title/Title";
-import TeamsExpositor from "components/TeamsExpositor/TeamsExpositor";
-import Schedule from "components/Schedule/Schedule";
-import Standings from "components/Standings/Standings";
+import CompetitionDetail from "./CompetitionDetail";
+
+const geyStandingKey = (standing, group) => {
+  if (group === 'unique') return Object.keys(standing)[0];
+  return Object.keys(standing).filter(key => key.includes('-group-'+group.toLowerCase())).pop();
+}
+
+const getLastGameDay = (selectedStanding, standingKey) => {
+  return Math.max.apply(null, Object.keys(selectedStanding[standingKey].standings));
+}
+
+const getGroupTeams = (allTeams, calendar) => {
+  const teamIds = [...new Set(Object.values(calendar).flat().map(team => [ team.local._id, team.away._id]).flat())];
+  return allTeams.filter(team => ~teamIds.indexOf(parseInt(team._id)));
+}
 
 function Competition({selectedCompetition, selectedCalendar, selectedStanding}) {
-  const standingInfo = Object.keys(selectedStanding)
-    .filter(key => selectedStanding[key]._id === selectedCompetition._id)
-    .map(key => selectedStanding[key])[0];
-  const gameDay = (standingInfo && standingInfo.standings) 
-    ? Object.keys(standingInfo.standings).slice(-1).pop() 
-    : null;
-  const currentStanding = (gameDay && standingInfo.standings[gameDay]) 
-    ? standingInfo.standings[gameDay] 
-    : [];
   if (!selectedCompetition) return <NotFound />;
-  return (
-    <>
-      <Title shadow={`${selectedCompetition.category} ${selectedCompetition.gender}`}>{selectedCompetition.competitionName}</Title>
-      <TeamsExpositor teams={selectedCompetition.teams}></TeamsExpositor>
-      <Schedule calendar={selectedCalendar}></Schedule>
-      <br />
-      <Standings standing={currentStanding}></Standings>
-    </>
-  )
+  return Object.keys(selectedCalendar).map(group => {
+    const groupName = (group !== 'unique') ? ` - Grupo ${group}` : '';
+    const standingKey = geyStandingKey(selectedStanding, group);
+    const currentGameDay = getLastGameDay(selectedStanding, standingKey);
+    const teams = (group !== 'unique') 
+      ? getGroupTeams(selectedCompetition.teams, selectedCalendar[group]) 
+      : selectedCompetition.teams;
+    return (
+      <CompetitionDetail
+        key={standingKey}
+        title={`${selectedCompetition.competitionName}${groupName}`}
+        shadow={`${selectedCompetition.category} ${selectedCompetition.gender}`}
+        teams={teams}
+        calendar={selectedCalendar[group]}
+        standing={selectedStanding[standingKey].standings[currentGameDay]}
+      />
+    )
+  })
 }
 
 export default Competition;

@@ -10,7 +10,6 @@ const getCalendarHasError = createSelector(
   error => !isEmpty(error)
 );
 
-
 export {
   getCalendar,
   getCalendarLoading,

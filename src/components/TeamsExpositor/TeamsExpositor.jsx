@@ -20,7 +20,7 @@ function TeamsExpositor({teams}) {
     <ShieldContainer>
       {teams.map(team => {
         return (team.type !== "3") 
-          ? <TeamShield key={team._id} src={team.shield[100]} alt={team.teamName}></TeamShield>
+          ? <TeamShield key={team._id} src={team.shield[100]} alt={team.teamName} title={team.teamName}></TeamShield>
           : null
       }
       )}

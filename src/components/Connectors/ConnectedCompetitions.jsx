@@ -31,7 +31,7 @@ import {
 } from "../../redux/standing/selectors";
 
 /** Formatters */
-import { groupByDay } from "../../redux/calendar/formatter";
+import { getGroups } from "../../redux/calendar/formatter";
 
 
 const mapStateToProps = (state, props) => ({
@@ -43,7 +43,7 @@ const mapStateToProps = (state, props) => ({
     hasError: getCompetitionsHasError(state)
   },
   calendar: {
-    data: groupByDay(getCalendar(state)),
+    data: getGroups(getCalendar(state)),
     loading: getCalendarLoading(state),
     ready: getCalendarReady(state),
     error: getCalendarError(state),

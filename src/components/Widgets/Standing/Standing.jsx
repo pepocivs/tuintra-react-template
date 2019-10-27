@@ -45,23 +45,23 @@ function Standing({fetchStanding, standing, competitionIds}) {
   if (!standing.ready) return <Loading />;
   return (
     <>
-    {competitionIds.split(',').map(competitionId => {
-      const standingInfo = Object.keys(standing.data)
+    {(competitionIds).split(',').map(competitionId => {
+      const standingsInfo = Object.keys(standing.data)
         .filter(key => standing.data[key]._id.toString() === competitionId)
-        .map(key => standing.data[key])[0];
-      if (!standingInfo) return null;
-      const gameDay = (standingInfo && standingInfo.standings) 
+        .map(key => standing.data[key]);
+      return standingsInfo.map(standingInfo => {
+        if (!standingInfo) return null;
+        const gameDay = (standingInfo && standingInfo.standings) 
         ? Object.keys(standingInfo.standings).slice(-1).pop() 
         : null;
-      const currentStanding = (gameDay && standingInfo.standings[gameDay]) 
-        ? standingInfo.standings[gameDay] 
-        : [];
-      return (
-        <div key={competitionId}>
-          <Title>{standingInfo.name} {standingInfo.category} {standingInfo.gender}</Title>
-          <Standings standing={currentStanding} minified></Standings>
-        </div>
-      );
+        const groupName = (standingInfo.group) ? ` - Grupo ${standingInfo.group}` : '';
+        return (
+          <div key={`${competitionId}${standingInfo.group}`}>
+            <Title>{standingInfo.name} {standingInfo.category} {standingInfo.gender} {groupName}</Title>
+            <Standings standing={standingInfo.standings[gameDay]} minified></Standings>
+          </div>
+        );
+      })
     })}
     </>
   )
