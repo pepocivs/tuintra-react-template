@@ -6,7 +6,7 @@ import Alert from "components/UI/Alert/Alert";
 
 const StandingContainer = styled.div`
   display: grid;
-  grid-template-columns: ${({minified}) => (minified) ? '25px 5fr repeat(4, 1fr)': '20px 25px 5fr repeat(8, 1fr)'};
+  grid-template-columns: ${({minified}) => (minified) ? '20px 25px 5fr repeat(4, 1fr)': '20px 25px 5fr repeat(8, 1fr)'};
   align-items: center;
   grid-gap: 5px 10px;
   padding: 5px;
@@ -50,7 +50,7 @@ export default function Standings({standing, minified = false}) {
   return (
     <>
       <StandingContainer header={true} minified={minified}>
-        <TableHead minified={minified}></TableHead>
+        <TableHead></TableHead>
         <TableHead></TableHead>
         <TableHeadName>Equipo</TableHeadName>
         <TableHead minified={minified}>Pj</TableHead>
@@ -64,7 +64,7 @@ export default function Standings({standing, minified = false}) {
       </StandingContainer>
       {standing.map((row, index) => (
         <StandingContainer key={row.position} reverse={(index % 2 === 0)} minified={minified}>
-          <InfoCell minified={minified}>{row.position}º</InfoCell>
+          <InfoCell>{row.position}º</InfoCell>
           <Shield src={row.teamData.shield[100]} alt={row.teamData.name} />
           <TeamName minified={minified}>{row.teamData.name}</TeamName>
           <InfoCell minified={minified}>{row.winGames+row.tieGames+row.loseGames}</InfoCell>
