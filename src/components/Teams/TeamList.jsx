@@ -16,7 +16,7 @@ const TeamContainer = styled.div`
   }
 `;
 
-function TeamList({ teams }) {
+function TeamList({ teams = [] }) {
 	return (
 		<>
 			<Title shadow="Nuestros equipos">Equipos</Title>

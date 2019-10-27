@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 /** Custom components */
 import Loading from "components/Containers/Loading";
+import Alert from "components/UI/Alert/Alert";
 import Standings from "components/Standings/Standings";
 
 /** ACTIONS */
@@ -43,6 +44,7 @@ function Standing({fetchStanding, standing, competitionIds}) {
     fetchStanding(competitionIds);
   }, [fetchStanding, competitionIds]);
   if (!standing.ready) return <Loading />;
+  if (Object.keys(standing.data).length === 0) return <Alert icon="info" iconColor="#aec6cf" msg="Clasificación no disponible" />
   return (
     <>
     {(competitionIds).split(',').map(competitionId => {
