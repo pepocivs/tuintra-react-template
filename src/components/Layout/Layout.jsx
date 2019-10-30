@@ -31,11 +31,11 @@ const MainContainer = styled.div`
   grid-template-rows: ${({theme}) => theme.spacings.headerHeight} 1fr auto;
   grid-gap: 10px;
   height: 100vh;
-  @media (max-width: ${({theme}) => theme.breakpoints.desktopLarge}px) {
-    grid-template-columns: ${({theme}) => `1fr ${theme.breakpoints.desktop} 1fr`};
-  }
   @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape}px) {
     grid-template-columns: ${({theme}) => `${theme.spacings.layoutSmallMargin} 1fr ${theme.spacings.layoutSmallMargin}`};
+  }
+  @media (min-width: ${({theme}) => theme.breakpoints.desktopLarge}px) {
+    grid-template-columns: ${({theme}) => `1fr ${theme.breakpoints.desktop}px 1fr`};
   }
   @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
     grid-template-columns: 0px 1fr 0px;
