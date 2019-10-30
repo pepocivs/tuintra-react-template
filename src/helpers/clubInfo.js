@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 const getDomainEquivalences = () => {
   const equivalences = {
-    'localhost': 'ginerdelosrios',
+    'localhost': 'demo',
     'ginerdelosrios.es': 'ginerdelosrios',
     'inefhockey.com': 'inef',
     'chmadrid.es': 'chmadrid'
