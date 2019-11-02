@@ -4,7 +4,8 @@ const getDomainEquivalences = () => {
     'localhost': 'demo',
     'ginerdelosrios.es': 'ginerdelosrios',
     'inefhockey.com': 'inef',
-    'chmadrid.es': 'chmadrid'
+    'chmadrid.es': 'chmadrid',
+    'fsquart.tuintra.es': 'fsquart'
   };
   return equivalences[location.hostname] || 'demo';
 }
