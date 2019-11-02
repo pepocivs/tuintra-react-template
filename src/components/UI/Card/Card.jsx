@@ -12,7 +12,6 @@ const CardImage = styled.div`
   background-position: center;
 	width: ${({width}) => width || '250px'};
 	height: ${({height}) => height || '178px'};
-  max-height: 850px;
 	padding: 10px;
 	border-radius: ${({radius}) => radius || '5px'};
   @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
