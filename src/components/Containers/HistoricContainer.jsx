@@ -18,26 +18,32 @@ function HistoricContainer({fetchHistoric, historic, match}) {
     fetchHistoric();
   }, [fetchHistoric]);
   if (!historic.ready) return <Loading />;
-  if ((Object.keys(historic.data).length === 0)) return <Alert icon="info" iconColor="#aec6cf" msg="No existe palmarés para mostrar" />
   const categoryId = match.params.id || 'senior-masculino';
-  const historicData = historic.data.find(data => data.categoryName === unSlug(categoryId));
+  const historicData = (Object.keys(historic.data).length > 0)
+    ? historic.data.find(data => data.categoryName === unSlug(categoryId))
+    : [];
   return (
     <>
       <Title shadow="Histórico competiciones">Palmarés</Title>
-      <GridBox>
-        {historic.data.map(categoryData => {
-          const categorySlug = slugify(categoryData.categoryName);
-          const subSection = (match.params.subsection) ? `/${match.params.subsection}`: '';
-          return (
-            <Link key={categorySlug} to={`${subSection}/palmares/${categorySlug}`}>
-              <Highlighted selected={categorySlug === categoryId}>{categoryData.categoryName}</Highlighted>
-            </Link>
-            )
-          })
-        }
-      </GridBox>
-      <br />
-      <HistoricCards leagues={historicData.historic}/>
+      {(Object.keys(historic.data).length === 0)
+        ? <Alert icon="info" iconColor="#aec6cf" msg="No existe palmarés para mostrar" />
+        : <>
+          <GridBox>
+            {historic.data.map(categoryData => {
+              const categorySlug = slugify(categoryData.categoryName);
+              const subSection = (match.params.subsection) ? `/${match.params.subsection}`: '';
+              return (
+                <Link key={categorySlug} to={`${subSection}/palmares/${categorySlug}`}>
+                  <Highlighted selected={categorySlug === categoryId}>{categoryData.categoryName}</Highlighted>
+                </Link>
+                )
+              })
+            }
+          </GridBox>
+          <br />
+          <HistoricCards leagues={historicData.historic}/>
+        </>
+      }
     </>
   )
 }

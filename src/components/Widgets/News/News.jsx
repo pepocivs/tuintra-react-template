@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 /** Custom components */
 import Loading from "components/Containers/Loading";
+import Alert from "components/UI/Alert/Alert";
 import NewsHeader from "components/News/NewsHeader";
 
 /** ACTIONS */
@@ -38,6 +39,7 @@ function News({fetchNews, news}) {
     fetchNews();
   }, [fetchNews]);
   if (!news.ready) return <Loading />;
+  if (news.data.length === 0) return <Alert icon="info" iconColor="#aec6cf" msg="No se han encontrado notícias" />
   const highligtedNews = news.data.slice(0, 5);
   return (
     <NewsHeader news={highligtedNews} />

@@ -5,6 +5,7 @@ import { withRouter } from "react-router"
 /** Custom components */
 import Loading from "components/Containers/Loading";
 import Title from "components/UI/Title/Title";
+import Alert from "components/UI/Alert/Alert";
 
 function PageContainer({fetchPages, pages, match}) {
   const pageId = match.params.id || 1;
@@ -15,7 +16,10 @@ function PageContainer({fetchPages, pages, match}) {
   return (
     <>
       <Title shadow={pages.data.title}>{pages.data.title}</Title>
-      <div dangerouslySetInnerHTML={{__html: pages.data.content}}></div>
+      {(pages.data.content.length === 0)
+        ? <Alert icon="info" iconColor="#aec6cf" msg="Contenido no disponible" />
+        : <div dangerouslySetInnerHTML={{__html: pages.data.content}}></div>
+      }
     </>
   )
 }

@@ -61,15 +61,18 @@ function HomeContainer({clubInfo}) {
   return (
     <>
       <News></News>
-      <HomeGridContainer>
-        <WidgetMI><GetWidget widget={widgets.find(widget => widget.position === 'medio-izquierda')} /></WidgetMI>
-        <WidgetMC><GetWidget widget={widgets.find(widget => widget.position === 'medio-centro')} /></WidgetMC>
-        <WidgetMD><GetWidget widget={widgets.find(widget => widget.position === 'medio-derecha')} /></WidgetMD>
-        <WidgetD><GetWidget widget={widgets.find(widget => widget.position === 'destacado')} /></WidgetD>
-        <WidgetPI><GetWidget widget={widgets.find(widget => widget.position === 'pie-izquierda')} /></WidgetPI>
-        <WidgetPC><GetWidget widget={widgets.find(widget => widget.position === 'pie-centro')} /></WidgetPC>
-        <WidgetPD><GetWidget widget={widgets.find(widget => widget.position === 'pie-derecha')} /></WidgetPD>
-      </HomeGridContainer>
+      {(widgets.length === 0) 
+        ? null
+        : <HomeGridContainer>
+            <WidgetMI><GetWidget widget={widgets.find(widget => widget.position === 'medio-izquierda')} /></WidgetMI>
+            <WidgetMC><GetWidget widget={widgets.find(widget => widget.position === 'medio-centro')} /></WidgetMC>
+            <WidgetMD><GetWidget widget={widgets.find(widget => widget.position === 'medio-derecha')} /></WidgetMD>
+            <WidgetD><GetWidget widget={widgets.find(widget => widget.position === 'destacado')} /></WidgetD>
+            <WidgetPI><GetWidget widget={widgets.find(widget => widget.position === 'pie-izquierda')} /></WidgetPI>
+            <WidgetPC><GetWidget widget={widgets.find(widget => widget.position === 'pie-centro')} /></WidgetPC>
+            <WidgetPD><GetWidget widget={widgets.find(widget => widget.position === 'pie-derecha')} /></WidgetPD>
+          </HomeGridContainer>
+      }
     </>
   )
 }

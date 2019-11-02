@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Loading from "components/Containers/Loading";
 import Card from "components/UI/Card/Card";
 import Title from "components/UI/Title/Title";
+import Alert from "components/UI/Alert/Alert";
 
 const LinkContainer = styled.div`
   display: grid;
@@ -18,7 +19,9 @@ function LinksContainer({links}) {
   return (
     <>
       <Title shadow="Enlaces">Enlaces</Title>
-        {links.data.links.map(categoryLink => (
+      {(links.data.links.length === 0)
+        ?	<Alert icon="info" iconColor="#aec6cf" msg="No se han encontrado enlaces" />
+        : links.data.links.map(categoryLink => (
           <div key={categoryLink.categoryId}>
             <h3>{categoryLink.categoryName}</h3>
             <LinkContainer>
@@ -35,7 +38,8 @@ function LinksContainer({links}) {
               ))}
             </LinkContainer>
           </div>
-        ))}
+        ))
+      } 
     </>
   )
 }

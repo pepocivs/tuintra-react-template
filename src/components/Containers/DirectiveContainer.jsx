@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Loading from "components/Containers/Loading";
 import Card from "components/UI/Card/Card";
 import Title from "components/UI/Title/Title";
+import Alert from "components/UI/Alert/Alert";
 
 const DirectorsContainer = styled.div`
   display: grid;
@@ -22,20 +23,23 @@ function DirectiveContainer({fetchPeople, directive}) {
   return (
     <>
       <Title shadow="Nuestra Directiva">Directiva</Title>
-      <DirectorsContainer>
-				{directive.data.map(director => {
-					return (
-            <Card
-              key={director._id}
-              bgImage={director.directorData.picture || '/assets/general/p_nofoto.png'}
-              title={director.name.public}
-              subtitle={director.directorData.position}
-              width="150px"
-              height="200px">
-            </Card>
-					);
-				})}
-			</DirectorsContainer>
+      {(directive.data.length === 0)
+        ? <Alert icon="info" iconColor="#aec6cf" msg="Directiva no disponible" />
+        : <DirectorsContainer>
+            {directive.data.map(director => {
+              return (
+                <Card
+                  key={director._id}
+                  bgImage={director.directorData.picture || '/assets/general/p_nofoto.png'}
+                  title={director.name.public}
+                  subtitle={director.directorData.position}
+                  width="150px"
+                  height="200px">
+                </Card>
+              );
+            })}
+          </DirectorsContainer>
+      }
     </>
   )
 }

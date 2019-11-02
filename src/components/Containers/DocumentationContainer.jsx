@@ -22,7 +22,7 @@ function DocumentationContainer({ fetchDocuments, documents }) {
   return (
     <>
       <Title shadow="Documentación Oficial">Documentación</Title>
-      {(documents.data.length === 0) 
+      {((documents.data.code && documents.data.code === 404) || documents.data.length === 0) 
         ? <Alert icon="info" iconColor="#aec6cf" msg="No existe documentación para mostrar" />
         : <DocumentContainer>
           {documents.data.map(document => {
