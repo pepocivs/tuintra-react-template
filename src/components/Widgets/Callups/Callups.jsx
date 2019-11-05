@@ -90,8 +90,13 @@ const PlayerPicture = styled.div`
   border: 2px solid ${({color, theme}) => theme.colors[color]};
 `;
 
-const BirthdayInfo = styled.div`
+const PlayerInfo = styled.div`
   align-self: center;
+`;
+
+const PlayersRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;
 
 function Callup({fetchCallups, callups, widgetInfo}) {
@@ -113,7 +118,7 @@ function Callup({fetchCallups, callups, widgetInfo}) {
       {Object.keys(callups.data).map(keyName => {
         const callupData = callups.data[keyName];
         return (
-          <>
+          <div key={keyName}>
             {(callupData && callupData.players.length === 0) 
                 ? <Alert msg="No hay jugadores convocados para la próxima semana" />
                 : ''} 
@@ -127,23 +132,25 @@ function Callup({fetchCallups, callups, widgetInfo}) {
                 <TeamName position="left">{callupData.localName}</TeamName>
                 <TeamName position="right">{callupData.awayName}</TeamName>
               </GameRow>
-              {callupData.players.map(player => {
-                return (
-                  <PlayersBox key={player.playerData._id}>
-                    <PlayerPicture
-                      src={player.playerData.picture}
-                      color={
-                        (player.status._id === 0) 
-                          ? "warning" 
-                          : (player.status._id === 1) 
-                            ? "success"
-                            : "danger"}/>
-                    <BirthdayInfo>{player.playerData.name.public}</BirthdayInfo>
-                  </PlayersBox>
-                );
-              })}
+              <PlayersRow>
+                {callupData.players.map(player => {
+                  return (
+                    <PlayersBox key={player.playerData._id}>
+                      <PlayerPicture
+                        src={(player.playerData) ? player.playerData.picture || '/assets/general/p_nofoto.png' : '/assets/general/p_nofoto.png'}
+                        color={
+                          (player.status._id === 0) 
+                            ? "warning" 
+                            : (player.status._id === 1) 
+                              ? "success"
+                              : "danger"}/>
+                      <PlayerInfo>{player.playerData.name.public}</PlayerInfo>
+                    </PlayersBox>
+                  );
+                })}
+              </PlayersRow>
             </CallupBox>
-          </>
+          </div>
         )
       })}
     </>
