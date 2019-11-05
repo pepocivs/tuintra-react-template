@@ -16,10 +16,10 @@ const AlertBox = styled.div`
   }
 `;
 
-function Alert({msg}) {
+function Alert({msg, icon, iconColor}) {
   return (
     <AlertBox>
-      <SvgIcon name="info" color="#aec6cf" />
+      <SvgIcon name={icon} color={iconColor} />
       <div>{msg}</div>
     </AlertBox>
   )
