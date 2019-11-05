@@ -52,7 +52,7 @@ function Menu({ clubInfo, menu }) {
 	return (
 		<MenuNav>
 			<Row>
-				<StyledLink to="/inicio">
+				<StyledLink to="/">
 					<Logo src={clubInfo.options.clubs_logo} />
 				</StyledLink>
 				<Media>
