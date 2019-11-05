@@ -107,39 +107,45 @@ function Callup({fetchCallups, callups, widgetInfo}) {
       </>
     );
   }
-  const callupData = callups.data[widgetInfo.content];
   return (
     <>
       <h2>{widgetInfo.title}</h2>
-      {(callupData && callupData.players.length === 0) 
-          ? <Alert msg="No hay jugadores convocados para la próxima semana" />
-          : ''} 
-      <CallupBox>
-        <ExtraInfo uppercase>Convocatoria para el partido del día:</ExtraInfo>
-        <ExtraInfo uppercase><Moment format="dddd, DD MMMM" date={callupData.gameDate}/></ExtraInfo>
-        <ExtraInfo>{callupData.competitionName} {callupData.competitionCategory} {callupData.competitionGender}</ExtraInfo>
-        <GameRow>
-          <TeamShield src={callupData.localShield} alt={callupData.localName}/>
-          <TeamShield src={callupData.awayShield} alt={callupData.awayName}/>
-          <TeamName position="left">{callupData.localName}</TeamName>
-          <TeamName position="right">{callupData.awayName}</TeamName>
-        </GameRow>
-        {callupData.players.map(player => {
-          return (
-            <PlayersBox key={player.playerData._id}>
-              <PlayerPicture
-                src={player.playerData.picture}
-                color={
-                  (player.status._id === 0) 
-                    ? "warning" 
-                    : (player.status._id === 1) 
-                      ? "success"
-                      : "danger"}/>
-              <BirthdayInfo>{player.playerData.name.public}</BirthdayInfo>
-            </PlayersBox>
-          );
-        })}
-      </CallupBox>
+      {Object.keys(callups.data).map(keyName => {
+        const callupData = callups.data[keyName];
+        return (
+          <>
+            {(callupData && callupData.players.length === 0) 
+                ? <Alert msg="No hay jugadores convocados para la próxima semana" />
+                : ''} 
+            <CallupBox>
+              <ExtraInfo uppercase>Convocatoria para el partido del día:</ExtraInfo>
+              <ExtraInfo uppercase><Moment format="dddd, DD MMMM" date={callupData.gameDate}/></ExtraInfo>
+              <ExtraInfo>{callupData.competitionName} {callupData.competitionCategory} {callupData.competitionGender}</ExtraInfo>
+              <GameRow>
+                <TeamShield src={callupData.localShield} alt={callupData.localName}/>
+                <TeamShield src={callupData.awayShield} alt={callupData.awayName}/>
+                <TeamName position="left">{callupData.localName}</TeamName>
+                <TeamName position="right">{callupData.awayName}</TeamName>
+              </GameRow>
+              {callupData.players.map(player => {
+                return (
+                  <PlayersBox key={player.playerData._id}>
+                    <PlayerPicture
+                      src={player.playerData.picture}
+                      color={
+                        (player.status._id === 0) 
+                          ? "warning" 
+                          : (player.status._id === 1) 
+                            ? "success"
+                            : "danger"}/>
+                    <BirthdayInfo>{player.playerData.name.public}</BirthdayInfo>
+                  </PlayersBox>
+                );
+              })}
+            </CallupBox>
+          </>
+        )
+      })}
     </>
   )
 }
