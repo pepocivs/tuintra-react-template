@@ -7,7 +7,7 @@ import StandingContainer from "./Standing/StandingContainer";
 import Teams from "./Teams/Teams";
 import Callups from "./Callups/Callups";
 
-function GetWidget({widget}) {
+function GetWidget({widget, joinedContent}) {
   if (!widget) return null;
   switch (widget.type) {
     case 'birthday':
@@ -17,9 +17,9 @@ function GetWidget({widget}) {
     case 'text':
       return <Text widgetInfo={widget.content} />
     case 'standings':
-      return <StandingContainer widgetInfo={widget.content} />
+      return <StandingContainer widgetInfo={widget.content} competitionIds={joinedContent.standings.join(',')} />
     case 'team_picture':
-      return <Teams widgetInfo={widget.content} />
+      return <Teams widgetInfo={widget.content} teamIds={joinedContent.team_picture.join(',')} />
     case 'callups':
       return <Callups widgetInfo={widget.content} />
     default:

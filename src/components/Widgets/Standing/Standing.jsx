@@ -39,32 +39,36 @@ const Title = styled.h2`
 `;
 
 
-function Standing({fetchStanding, standing, competitionIds}) {
+function Standing({fetchStanding, standing, competitionIds, widgetConfigIds = {}}) {
   useEffect(() => {
     fetchStanding(competitionIds);
   }, [fetchStanding, competitionIds]);
   if (!standing.ready) return <Loading />;
-  if (Object.keys(standing.data).length === 0) return <Alert icon="info" iconColor="#aec6cf" msg="Clasificación no disponible" />
+  if (Object.values(widgetConfigIds).length === 0) return <Alert icon="danger" iconColor="#cfb7ae" msg="Widget no configurado" />;
   return (
     <>
-    {(competitionIds).split(',').map(competitionId => {
-      const standingsInfo = Object.keys(standing.data)
-        .filter(key => standing.data[key]._id.toString() === competitionId)
-        .map(key => standing.data[key]);
-      return standingsInfo.map(standingInfo => {
-        if (!standingInfo) return null;
-        const gameDay = (standingInfo && standingInfo.standings) 
-        ? Object.keys(standingInfo.standings).slice(-1).pop() 
+    {
+      Object.values(widgetConfigIds).map(widgetConfigId => {
+        const currentStanding = Object.values(standing.data).find(d => d._id === parseInt(widgetConfigId));
+        if (!currentStanding) {
+          return (<Alert 
+            key={`alert-${widgetConfigId}`} 
+            icon="info"
+            iconColor="#aec6cf" 
+            msg="Clasificación no disponible" />);
+        }
+        const gameDay = (currentStanding && currentStanding.standings) 
+        ? Object.keys(currentStanding.standings).slice(-1).pop() 
         : null;
-        const groupName = (standingInfo.group) ? ` - Grupo ${standingInfo.group}` : '';
+        const groupName = (currentStanding.group) ? ` - Grupo ${currentStanding.group}` : '';
         return (
-          <div key={`${competitionId}${standingInfo.group}`}>
-            <Title>{standingInfo.name} {standingInfo.category} {standingInfo.gender} {groupName}</Title>
-            <Standings standing={standingInfo.standings[gameDay]} minified></Standings>
+          <div key={`${widgetConfigId}${currentStanding.group}`}>
+            <Title>{currentStanding.name} {currentStanding.category} {currentStanding.gender} {groupName}</Title>
+            <Standings standing={currentStanding.standings[gameDay]} minified></Standings>
           </div>
         );
       })
-    })}
+    }
     </>
   )
 }

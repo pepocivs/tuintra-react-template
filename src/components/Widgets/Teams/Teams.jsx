@@ -45,38 +45,41 @@ const TeamContainer = styled.div`
   }
 `;
 
-function Teams({fetchTeams, teams, widgetInfo}) {
+function Teams({fetchTeams, teams, widgetInfo, teamIds}) {
   useEffect(() => {
-    fetchTeams(Object.values(widgetInfo.content).join(','));
-  }, [fetchTeams, widgetInfo]);
+    fetchTeams(teamIds);
+  }, [fetchTeams, teamIds]);
   if (!teams.ready) return <Loading />;
-  if(Object.keys(teams.data).length === 0) {
-    return (
-      <>
-        <h2>{widgetInfo.title}</h2>
-        <Alert icon="info" iconColor="#aec6cf" msg="No se han encontrado equipos para esta temporada" />
-      </>
-    );
-  }
+  if (!widgetInfo.content) return <Alert icon="danger" iconColor="#cfb7ae" msg="Widget no configurado" />
+  const filteredTeams = [];
+  // eslint-disable-next-line array-callback-return
+  teams.data.map(teamData => {
+    if (Object.values(widgetInfo.content).includes(teamData._id.toString())) {
+      filteredTeams.push(teamData);
+    }
+  })
   return (
     <>
       <h2>{widgetInfo.title}</h2>
-      <TeamContainer>
-        {teams.data.map(team => {
-          return (
-            <Link key={team._id} to={`/equipos/${team._id}`}>
-              <Card
-                key={team._id}
-                bgImage={team.picture || '/assets/general/e_nofoto.jpg'}
-                title={team.teamName}
-                subtitle={`${team.category} ${team.gender}`}
-                width="250px"
-                height="178px">
-              </Card>
-            </Link>
-          );
-        })}
-      </TeamContainer>
+      {(Object.keys(teams.data).length === 0) 
+        ? <Alert icon="info" iconColor="#aec6cf" msg="No se han encontrado equipos para esta temporada" />
+        : <TeamContainer>
+          {filteredTeams.map(team => {
+            return (
+              <Link key={team._id} to={`/equipos/${team._id}`}>
+                <Card
+                  key={team._id}
+                  bgImage={team.picture || '/assets/general/e_nofoto.jpg'}
+                  title={team.teamName}
+                  subtitle={`${team.category} ${team.gender}`}
+                  width="250px"
+                  height="178px">
+                </Card>
+              </Link>
+            );
+          })}
+        </TeamContainer>
+      }
     </>
   )
 }

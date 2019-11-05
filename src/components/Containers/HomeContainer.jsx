@@ -58,19 +58,30 @@ const WidgetPD = styled.div`
 function HomeContainer({clubInfo}) {
   if (!clubInfo.ready) return <Loading />;
   const widgets = clubInfo.data.widgets;
+  const joinedContent = {}
+  // eslint-disable-next-line array-callback-return
+  widgets.map(widget => {
+    const conflictiveCallWidget = ['standings', 'team_picture'];
+    if(conflictiveCallWidget.includes(widget.type)) {
+      if (!joinedContent[widget.type]) joinedContent[widget.type] = [];
+      const content = (((widget || {}).content || {}).content || []);
+      joinedContent[widget.type].push(Object.values(content));
+      joinedContent[widget.type] = joinedContent[widget.type].flat();
+    }
+  });
   return (
     <>
       <News></News>
       {(widgets.length === 0) 
         ? null
         : <HomeGridContainer>
-            <WidgetMI><GetWidget widget={widgets.find(widget => widget.position === 'medio-izquierda')} /></WidgetMI>
-            <WidgetMC><GetWidget widget={widgets.find(widget => widget.position === 'medio-centro')} /></WidgetMC>
-            <WidgetMD><GetWidget widget={widgets.find(widget => widget.position === 'medio-derecha')} /></WidgetMD>
-            <WidgetD><GetWidget widget={widgets.find(widget => widget.position === 'destacado')} /></WidgetD>
-            <WidgetPI><GetWidget widget={widgets.find(widget => widget.position === 'pie-izquierda')} /></WidgetPI>
-            <WidgetPC><GetWidget widget={widgets.find(widget => widget.position === 'pie-centro')} /></WidgetPC>
-            <WidgetPD><GetWidget widget={widgets.find(widget => widget.position === 'pie-derecha')} /></WidgetPD>
+            <WidgetMI><GetWidget joinedContent={joinedContent} widget={widgets.find(widget => widget.position === 'medio-izquierda')} /></WidgetMI>
+            <WidgetMC><GetWidget joinedContent={joinedContent} widget={widgets.find(widget => widget.position === 'medio-centro')} /></WidgetMC>
+            <WidgetMD><GetWidget joinedContent={joinedContent} widget={widgets.find(widget => widget.position === 'medio-derecha')} /></WidgetMD>
+            <WidgetD><GetWidget joinedContent={joinedContent} widget={widgets.find(widget => widget.position === 'destacado')} /></WidgetD>
+            <WidgetPI><GetWidget joinedContent={joinedContent} widget={widgets.find(widget => widget.position === 'pie-izquierda')} /></WidgetPI>
+            <WidgetPC><GetWidget joinedContent={joinedContent} widget={widgets.find(widget => widget.position === 'pie-centro')} /></WidgetPC>
+            <WidgetPD><GetWidget joinedContent={joinedContent} widget={widgets.find(widget => widget.position === 'pie-derecha')} /></WidgetPD>
           </HomeGridContainer>
       }
     </>
