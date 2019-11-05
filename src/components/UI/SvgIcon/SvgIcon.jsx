@@ -13,6 +13,7 @@ import LigaNacional from "./icons/ligaNacional";
 import Liga from "./icons/liga";
 import Copa from "./icons/copa";
 import Info from "./icons/info";
+import Danger from "./icons/danger";
 
 function SvgIcon({name, color, bgColor, secondaryBgColor}) {
   return getSvgComponent(name)({color, bgColor, secondaryBgColor});
@@ -34,7 +35,8 @@ function getSvgComponent(name) {
     ligaNacional: LigaNacional,
     liga: Liga,
     copa: Copa,
-    info: Info
+    info: Info,
+    danger: Danger
   }
   return components[name] || Address;
 }
