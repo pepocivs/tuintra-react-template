@@ -26,7 +26,9 @@ function getClubInfo(data) {
     social: {
       facebook: data.options.facebook,
       twitter: data.options.twitter,
-      youtube: data.options.youtube
+      youtube: data.options.youtube,
+      instagram: data.options.instagram,
+      flickr: data.options.flickr
     }
   }
 }
