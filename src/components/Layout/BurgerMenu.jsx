@@ -47,6 +47,27 @@ const MenuStyles = {
   }
 }
 
+const StyledMenu = styled(Menu)`
+  .bm-menu {
+    position: relative;
+    overflow: hidden !important;
+  }
+  .bm-menu:before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: url(${({theme}) => theme.clubOptions.clubs_shield}) !important;
+    background-repeat: no-repeat !important;
+    background-position: 350px 650px !important;
+    transform: rotate(30deg);
+    opacity: 0.3;
+    background-size: 250px !important;
+}
+`;
+
 const StyledLink = styled(Link)`
 	background-color: ${({selected}) => (selected) ? 'rgba(255,255,255,0.2)' : 'initial'};
 	color: ${({selected, theme}) => (selected) ? theme.colors.light : theme.colors.white};
@@ -55,7 +76,7 @@ const StyledLink = styled(Link)`
 function BurgerMenu({ menu, page, clubInfoDomain }) {
   return (
     <div>
-      <Menu 
+      <StyledMenu 
         customBurgerIcon={ <img alt="Menu" src="/assets/general/burger.svg" /> }
         disableAutoFocus 
         styles={MenuStyles}>
@@ -75,7 +96,7 @@ function BurgerMenu({ menu, page, clubInfoDomain }) {
               );
           })
         }
-      </Menu>
+      </StyledMenu>
     </div>
   )
 }
