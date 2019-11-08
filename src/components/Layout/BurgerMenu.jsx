@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 /** Theme */
 import theme from "../../theme/index";
+import clubInfo from "../../helpers/clubInfo";
 
 /** Styles */
 const MenuStyles = {
@@ -59,12 +60,12 @@ const StyledMenu = styled(Menu)`
     height: 200%;
     top: -50%;
     left: -50%;
-    background: url(${({theme}) => theme.clubOptions.clubs_shield}) !important;
+    background: url(${`https://tuintra.com/intranet/images/clients/shields100/${clubInfo.subdomain}.png`}) !important;
     background-repeat: no-repeat !important;
     background-position: 350px 650px !important;
     transform: rotate(30deg);
     opacity: 0.3;
-    background-size: 250px !important;
+    background-size: 350px !important;
 }
 `;
 
