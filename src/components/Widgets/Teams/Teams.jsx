@@ -50,7 +50,7 @@ function Teams({fetchTeams, teams, widgetInfo, teamIds}) {
     fetchTeams(teamIds);
   }, [fetchTeams, teamIds]);
   if (!teams.ready) return <Loading />;
-  if (!widgetInfo.content) return <Alert icon="danger" iconColor="#cfb7ae" msg="Widget no configurado" />
+  if (!widgetInfo.content || !teams.data.length) return <Alert icon="danger" iconColor="#cfb7ae" msg="Widget no configurado" />
   const filteredTeams = [];
   // eslint-disable-next-line array-callback-return
   teams.data.map(teamData => {
