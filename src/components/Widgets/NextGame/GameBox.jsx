@@ -79,7 +79,7 @@ function GameBox({fetchStats, stats, teamCompetitionId, nextGames}) {
   useEffect(() => {
     fetchStats(teamCompetition);
   }, [fetchStats, teamCompetition]);
-  if (!stats.ready) return <Loading />;
+  if (!stats.ready && teamCompetition.lentgh > 0) return <Loading />;
   return nextGames.map(game => {
     return (
       <ScheduleBox key={game._id}>
