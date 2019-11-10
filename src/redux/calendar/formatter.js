@@ -22,7 +22,7 @@ const getGroups = (data) => {
   
   const sortedCalendar = {};
   Object.keys(grouped).map(group => {
-    const groupName = (group === 'null') ? 'unique': group;
+    const groupName = (group === 'null' || group === '') ? 'unique': group;
     return sortedCalendar[groupName] = groupByDay(grouped[group]);
   })
   return sortedCalendar;

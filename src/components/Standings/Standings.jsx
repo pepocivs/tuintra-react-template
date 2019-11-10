@@ -46,7 +46,7 @@ const TeamName = styled.div`
 `;
 
 export default function Standings({standing, minified = false}) {
-  if (!standing || standing.length === 0) return <Alert msg="Clasificación no disponible" />
+  if (!standing || standing.length === 0) return <Alert icon="info" iconColor="#aec6cf" msg="Clasificación no disponible" />
   return (
     <>
       <StandingContainer header={true} minified={minified}>
