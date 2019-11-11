@@ -3,14 +3,15 @@ import styled from "styled-components";
 
 const LastResultContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const LastResultBox = styled.div`
   border-radius: 5px;
-  padding: 3px;
+  padding: ${({index}) => (index === 4) ? '4px': '3px'};
   margin: 1px;
-  width: 20px;
-  height: 20px;
+  width: ${({index}) => (index === 4) ? '24px': '20px'};
+  height: ${({index}) => (index === 4) ? '24px': '20px'};
   cursor: pointer;
   border: 1px solid ${({type, theme}) => 
     (type === 'P') 
@@ -55,10 +56,11 @@ function PreviousStats({data}) {
   var variance = (data.length - 5);
   return (
     <LastResultContainer>
-      {data.slice(variance, 5+variance).map(lastResult => {
+      {data.slice(variance, 5+variance).map((lastResult, index) => {
         return (
           <LastResultBox 
             key={`${lastResult.gameId}-${Math.floor(Math.random() * 99999)}`}
+            index={index}
             type={lastResult.stand}
             title={`${lastResult.date}
 ${lastResult.local} ${lastResult.localLetter} ${lastResult.localScore} - ${lastResult.awayScore} ${lastResult.away} ${lastResult.awayLetter}`}>
