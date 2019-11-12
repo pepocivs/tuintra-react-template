@@ -21,9 +21,7 @@ const GameDayBox = styled.div`
   padding: 5px;
   cursor: pointer;
   border-radius: 5px;
-  border-bottom: 2px solid ${({selected, theme}) => (selected) 
-    ? theme.clubOptions.secundary_color_web
-    : theme.clubOptions.principal_color_web};
+  border-bottom: 2px solid ${({theme}) => theme.clubOptions.principal_color_web};
   background-color: ${({selected, theme}) => (selected) 
     ? theme.clubOptions.principal_color_web 
     : theme.clubOptions.secundary_color_web};
