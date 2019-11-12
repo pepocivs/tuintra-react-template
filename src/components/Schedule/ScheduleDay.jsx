@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Moment from 'react-moment';
 
@@ -12,6 +12,7 @@ const GameRow = styled.div`
 const ScheduleRow = styled.div`
   padding: 10px 0;
   border-bottom: 1px solid ${({theme}) => theme.colors.grey};
+  display: ${({collapsed}) => !!(collapsed) ? 'none' : 'initial'};
 `;
 
 const Score = styled.div`
@@ -47,12 +48,37 @@ const ExtraInfo = styled.div`
   text-align: center;
 `;
 
-function ScheduleDay({ScheduleDayBundle, gameDay}) {
+const Icon = styled.div`
+  float: right;
+  width: 15px;
+  height: 15px;
+  background-image: url('/assets/general/chevron.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: ${({collapsed}) => !!(collapsed) ? 'rotate(0deg)' : 'rotate(180deg)'};
+`;
+
+const GameDayHeader = styled.h3`
+  cursor: pointer;
+  margin-top: 30px;
+  padding-bottom: 5px;
+`;
+
+function ScheduleDay({scheduleDayBundle, gameDay, collapsed}) {
+  const [setCollapsed, setCollapsedState] = useState(collapsed);
+
+  function toggleAccordion() {
+    setCollapsedState(!setCollapsed);
+  }
+  
   return (
     <div>
-      <h3>Jornada {gameDay}</h3>
-      {ScheduleDayBundle.map(game => 
-        <ScheduleRow key={game._id}>
+      <GameDayHeader
+        onClick={toggleAccordion}>
+          Jornada {gameDay} <Icon collapsed={setCollapsed} />
+      </GameDayHeader>
+      {scheduleDayBundle.map(game => 
+        <ScheduleRow key={game._id} collapsed={setCollapsed}>
           <ExtraInfo><Moment format="DD/MM/YYYY - HH:mm" date={game.date}/></ExtraInfo>
           <GameRow>
             <TeamShield src={game.local.shield[100]} alt={game.local.name}/>
