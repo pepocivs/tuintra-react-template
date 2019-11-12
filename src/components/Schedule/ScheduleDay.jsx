@@ -47,24 +47,19 @@ const ExtraInfo = styled.div`
   text-align: center;
 `;
 
-function ScheduleDay({ScheduleDayBundle, gameDay}) {
+function ScheduleDay({game}) {
   return (
-    <div>
-      <h3>Jornada {gameDay}</h3>
-      {ScheduleDayBundle.map(game => 
-        <ScheduleRow key={game._id}>
-          <ExtraInfo><Moment format="DD/MM/YYYY - HH:mm" date={game.date}/></ExtraInfo>
-          <GameRow>
-            <TeamShield src={game.local.shield[100]} alt={game.local.name}/>
-            <TeamName position="left">{game.local.name}</TeamName>
-            <Score>{game.localScore} - {game.awayScore}</Score>
-            <TeamName position="right">{game.away.name}</TeamName>
-            <TeamShield src={game.away.shield[100]} alt={game.away.name}/>
-          </GameRow>
-          <ExtraInfo>{game.facility}</ExtraInfo>
-        </ScheduleRow>
-      )}
-    </div>
+    <ScheduleRow>
+      <ExtraInfo><Moment format="DD/MM/YYYY - HH:mm" date={game.date}/></ExtraInfo>
+      <GameRow>
+        <TeamShield src={game.local.shield[100]} alt={game.local.name}/>
+        <TeamName position="left">{game.local.name}</TeamName>
+        <Score>{game.localScore} - {game.awayScore}</Score>
+        <TeamName position="right">{game.away.name}</TeamName>
+        <TeamShield src={game.away.shield[100]} alt={game.away.name}/>
+      </GameRow>
+      <ExtraInfo>{game.facility}</ExtraInfo>
+    </ScheduleRow>
   )
 }
 
