@@ -53,6 +53,7 @@ const StyledMenu = styled(Menu)`
     position: relative;
     overflow: hidden !important;
   }
+  /*
   .bm-menu:before {
     content: "";
     position: absolute;
@@ -66,7 +67,8 @@ const StyledMenu = styled(Menu)`
     transform: rotate(30deg);
     opacity: 0.3;
     background-size: 350px !important;
-}
+  }
+  */
 `;
 
 const StyledLink = styled(Link)`
