@@ -25,6 +25,7 @@ function Competition({selectedCompetition, selectedCalendar, selectedStanding}) 
   return Object.keys(selectedCalendar).map(group => {
     const groupName = (group === 'unique') ? '' : ` - Grupo ${group}`;
     const standingKey = geyStandingKey(selectedStanding, group);
+    if (!standingKey) return null;
     const currentGameDay = getLastGameDay(selectedStanding, standingKey);
     const teams = (group === 'unique') 
       ? selectedCompetition.teams
