@@ -5,6 +5,7 @@ import Title from "components/UI/Title/Title";
 import TeamsExpositor from "components/TeamsExpositor/TeamsExpositor";
 import Schedule from "components/Schedule/Schedule";
 import Standings from "components/Standings/Standings";
+import StandingGraph from "components/Standings/StandingGraph";
 
 function CompetitionDetail({title, shadow, teams, calendar, standing}) {
   if (!calendar) return null;
@@ -15,6 +16,7 @@ function CompetitionDetail({title, shadow, teams, calendar, standing}) {
       <Schedule calendar={calendar}></Schedule>
       <br />
       <Standings standing={standing}></Standings>
+      <StandingGraph standing={standing}></StandingGraph>
     </>
   )
 }
