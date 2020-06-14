@@ -30,6 +30,7 @@ function App(props) {
     );
   }
   ReactGA.initialize(clubInfo.data.analyticsCode);
+  ReactGA.pageview(window.location.pathname + window.location.search);
   return (
     <BrowserRouter>
       <ThemeProvider theme={{...theme, clubOptions: clubInfo.data.options}}>
