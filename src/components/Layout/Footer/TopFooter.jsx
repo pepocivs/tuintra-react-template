@@ -52,7 +52,7 @@ function TopFooter({ footerLinks }) {
             }
             <LinkContainer>
               {categoryLink.links.map(link => (
-                <a key={link.linkName} href={`http://${link.url}`} rel="noopener noreferrer" target="_blank">
+                <a key={link.linkName} href={link.url} rel="noopener noreferrer" target="_blank">
                   <FooterImage src={link.image} />
                 </a>
               ))}
