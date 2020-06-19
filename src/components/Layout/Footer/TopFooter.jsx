@@ -33,6 +33,7 @@ const FooterImage = styled.img`
   -webkit-filter: grayscale(100%) opacity(0.5) brightness(1) contrast(0.85);
   filter: grayscale(100%) opacity(0.5) brightness(1) contrast(0.85);
   transition: 0.5s;
+  max-width: 100px;
   :hover {
     -webkit-filter: grayscale(0%) opacity(1) brightness(1) contrast(1);
     filter: grayscale(0%) opacity(1) brightness(1) contrast(1);
