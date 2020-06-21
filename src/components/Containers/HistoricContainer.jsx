@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import styled from "styled-components";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 
@@ -12,6 +13,16 @@ import HistoricCards from "components/HistoricCards/HistoricCards";
 
 /** Helpers */
 import { slugify, unSlug } from "helpers/slugify";
+
+const TwoColumns = styled.div`
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: auto auto;
+  @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape - 1}px) {
+    grid-template-columns: auto;
+    grid-gap: 0px;
+  }
+`;
 
 function HistoricContainer({fetchHistoric, historic, match}) {
   useEffect(() => {
@@ -41,7 +52,13 @@ function HistoricContainer({fetchHistoric, historic, match}) {
             }
           </GridBox>
           <br />
-          <HistoricCards leagues={historicData.historic}/>
+          {(historicData.hasBoth)
+            ? <TwoColumns>
+                <div><HistoricCards leagues={historicData.historicNational}/></div>
+                <div><HistoricCards leagues={historicData.historicLocal}/></div>
+              </TwoColumns>
+            : <HistoricCards leagues={historicData.historic}/>
+          }
         </>
       }
     </>
