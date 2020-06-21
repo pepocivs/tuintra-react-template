@@ -8,6 +8,7 @@ import TeamsContainer from "components/Connectors/ConnectedTeams";
 import CompetitionsContainer from "components/Connectors/ConnectedCompetitions";
 import LinksContainer from "components/Connectors/ConnectedLinks";
 import DirectiveContainer from "components/Connectors/ConnectedDirective";
+import OldPlayersContainer from "components/Connectors/ConnectedOldPlayers";
 import HistoricContainer from "components/Connectors/ConnectedHistoric";
 import PagesContainer from "components/Connectors/ConnectedPages";
 import ContactContainer from "components/Connectors/ConnectedContact";
@@ -21,6 +22,7 @@ const components = {
   contacto: ContactContainer,
   club: ClubContainer,
   historia: PagesContainer,
+  'historico-jugadores': OldPlayersContainer,
   documentos: DocumentationContainer,
   directiva: DirectiveContainer,
   palmares: HistoricContainer,

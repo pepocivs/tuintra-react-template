@@ -24,11 +24,16 @@ const getDirective = createSelector(
   getPeople,
   data => getDirectors(data)
 );
+const getOldPlayers = createSelector(
+  getPeople,
+  data => data.length > 0 ? data.filter(people => !people.isActive) : data
+);
 
 
 export {
   getPeople,
   getDirective,
+  getOldPlayers,
   getPeopleLoading,
   getPeopleReady,
   getPeopleError,
