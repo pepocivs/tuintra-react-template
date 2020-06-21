@@ -19,7 +19,7 @@ const TwoColumns = styled.div`
   grid-gap: 20px;
   grid-template-columns: auto auto;
   justify-content: space-between;
-  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape - 1}px) {
     grid-template-columns: auto;
     grid-gap: 0px;
   }
