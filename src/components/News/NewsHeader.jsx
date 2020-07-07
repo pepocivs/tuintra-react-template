@@ -57,6 +57,16 @@ const AwesomeSliderStyled = styled(AwesomeSlider)`
       -2px  1px 0px ${({theme}) => theme.clubOptions.principal_color_web},
       -2px  0px 0px ${({theme}) => theme.clubOptions.principal_color_web},
       -2px -1px 0px ${({theme}) => theme.clubOptions.principal_color_web};
+  };
+  .aws-sld__content>img {
+    -o-object-fit: contain;
+    object-fit: contain;
+  }
+  @media (max-width: ${({theme}) => theme.breakpoints.desktop}px) {
+    .aws-sld__content>img {
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
   }
 `;
 

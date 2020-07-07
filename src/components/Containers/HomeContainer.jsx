@@ -17,7 +17,7 @@ const HomeGridContainer = styled.div`
     "medio-izquierda medio-centro medio-derecha"
     "destacado destacado destacado"
     "pie-izquierda pie-centro pie-derecha";
-  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape}px) {
     grid-template-areas:
     "medio-izquierda"
     "medio-centro"
