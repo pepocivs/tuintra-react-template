@@ -37,7 +37,11 @@ const CardDescription = styled.div`
     min-height: 20px;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap; 
+    word-wrap: break-word;
   }
 `;
 

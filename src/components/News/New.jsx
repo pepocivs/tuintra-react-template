@@ -11,6 +11,10 @@ const Author = styled.div`
   color: ${({theme}) => theme.colors.darkGrey};
 `;
 
+const NewBody = styled.div`
+  font-size: 16px;
+`;
+
 const decode = (str) => {
   return str.replace(/&#(\d+);/g, function(match, dec) {
     return String.fromCharCode(dec);
@@ -24,11 +28,11 @@ function New({ selectedNew }) {
       <Card
         bgImage={selectedNew.image}
         title={selectedNew.title}
-        subtitle={selectedNew.subtitle}
+        outerText={selectedNew.subtitle}
         width="100%"
         height="40vw">
       </Card>
-      <div dangerouslySetInnerHTML={{__html: decode(selectedNew.new)}}></div>
+      <NewBody dangerouslySetInnerHTML={{__html: decode(selectedNew.new)}}></NewBody>
       <Author>
         {selectedNew.author} - <Moment format="DD/MM/YYYY" date={selectedNew.date}/>
       </Author>
