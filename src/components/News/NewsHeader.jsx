@@ -62,10 +62,20 @@ const AwesomeSliderStyled = styled(AwesomeSlider)`
     -o-object-fit: contain;
     object-fit: contain;
   }
+  .aws-sld__content>img.blured {
+    -o-object-fit: cover;
+    object-fit: cover;
+    filter: blur(20px);
+    -webkit-filter: blur(20px);
+    transform: scale(1.1); 
+  }
   @media (max-width: ${({theme}) => theme.breakpoints.desktop}px) {
     .aws-sld__content>img {
       -o-object-fit: cover;
       object-fit: cover;
+    }
+    .aws-sld__content>img.blured {
+      display: none;
     }
   }
 `;
