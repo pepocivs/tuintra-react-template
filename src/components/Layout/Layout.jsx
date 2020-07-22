@@ -11,6 +11,7 @@ import Menu from 'components/Layout/Menu';
 import TopFooter from 'components/Layout/Footer/TopFooter';
 import BottomFooter from 'components/Layout/Footer/BottomFooter';
 import SubSection from 'components/Layout/SubSection';
+import CookiesPolicy from 'components/CookiesPolicy/CookiesPolicy';
 
 /** Containers */
 import NotFound from 'components/Containers/NotFound';
@@ -87,6 +88,7 @@ function Layout({stateProps}) {
             </Switch>
           </MainSection>
           <FooterSection>
+            <CookiesPolicy></CookiesPolicy>
             <TopFooter footerLinks={footerLinks} />
             <BottomFooter clubInfo={clubInfo} widgets={widgets} />
           </FooterSection>
