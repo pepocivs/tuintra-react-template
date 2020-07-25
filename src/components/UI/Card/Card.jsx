@@ -42,12 +42,14 @@ const CardDescription = styled.div`
     white-space: -pre-wrap;
     white-space: -o-pre-wrap; 
     word-wrap: break-word;
+    line-height: 1;
   }
 `;
 
 const OuterText = styled.p`
   margin: 5px 0px;
   text-align: center;
+  line-height: 1;
 `;
 
 function Card({bgImage, title, subtitle, outerText, width, height, radius, shadow = true}) {

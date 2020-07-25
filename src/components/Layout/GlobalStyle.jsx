@@ -12,7 +12,8 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: ${theme.fonts.mainFont};
-    line-height: 1;
+    line-height: 1.5;
+    font-size: 15px;
     margin: 0;
     padding: 0;
     background-color: ${theme.colors.white};
