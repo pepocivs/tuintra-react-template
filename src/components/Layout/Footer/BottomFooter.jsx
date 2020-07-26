@@ -106,7 +106,7 @@ function BottomFooter({ clubInfo, widgets }) {
           </FooterContent>
         </FlexFooter>
         {(quote) ? <Quote bgColor={bgColor}>{quote.content.content}</Quote> : ''}
-        <Policies>
+        <Policies bgColor={bgColor}>
           <Link to="/politica-de-cookies">Politica de cookies</Link> | <Link to="/politica-de-privacidad">Política de Privacidad</Link> | <Link to="/aviso-legal">Aviso Legal</Link>
         </Policies>
       </FooterSection>

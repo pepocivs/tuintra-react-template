@@ -16,7 +16,7 @@ function LegalAdvice({clubInfo}) {
   return (
     <Container>
       <Title shadow="Aviso Legal">Aviso Legal</Title>
-      <p>{data.clubName}, provisto con CIF {data.contact.fiscalNumber}, dirección {data.contact.address} - {data.contact.postalCode} de {data.contact.city}, no puede asumir ninguna responsabilidad derivada del uso incorrecto, inapropiado o ilícito de la información aparecida en la página de Internet de {clubInfoDomain.tuintraDomain}</p>
+      <p>{data.clubName}, provisto con CIF {data.contact.fiscalNumber}, dirección {data.contact.address} - {data.contact.postalCode} de {data.contact.city}, no puede asumir ninguna responsabilidad derivada del uso incorrecto, inapropiado o ilícito de la información aparecida en la página de Internet de {clubInfoDomain.publicUrl}</p>
       <p>Con los límites establecidos en la ley, {data.clubName} no asume ninguna responsabilidad derivada de la falta de veracidad, integridad, actualización y precisión de los datos o informaciones que se contienen en sus páginas de Internet.</p>
       <p>Los contenidos e información no vinculan a {data.clubName} ni constituyen opiniones, consejos o asesoramiento legal de ningún tipo pues se trata meramente de un servicio ofrecido con carácter informativo y divulgativo.</p>
       <p>La página de Internet de {data.clubName} puede contener enlaces (links) a otras páginas de terceras partes que {data.clubName} no puede controlar. Por lo tanto, {data.clubName} no puede asumir responsabilidades por el contenido que pueda aparecer en páginas de terceros.</p>

@@ -14,5 +14,6 @@ const subdomain = getDomainEquivalences();
 export default {
   apiHost: 'https://api.tuintra.com',
   subdomain,
-  tuintraDomain: (subdomain.includes('.')) ? `http://www.${subdomain}` : `${subdomain}.tuintra.com`
+  tuintraDomain: (subdomain.includes('.')) ? `http://www.${subdomain}` : `${subdomain}.tuintra.com`,
+  publicUrl: (location.hostname.includes('.')) ? `https://www.${location.hostname}` : `https://${subdomain}.tuintra.com`,
 }

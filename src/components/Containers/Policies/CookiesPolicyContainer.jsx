@@ -15,7 +15,7 @@ function CookiesPolicy({clubInfo}) {
   return (
     <Container>
       <Title shadow="Cookies">Política de cookies</Title>
-      <p>{data.clubName} informa acerca del uso de las cookies en su página web: {clubInfoDomain.tuintraDomain}</p>
+      <p>{data.clubName} informa acerca del uso de las cookies en su página web: {clubInfoDomain.publicUrl}</p>
 
       <h2>¿Qué son las cookies?</h2>
       <p>Las cookies son archivos que se pueden descargar en su equipo a través de las páginas web. Son herramientas que tienen un papel esencial para la prestación de numerosos servicios de la sociedad de la información. Entre otros, permiten a una página web almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información obtenida, se pueden utilizar para reconocer al usuario y mejorar el servicio ofrecido.</p>
@@ -58,17 +58,17 @@ function CookiesPolicy({clubInfo}) {
         <li>Your online choices: www.youronlinechoices.com/es/</li>
       </ul>
       
-      <h2>Cookies utilizadas en {clubInfoDomain.tuintraDomain}</h2>
+      <h2>Cookies utilizadas en {clubInfoDomain.publicUrl}</h2>
       <p>A continuación se identifican las cookies que están siendo utilizadas en este portal así como su tipología y función:</p>
 
 
       <h2>Aceptación de la Política de cookies</h2>
-      <p>{clubInfoDomain.tuintraDomain} asume que usted acepta el uso de cookies. No obstante, muestra información sobre su Política de cookies en la parte inferior o superior de cualquier página del portal con cada inicio de sesión con el objeto de que usted sea consciente.</p>
+      <p>{clubInfoDomain.publicUrl} asume que usted acepta el uso de cookies. No obstante, muestra información sobre su Política de cookies en la parte inferior o superior de cualquier página del portal con cada inicio de sesión con el objeto de que usted sea consciente.</p>
       <p>Ante esta información es posible llevar a cabo las siguientes acciones:</p>
       <ul>
         <li>Aceptar cookies. No se volverá a visualizar este aviso al acceder a cualquier página del portal durante la presente sesión.</li>
         <li>Cerrar. Se oculta el aviso en la presente página.</li>
-        <li>Modificar su configuración. Podrá obtener más información sobre qué son las cookies, conocer la Política de cookies de {clubInfoDomain.tuintraDomain} y modificar la configuración de su navegador.</li>
+        <li>Modificar su configuración. Podrá obtener más información sobre qué son las cookies, conocer la Política de cookies de {clubInfoDomain.publicUrl} y modificar la configuración de su navegador.</li>
       </ul>
     </Container>
   )
