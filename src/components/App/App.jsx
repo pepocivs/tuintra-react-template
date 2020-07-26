@@ -11,6 +11,7 @@ import breakpoints from "helpers/breakpoints";
 import theme from "theme";
 
 /** Custom Layout */
+import ScrollToTop from "components/Layout/ScrollToTop";
 import Layout from "components/Layout/Layout";
 import Loading from 'components/Containers/Loading';
 
@@ -33,6 +34,7 @@ function App(props) {
   ReactGA.pageview(window.location.pathname + window.location.search);
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <ThemeProvider theme={{...theme, clubOptions: clubInfo.data.options}}>
         <ReactBreakpoints breakpoints={breakpoints}>
           <Layout stateProps={props}/>
