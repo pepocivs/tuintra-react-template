@@ -84,6 +84,9 @@ function Layout({stateProps}) {
                   return <Route key={menuItem._id} path={`/${route}/:id?/:lang?/:slug?`} component={Component} />
                 })
               }
+              <Route exact path="/aviso-legal" component={getComponentByRoute('avisoLegal')} />
+              <Route exact path="/politica-de-privacidad" component={getComponentByRoute('politicaPrivacidad')} />
+              <Route exact path="/politica-de-cookies" component={getComponentByRoute('politicaCookies')} />
               <Route component={NotFound} />
             </Switch>
           </MainSection>

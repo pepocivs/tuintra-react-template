@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 /** Helpers */
 import { isDarkColor } from "helpers/colors";
@@ -72,6 +73,11 @@ const SocialContainer = styled.div`
   }
 `;
 
+const Policies = styled.div`
+  text-align: center;
+  color: ${({bgColor}) => (isDarkColor(bgColor)) ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.5)"};
+`;
+
 function BottomFooter({ clubInfo, widgets }) {
   const quote = widgets.find(widget => widget.position === 'cita');
   const bgColor = clubInfo.options.secundary_color_web;
@@ -100,6 +106,9 @@ function BottomFooter({ clubInfo, widgets }) {
           </FooterContent>
         </FlexFooter>
         {(quote) ? <Quote bgColor={bgColor}>{quote.content.content}</Quote> : ''}
+        <Policies>
+          <Link to="/politica-de-cookies">Politica de cookies</Link> | <Link to="/politica-de-privacidad">Política de Privacidad</Link> | <Link to="/aviso-legal">Aviso Legal</Link>
+        </Policies>
       </FooterSection>
     </BottomFooterContainer>
   )

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { Link } from "react-router-dom";
+
 const MainContainer = styled.div`
   display: ${({acceptedCookie}) => (acceptedCookie) ? 'none': 'grid'};
   width: 100%;
@@ -85,7 +87,7 @@ export default function CookiesPolicy() {
         <CookiesPolicyContainer>
           <div>
             <p>Esta página utiliza cookies propias y de terceros con el fin de mejorar nuestros servicios y realizar analisis de uso de la web.</p>
-            <p>Si continúas navegando, consideramos que aceptas nuestra <a href="https://tuintra.com/politica-de-cookies.pdf" target="_blank" rel="noopener noreferrer">Politica de cookies</a>.</p>
+            <p>Si continúas navegando, consideramos que aceptas nuestra <Link to="/politica-de-cookies">Politica de cookies</Link>.</p>
           </div>
           <ButtonContainer>
             <AcceptButton type="button" onClick={acceptCookies}><span>Acepto</span></AcceptButton>

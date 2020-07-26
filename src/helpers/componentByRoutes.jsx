@@ -13,6 +13,10 @@ import PagesContainer from "components/Connectors/ConnectedPages";
 import ContactContainer from "components/Connectors/ConnectedContact";
 import HomeContainer from "components/Connectors/ConnectedHome";
 import DocumentationContainer from "components/Connectors/ConnectedDocumentation";
+import LegalAdviceContainer from "components/Connectors/ConnectedLegalAdvice";
+import PrivacyPolicyContainer from "components/Connectors/ConnectedPrivacyPolicy";
+import CookiesPolicyContainer from "components/Connectors/ConnectedCookiesPolicy";
+
 
 const components = {
   equipos: TeamsContainer,
@@ -26,7 +30,10 @@ const components = {
   palmares: HistoricContainer,
   links: LinksContainer,
   page: PagesContainer,
-  inicio: HomeContainer
+  inicio: HomeContainer,
+  avisoLegal: LegalAdviceContainer,
+  politicaPrivacidad: PrivacyPolicyContainer,
+  politicaCookies: CookiesPolicyContainer,
 };
 
 export default route => {
