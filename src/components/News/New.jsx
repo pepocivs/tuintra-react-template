@@ -12,7 +12,9 @@ const Author = styled.div`
 `;
 
 const NewBody = styled.div`
-  font-size: 16px;
+  font-family: arial;
+  text-align: justify;
+  font-size: 18px;
 `;
 
 const decode = (str) => {
