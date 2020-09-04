@@ -22,7 +22,7 @@ function Team({ selectedTeam }) {
         title={selectedTeam.teamName}
         subtitle={`${selectedTeam.category} ${selectedTeam.gender}`}
         width="100%"
-        height="50vw">
+        height="50vh">
       </Card>
       <h3>Staff</h3>
 			<PlayersContainer>

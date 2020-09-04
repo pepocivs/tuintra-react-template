@@ -5,6 +5,7 @@ import NotFound from "components/Containers/NotFound";
 import CompetitionDetail from "./CompetitionDetail";
 
 const geyStandingKey = (standing, group) => {
+  if (!standing || Object.keys(standing).length === 0) return 'no-standing';
   if (group === 'unique') return Object.keys(standing)[0];
   return Object.keys(standing).filter(key => key.includes('-group-'+group.toLowerCase())).pop();
 }

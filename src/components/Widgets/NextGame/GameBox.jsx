@@ -91,8 +91,8 @@ function GameBox({fetchStats, stats, teamCompetitionId, nextGames}) {
           <TeamShield src={game.away.shield[100]} alt={game.away.name}/>
           <TeamName position="left">{game.local.name}</TeamName>
           <TeamName position="right">{game.away.name}</TeamName>
-          <PreviousStats gameId={game._id} data={stats.data[`${game.local._id}-${game.competitionId}`] || []} />
-          <PreviousStats gameId={game._id} data={stats.data[`${game.away._id}-${game.competitionId}`] || []} />
+          <PreviousStats gameId={game._id} data={(stats.data || {})[`${game.local._id}-${game.competitionId}`] || []} />
+          <PreviousStats gameId={game._id} data={(stats.data || {})[`${game.away._id}-${game.competitionId}`] || []} />
         </GameRow>
         <ExtraInfo>{game.competition.name} {game.competition.category} {game.competition.gender}</ExtraInfo>
       </ScheduleBox>

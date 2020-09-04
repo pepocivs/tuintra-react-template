@@ -23,7 +23,7 @@ const CardImage = styled.div`
 	  height: ${({width, height}) => 
       (height && width && parseInt(width.substr(0, width.length - 2)) > 150) 
         ? '220px' 
-        : height || '178px'
+        : (height && height.includes('vh')) ? height.replace('vh', 'vw') : height || '178px'
     };
   }
 `;
