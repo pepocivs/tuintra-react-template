@@ -48,12 +48,12 @@ function NextGame({fetchCalendar, calendar, widgetInfo}) {
   const nextGames = calendar.data.filter(game => 
     Object.values(widgetInfo.content).includes(game.local._id.toString()) || 
     Object.values(widgetInfo.content).includes(game.away._id.toString())
-  );
-  const teamCompetitionId = nextGames.map(nextGame => [`${nextGame.local._id}-${nextGame.competitionId}`, `${nextGame.away._id}-${nextGame.competitionId}`]).flat()
+  ).map(game => ({ ...game, showLastResults: widgetInfo.showLast }));
+  const teamCompetitionId = (widgetInfo.showLast) ? nextGames.map(nextGame => [`${nextGame.local._id}-${nextGame.competitionId}`, `${nextGame.away._id}-${nextGame.competitionId}`]).flat() : [];
   return (
     <>
       <h2>{widgetInfo.title}</h2>
-      {(nextGames.length === 0) ? <Alert msg="No hay partidos la próxima semana" /> : ''} 
+      {(nextGames.length === 0) ? <Alert msg="No hay partidos la próxima semana" /> : ''}
       <GameBox nextGames={nextGames} teamCompetitionId={teamCompetitionId} />
     </>
   )
