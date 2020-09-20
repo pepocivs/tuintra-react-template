@@ -6,7 +6,7 @@ import TeamsExpositor from "components/TeamsExpositor/TeamsExpositor";
 import Schedule from "components/Schedule/Schedule";
 import Standings from "components/Standings/Standings";
 
-function CompetitionDetail({title, shadow, teams, calendar, standing}) {
+function CompetitionDetail({title, shadow, teams, calendar, standing, showStandings}) {
   if (!calendar) return null;
   return (
     <>
@@ -14,7 +14,7 @@ function CompetitionDetail({title, shadow, teams, calendar, standing}) {
       <TeamsExpositor teams={teams}></TeamsExpositor>
       <Schedule calendar={calendar}></Schedule>
       <br />
-      <Standings standing={standing}></Standings>
+      {(showStandings ? <Standings standing={standing}></Standings> : '')}
     </>
   )
 }

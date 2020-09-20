@@ -51,7 +51,7 @@ function Schedule({calendar}) {
         ))}
       </GameDayContainer>
       <h3>Jornada {setGame}</h3>
-      {calendar[setGame].map(game => <ScheduleDay key={game._id} game={game} />)}
+      {(calendar[setGame] || []).map(game => <ScheduleDay key={game._id} game={game} />)}
     </>
   )
 }

@@ -31,7 +31,8 @@ function Competition({selectedCompetition, selectedCalendar, selectedStanding}) 
     const teams = (group === 'unique') 
       ? selectedCompetition.teams
       : getGroupTeams(selectedCompetition.teams, selectedCalendar[group]);
-    const standings = (selectedStanding[standingKey] && selectedStanding[standingKey].standings)
+    const showStandings = selectedCalendar[group][currentGameDay][0].gameType === 'Liga regular';
+    const standings = (showStandings && selectedStanding[standingKey] && selectedStanding[standingKey].standings)
       ? selectedStanding[standingKey].standings[currentGameDay]
       : [];
     return (
@@ -42,6 +43,7 @@ function Competition({selectedCompetition, selectedCalendar, selectedStanding}) 
         teams={teams}
         calendar={selectedCalendar[group]}
         standing={standings}
+        showStandings={showStandings}
       />
     )
   })
