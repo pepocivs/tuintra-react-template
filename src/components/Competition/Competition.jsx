@@ -13,7 +13,7 @@ const geyStandingKey = (standing, group) => {
 const getLastGameDay = (selectedStanding, standingKey) => {
   return (selectedStanding[standingKey])
     ? Math.max.apply(null, Object.keys(selectedStanding[standingKey].standings))
-    : 0;
+    : 1;
 }
 
 const getGroupTeams = (allTeams, calendar) => {
@@ -40,7 +40,7 @@ function Competition({selectedCompetition, selectedCalendar, selectedStanding}) 
         key={standingKey}
         title={`${selectedCompetition.competitionName}${groupName}`}
         shadow={`${selectedCompetition.category} ${selectedCompetition.gender}`}
-        teams={teams}
+        teams={teams.filter(t => t.type !== "2")}
         calendar={selectedCalendar[group]}
         standing={standings}
         showStandings={showStandings}
