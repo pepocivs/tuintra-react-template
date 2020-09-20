@@ -42,7 +42,7 @@ const TeamShield = styled.img`
 `;
 
 const ExtraInfo = styled.div`
-  font-size: 10px;
+  font-size: 12px;
   font-style: italic;
   text-align: center;
 `;
@@ -50,6 +50,7 @@ const ExtraInfo = styled.div`
 function ScheduleDay({game}) {
   return (
     <ScheduleRow>
+      <ExtraInfo>{game.gameType}</ExtraInfo>
       <ExtraInfo><Moment format="DD/MM/YYYY - HH:mm" date={game.date}/></ExtraInfo>
       <GameRow>
         <TeamShield src={game.local.shield[100]} alt={game.local.name}/>
