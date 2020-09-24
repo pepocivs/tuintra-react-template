@@ -22,7 +22,7 @@ const TopFooterContiner = styled.div`
 
 const LinkContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({categoryId}) => (categoryId === 9) ? 'center' : 'space-between'};
   flex-flow: wrap;
   a {
     margin: 5px;
@@ -33,7 +33,10 @@ const FooterImage = styled.img`
   -webkit-filter: grayscale(100%) opacity(0.5) brightness(1) contrast(0.85);
   filter: grayscale(100%) opacity(0.5) brightness(1) contrast(0.85);
   transition: 0.5s;
-  max-width: 100px;
+  max-width: ${({categoryId}) => (categoryId === 9) ? '500px' : '100px'};
+  @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape}px) {
+    max-width: ${({categoryId}) => (categoryId === 9) ? '100%' : '100px'};
+  }
   :hover {
     -webkit-filter: grayscale(0%) opacity(1) brightness(1) contrast(1);
     filter: grayscale(0%) opacity(1) brightness(1) contrast(1);
@@ -51,10 +54,10 @@ function TopFooter({ footerLinks }) {
                 ? (<Title shadow={categoryLink.categoryName}>{categoryLink.categoryName}</Title>) 
                 : ''
             }
-            <LinkContainer>
+            <LinkContainer categoryId={categoryLink.categoryId}>
               {categoryLink.links.map(link => (
                 <a key={link.linkName} href={link.url} rel="noopener noreferrer" target="_blank">
-                  <FooterImage src={link.image} />
+                  <FooterImage categoryId={categoryLink.categoryId} src={link.image} />
                 </a>
               ))}
             </LinkContainer>
