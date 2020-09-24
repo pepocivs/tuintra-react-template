@@ -44,6 +44,9 @@ const CardDescription = styled.div`
     word-wrap: break-word;
     line-height: 1;
   }
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
+    top: calc(${({height}) => (height && height.includes('vh')) ? height.replace('vh', 'vw') : height} - 55px);
+  }
 `;
 
 const OuterText = styled.p`
