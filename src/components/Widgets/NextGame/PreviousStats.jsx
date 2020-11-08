@@ -8,7 +8,7 @@ const LastResultContainer = styled.div`
 
 const LastResultBox = styled.div`
   border-radius: 5px;
-  padding: ${({index}) => (index === 4) ? '4px': '3px'};
+  padding: ${({index}) => (index === 4) ? '1px': '0px'};
   margin: 1px;
   width: ${({index}) => (index === 4) ? '24px': '20px'};
   height: ${({index}) => (index === 4) ? '24px': '20px'};
