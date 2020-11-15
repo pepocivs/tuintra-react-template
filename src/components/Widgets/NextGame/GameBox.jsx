@@ -85,7 +85,7 @@ const GameType = styled.div`
   transform-origin: 0px 0px;
   transform: rotate(-90deg);
   text-align: center;
-  font-size: 34px;
+  font-size: 22px;
   color: ${({theme}) => theme.colors.darkGrey};
 `;
 

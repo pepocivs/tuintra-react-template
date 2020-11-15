@@ -53,7 +53,7 @@ function NextGame({fetchCalendar, calendar, widgetInfo}) {
   return (
     <>
       <h2>{widgetInfo.title}</h2>
-      {(nextGames.length === 0) ? <Alert msg="No hay partidos la próxima semana" /> : ''}
+      {(nextGames.length === 0) ? <Alert icon="info" iconColor="#aec6cf" msg="No hay partidos la próxima semana" /> : ''}
       <GameBox nextGames={nextGames} teamCompetitionId={teamCompetitionId} />
     </>
   )

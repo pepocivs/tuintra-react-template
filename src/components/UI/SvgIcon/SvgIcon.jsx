@@ -38,7 +38,7 @@ function getSvgComponent(name) {
     info: Info,
     danger: Danger
   }
-  return components[name] || Address;
+  return components[name] || Info;
 }
 
 export default SvgIcon;
