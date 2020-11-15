@@ -26,7 +26,7 @@ const GameDayBox = styled.div`
     ? theme.clubOptions.secundary_color_web 
     : theme.clubOptions.principal_color_web};
   color: ${({selected, theme}) => (selected) 
-    ? theme.colors.white 
+    ? theme.colors.dark 
     : theme.colors.white};
 `;
 

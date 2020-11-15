@@ -17,10 +17,6 @@ const StandingContainer = styled.div`
       ? theme.colors.grey 
       : theme.colors.light
   };
-  color: ${({theme, header}) => (header) 
-    ? theme.colors.white 
-    : ''
-  };
 `;
 
 const TableHead = styled.div`
