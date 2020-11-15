@@ -47,7 +47,7 @@ function Team({ selectedTeam }) {
               key={player._id}
               bgImage={player.picture || '/assets/general/p_nofoto.png'}
               title={player.name.public}
-              subtitle={`#${player.number} ${(player.rol) ? `- ${player.rol}` : ''}`}
+              subtitle={`#${player.number} ${(player.rol.length > 1) ? `- ${player.rol}` : ''}`}
               width="150px"
               height="200px">
             </Card>
