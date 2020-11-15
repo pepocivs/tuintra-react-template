@@ -1,12 +1,16 @@
 import { createSelector } from "reselect";
 import { get, isEmpty } from "lodash";
-import { sortBy } from "../../helpers/sortBy";
+import { sortBy, sortByArray } from "../../helpers/sortBy";
 
 const sortCompetitions = (competitions) => {
+  const categoryIdPriority = [8, 10, 9, 7, 6, 5, 4, 3, 2, 1];
+  const competitionPriority = ['Honor', 'Liga', 'Copa', 'Sector'];
   if (Object.keys(competitions).length === 0) return {};
   sortBy(competitions, 'sportId');
   sortBy(competitions, 'genderId');
-  sortBy(competitions, 'categoryId', -1);
+  sortByArray(competitions, 'competitionName', competitionPriority);
+  sortByArray(competitions, 'categoryId', categoryIdPriority);
+  sortBy(competitions, 'scope');
   return competitions;
 }
 

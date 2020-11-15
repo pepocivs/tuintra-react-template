@@ -6,8 +6,8 @@ const arrayIndexContains = (array, value) => {
   let findedIndex = -1;
   // eslint-disable-next-line array-callback-return
   array.map((element, index) => {
-    if (value.includes(element)) findedIndex = index;
-  })  
+    if (value === element || (value.includes && value.includes(element))) findedIndex = index;
+  });
   return findedIndex;
 }
 
