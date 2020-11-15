@@ -10,11 +10,16 @@ const StandingContainer = styled.div`
   align-items: center;
   grid-gap: 5px 10px;
   padding: 5px;
+  border-radius: ${({header}) => (header) ? '5px 5px 0px 0px' : '0px'};
   background-color: ${({theme, header, reverse}) => (header) 
     ? theme.clubOptions.secundary_color_web 
     : (reverse) 
       ? theme.colors.grey 
       : theme.colors.light
+  };
+  color: ${({theme, header}) => (header) 
+    ? theme.colors.white 
+    : ''
   };
 `;
 
