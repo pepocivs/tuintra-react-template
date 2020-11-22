@@ -5,6 +5,7 @@ import NotFound from 'components/Containers/NotFound';
 /** Connected Containers */
 import NewsContainer from "components/Connectors/ConnectedNews";
 import TeamsContainer from "components/Connectors/ConnectedTeams";
+import StreamsContainer from "components/Connectors/ConnectedStreams";
 import CompetitionsContainer from "components/Connectors/ConnectedCompetitions";
 import LinksContainer from "components/Connectors/ConnectedLinks";
 import DirectiveContainer from "components/Connectors/ConnectedDirective";
@@ -34,6 +35,7 @@ const components = {
   avisoLegal: LegalAdviceContainer,
   politicaPrivacidad: PrivacyPolicyContainer,
   politicaCookies: CookiesPolicyContainer,
+  streams: StreamsContainer,
 };
 
 export default route => {

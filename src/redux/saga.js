@@ -4,6 +4,7 @@ import { all } from "redux-saga/effects";
 import { watchFetchClubInfo } from "./clubInfo/saga";
 import { watchFetchLinks } from "./links/saga";
 import { watchFetchTeams } from "./teams/saga";
+import { watchFetchStreams } from "./streams/saga";
 import { watchFetchNews } from "./news/saga";
 import { watchFetchCompetitions } from "./competitions/saga";
 import { watchFetchCalendar } from "./calendar/saga";
@@ -20,6 +21,7 @@ const rootSaga = function* rootSaga() {
     watchFetchClubInfo(),
     watchFetchLinks(),
     watchFetchTeams(),
+    watchFetchStreams(),
     watchFetchNews(),
     watchFetchCompetitions(),
     watchFetchCalendar(),
