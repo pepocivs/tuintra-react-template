@@ -129,7 +129,6 @@ function StreamsContainer({fetchStreams, streams = []}) {
   }, [fetchStreams]);
   if (!streams.ready) return <Loading />;
   if (streams.data.length === 0) return <><Title shadow="Streaming">Partidos en directo</Title><Alert icon="info" iconColor="#aec6cf" msg="No se han encontrado próximos streamings" /></>
-  console.log(streams.data[0]);
   return (
     <>
       <Title shadow="Streaming">Partidos en directo</Title>

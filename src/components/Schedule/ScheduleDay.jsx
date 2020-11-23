@@ -50,7 +50,7 @@ const ExtraInfo = styled.div`
 function ScheduleDay({game}) {
   return (
     <ScheduleRow>
-      <ExtraInfo>{game.gameType}</ExtraInfo>
+      <ExtraInfo title={game._id}>{game.gameType}</ExtraInfo>
       <ExtraInfo><Moment format="DD/MM/YYYY - HH:mm" date={game.date}/></ExtraInfo>
       <GameRow>
         <TeamShield src={game.local.shield[100]} alt={game.local.name}/>
