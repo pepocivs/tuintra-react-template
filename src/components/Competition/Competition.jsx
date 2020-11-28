@@ -23,7 +23,7 @@ const getGroupTeams = (allTeams, calendar) => {
 
 function Competition({selectedCompetition, selectedCalendar, selectedStanding}) {
   if (!selectedCompetition) return <NotFound />;
-  return Object.keys(selectedCalendar).map(group => {
+  return Object.keys(selectedCalendar).sort().map(group => {
     const groupName = (group === 'unique') ? '' : ` - Grupo ${group}`;
     const standingKey = geyStandingKey(selectedStanding, group);
     if (!standingKey) return null;
@@ -31,13 +31,13 @@ function Competition({selectedCompetition, selectedCalendar, selectedStanding}) 
     const teams = (group === 'unique') 
       ? selectedCompetition.teams
       : getGroupTeams(selectedCompetition.teams, selectedCalendar[group]);
-    const showStandings = selectedCalendar[group][currentGameDay][0].gameType === 'Liga regular';
+    const showStandings = ((((selectedCalendar || {})[group] || {})[currentGameDay] || [])[0] || {}).gameType === 'Liga regular';
     const standings = (showStandings && selectedStanding[standingKey] && selectedStanding[standingKey].standings)
       ? selectedStanding[standingKey].standings[currentGameDay]
       : [];
     return (
       <CompetitionDetail
-        key={standingKey}
+        key={`${standingKey}-${groupName}`}
         title={`${selectedCompetition.competitionName}${groupName}`}
         shadow={`${selectedCompetition.category} ${selectedCompetition.gender}`}
         teams={teams.filter(t => t.type !== "2")}

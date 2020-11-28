@@ -16,16 +16,17 @@ const TeamShield = styled.img`
 `;
 
 function TeamsExpositor({teams}) {
-  return (
-    <ShieldContainer>
-      {teams.map(team => {
-        return (team.type !== "3") 
-          ? <TeamShield key={team._id} src={team.shield[100]} alt={team.teamName} title={team.teamName}></TeamShield>
-          : null
-      }
-      )}
-    </ShieldContainer>
-  )
+  return (teams.length > 0) ?
+    (
+      <ShieldContainer>
+        {teams.map(team => {
+          return (team.type !== "3") 
+            ? <TeamShield key={team._id} src={team.shield[100]} alt={team.teamName} title={team.teamName}></TeamShield>
+            : null
+        }
+        )}
+      </ShieldContainer>
+    ) : '';
 }
 
 export default TeamsExpositor;
