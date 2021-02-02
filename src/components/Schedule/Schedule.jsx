@@ -64,7 +64,7 @@ function getGameDay(calendar) {
     const firstGame = calendar[gameDay][0];
     const gameDate = new Date(firstGame.date);
     if (currentGameDay === 1 && gameDate > currentDate) currentGameDay = gameDay;
-  })
+  });
   return currentGameDay;
 }
 
