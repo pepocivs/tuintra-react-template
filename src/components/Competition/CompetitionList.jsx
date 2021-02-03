@@ -17,6 +17,9 @@ const CompetitionContainer = styled.div`
   justify-content: flex-start;
   text-align: center;
   font-size: 10px;
+  @media (max-width: ${({theme}) => theme.breakpoints.desktop}px) {
+    justify-content: space-around;
+  }
 `;
 
 function CompetitionList({competitions}) {
