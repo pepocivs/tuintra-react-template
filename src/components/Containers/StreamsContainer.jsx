@@ -123,6 +123,30 @@ const GameType = styled.div`
   color: ${({theme}) => theme.colors.darkGrey};
 `;
 
+const YoutubeContainerApunt = styled.div`
+  position: relative;
+  width: 100%;
+  height: 0px;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+`;
+
+
+const YoutubeIframeApunt = styled.iframe`
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  top: -305px;
+  left: -14px;
+  -webkit-transform: scale(1.4);
+  -webkit-transform-origin: 0 0;
+  @media (max-width: ${({theme}) => theme.breakpoints.mobileLandscape}px) {
+    top: -154px;
+    -webkit-transform: scale(1.13);
+  }
+
+`;
+
 function StreamsContainer({fetchStreams, streams = []}) {
   useEffect(() => {
     fetchStreams();
@@ -167,18 +191,34 @@ function StreamsContainer({fetchStreams, streams = []}) {
                 <GameType hasResults={stream.showLastResults}>{stream.gameType}</GameType>
               </GameTypeContainer>
             </ScheduleBox>
-            <a href={`https://youtu.be/${stream.youtubeId}`} target="_blank" rel="noopener noreferrer">Ver en Youtube: https://youtu.be/{stream.youtubeId}</a>
-            <YoutubeContainer>
-              <YoutubeIframe
-                src={`https://www.youtube.com/embed/${stream.youtubeId}`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen>
-              </YoutubeIframe>
-            </YoutubeContainer>
-          </StreamContainer>
+            {
+              (stream.youtubeId === 'apunt')
+              ? (
+                <>
+                  <a href={`https://apuntmedia.es/va/directe/tv`} target="_blank" rel="noopener noreferrer">Ver en Apunt: https://apuntmedia.es/va/directe/tv</a>
+                  <YoutubeContainerApunt>
+                    <YoutubeIframeApunt src="https://apuntmedia.es/va/directe/tv" frameBorder="0"></YoutubeIframeApunt>
+                  </YoutubeContainerApunt>
+                </>
+              )
+              : (
+                <>
+                  <a href={`https://youtu.be/${stream.youtubeId}`} target="_blank" rel="noopener noreferrer">Ver en Youtube: https://youtu.be/{stream.youtubeId}</a>
+                  <YoutubeContainer>
+                    <YoutubeIframe
+                      src={`https://www.youtube.com/embed/${stream.youtubeId}`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen>
+                    </YoutubeIframe>
+                  </YoutubeContainer>
+                </>
+              )
+            }
+            </StreamContainer>
         ))
       }
+    
     </>
   );
 }
