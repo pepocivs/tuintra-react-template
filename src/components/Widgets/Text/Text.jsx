@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import styled from "styled-components";
 
-const cleanString = (str) => str.replace(/'cd'/g, '"').replace(/'cs'/g, "'");
-const getScript = (str) => {
+const cleanString = (str = '') => str.replace(/'cd'/g, '"').replace(/'cs'/g, "'");
+const getScript = (str = '') => {
   if (!str.includes('<script>')) return null;
   return str.split('<script>').pop().split('</script>')[0];
 }
