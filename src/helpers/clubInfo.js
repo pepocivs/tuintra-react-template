@@ -5,6 +5,7 @@ const getDomainEquivalences = () => {
     'ginerdelosrios.es': 'ginerdelosrios',
     'inefhockey.com': 'inef',
     'chmadrid.es': 'chmadrid',
+    'chmlasrozas.es': 'chmadrid',
     'fsquart.tuintra.es': 'fsquart',
     'chpozuelo.tuintra.es': 'chpozuelo'
   };
