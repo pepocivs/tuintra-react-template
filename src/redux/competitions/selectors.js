@@ -3,7 +3,7 @@ import { get, isEmpty } from "lodash";
 import { sortBy, sortByArray } from "../../helpers/sortBy";
 
 const sortCompetitions = (competitions) => {
-  const categoryIdPriority = [8, 10, 9, 7, 6, 5, 4, 3, 2, 1];
+  const categoryIdPriority = [9, 11, 10, 8, 7, 6, 5, 4, 3, 2, 1];
   const competitionPriority = ['Honor', 'España', 'Liga', 'Copa', 'Sector'];
   const scopePriority = ['Mundial', 'Internacional', 'Nacional', 'Territorial', 'Regional', 'Provincial', 'Local', 'Escolar'];
   if (Object.keys(competitions).length === 0) return {};

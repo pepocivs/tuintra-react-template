@@ -4,7 +4,8 @@ import { sortBy, sortByArray } from "../../helpers/sortBy";
 
 const sortTeams = (teams) => {
   if (Object.keys(teams).length === 0) return {};
-  const categoryIdPriority = [8, 10, 9, 7, 6, 5, 4, 3, 2, 1];
+  const categoryIdPriority = [9, 11, 10, 8, 7, 6, 5, 4, 3, 2, 1];
+  sortBy(teams, 'teamName');
   sortBy(teams, 'letra');
   sortBy(teams, 'genderId');
   sortByArray(teams, 'categoryId', categoryIdPriority);
