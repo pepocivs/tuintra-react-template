@@ -4,6 +4,9 @@ import styled from "styled-components";
 /** Custom Components */
 import ScheduleDay from "./ScheduleDay";
 
+/** Helpers */
+import { sortBy } from "../../helpers/sortBy";
+
 const GameDayContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, 30px);
@@ -43,7 +46,7 @@ function Schedule({calendar}) {
         {Object.keys(calendar).map(gameDay => (
           <GameDayBox
             key={`day${gameDay}`}
-            selected={(setGame === gameDay)}
+            selected={(setGame.toString() === gameDay)}
             game-day$={gameDay}
             onClick={setGameDay}>
             {gameDay}
@@ -57,15 +60,17 @@ function Schedule({calendar}) {
 }
 
 function getGameDay(calendar) {
-  let currentGameDay = 1;
   const currentDate = new Date();
-  // eslint-disable-next-line array-callback-return
-  Object.keys(calendar).map(gameDay => {
-    const firstGame = calendar[gameDay][0];
-    const gameDate = new Date(firstGame.date);
-    if (currentGameDay === 1 && gameDate > currentDate) currentGameDay = gameDay;
-  });
-  return currentGameDay;
+  const finishedLeague = !!(Object.keys(calendar).map(gameDay => calendar[gameDay].map(game => new Date(game.date) > currentDate)).flat().indexOf(true) === -1);
+  const futureDays = Object.keys(calendar).map(gameDay => {
+    return calendar[gameDay].map(game => {
+      const gameDate = new Date(game.date);
+      return (finishedLeague)
+        ? gameDay
+        : (gameDate > currentDate) ? {gameDay, date: game.date} : null;
+    });
+  }).flat();
+  return (finishedLeague) ? Math.max.apply(null, futureDays) : sortBy(futureDays.filter(Boolean), 'date')[0]?.gameDay;
 }
 
 export default Schedule;
