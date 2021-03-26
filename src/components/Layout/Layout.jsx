@@ -88,6 +88,7 @@ function Layout({stateProps}) {
               <Route exact path="/politica-de-privacidad" component={getComponentByRoute('politicaPrivacidad')} />
               <Route exact path="/politica-de-cookies" component={getComponentByRoute('politicaCookies')} />
               <Route exact path="/partidos-en-directo" component={getComponentByRoute('streams')} />
+              <Route exact path="/tienda" component={getComponentByRoute('shop')} />
               <Route component={NotFound} />
             </Switch>
           </MainSection>

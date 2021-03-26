@@ -1,0 +1,11 @@
+const FETCH_SHOP = "SHOP/FETCH";
+const FETCH_SHOP_SUCCESS = "SHOP/FETCH_SUCCESS";
+const FETCH_SHOP_FAILURE = "SHOP/FETCH_FAILURE";
+
+const types = {
+  FETCH_SHOP,
+  FETCH_SHOP_SUCCESS,
+  FETCH_SHOP_FAILURE
+};
+
+export default types;

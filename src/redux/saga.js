@@ -5,6 +5,7 @@ import { watchFetchClubInfo } from "./clubInfo/saga";
 import { watchFetchLinks } from "./links/saga";
 import { watchFetchTeams } from "./teams/saga";
 import { watchFetchStreams } from "./streams/saga";
+import { watchFetchShop } from "./shop/saga";
 import { watchFetchNews } from "./news/saga";
 import { watchFetchCompetitions } from "./competitions/saga";
 import { watchFetchCalendar } from "./calendar/saga";
@@ -22,6 +23,7 @@ const rootSaga = function* rootSaga() {
     watchFetchLinks(),
     watchFetchTeams(),
     watchFetchStreams(),
+    watchFetchShop(),
     watchFetchNews(),
     watchFetchCompetitions(),
     watchFetchCalendar(),

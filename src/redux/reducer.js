@@ -4,6 +4,7 @@ import clubData from "redux/clubInfo/reducer";
 import links from "redux/links/reducer";
 import teams from "redux/teams/reducer";
 import streams from "redux/streams/reducer";
+import shop from "redux/shop/reducer";
 import news from "redux/news/reducer";
 import competitions from "redux/competitions/reducer";
 import calendar from "redux/calendar/reducer";
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   links,
   teams,
   streams,
+  shop,
   news,
   competitions,
   calendar,
