@@ -26,8 +26,7 @@ function Competition({selectedCompetition, selectedCalendar, selectedStanding}) 
   return Object.keys(selectedCalendar).sort().map(group => {
     const groupName = (group === 'unique') ? '' : ` - Grupo ${group}`;
     const standingKey = geyStandingKey(selectedStanding, group);
-    if (!standingKey) return null;
-    const currentGameDay = getLastGameDay(selectedStanding, standingKey);
+    const currentGameDay = (standingKey) ? getLastGameDay(selectedStanding, standingKey) : 1;
     const teams = (group === 'unique') 
       ? selectedCompetition.teams
       : getGroupTeams(selectedCompetition.teams, selectedCalendar[group]);
@@ -38,7 +37,7 @@ function Competition({selectedCompetition, selectedCalendar, selectedStanding}) 
     return (
       <CompetitionDetail
         key={`${standingKey}-${groupName}`}
-        title={`${selectedCompetition.competitionName}${groupName}`}
+        title={`${selectedCompetition.competitionName} ${selectedCompetition.sport} ${groupName}`}
         shadow={`${selectedCompetition.category} ${selectedCompetition.gender}`}
         teams={teams.filter(t => t.type !== "2")}
         calendar={selectedCalendar[group]}
