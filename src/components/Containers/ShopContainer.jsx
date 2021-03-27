@@ -28,10 +28,7 @@ const ItemsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);
   grid-gap: 20px;
-  justify-content: space-between;
-  @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
-    grid-template-columns: repeat(auto-fit, 100%);
-  }
+  justify-content: space-evenly;
 `;
 
 function ShopContainer({fetchShop, shop = []}) {
@@ -54,7 +51,7 @@ function ShopContainer({fetchShop, shop = []}) {
                   title={item.name}
                   subtitle={item.price}
                   outerText={item.description}
-                  shadow={true}
+                  bgPosition="top"
                   width="250px"
                   height="333px">
                 </Card>

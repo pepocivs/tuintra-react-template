@@ -9,7 +9,7 @@ const CardImage = styled.div`
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) ${({gradient}) => gradient}%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) ${({gradient}) => gradient}%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: ${({bgPosition}) => bgPosition || 'center'};;
 	width: ${({width}) => width || '250px'};
 	height: ${({height}) => height || '178px'};
 	padding: 10px;
@@ -22,7 +22,7 @@ const CardImage = styled.div`
     };
 	  height: ${({width, height}) => 
       (height && width && parseInt(width.substr(0, width.length - 2)) > 150) 
-        ? '220px' 
+        ? height
         : (height && height.includes('vh')) ? height.replace('vh', 'vw') : height || '178px'
     };
   }
@@ -61,7 +61,7 @@ const OuterText = styled.p`
   line-height: 1;
 `;
 
-function Card({bgImage, title, subtitle, outerText, width, height, radius, shadow = true}) {
+function Card({bgImage, title, subtitle, outerText, width, height, radius, shadow = true, bgPosition}) {
   const gradient = (shadow) ? (width > height) ? 30 : 60 : 100;
   return (
     <div>
@@ -71,7 +71,8 @@ function Card({bgImage, title, subtitle, outerText, width, height, radius, shado
         height={height}
         radius={radius}
         gradient={gradient}
-        shadow={shadow}>
+        shadow={shadow}
+        bgPosition={bgPosition}>
         <CardDescription height={height}>
           <h2>{title}</h2>
           <p>{subtitle}</p>
