@@ -19,14 +19,29 @@ const ShopCatalogContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 380px;
   column-gap: 30px;
+  margin-bottom: 30px;
   @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
     grid-template-columns: 1fr;
   }
 `;
 
+const LinkContainer = styled.div`
+  display: flex;
+  flex-flow: wrap;
+  column-gap: 45px;
+`;
+
+const LinkContent = styled.div`
+  width: 128px;
+`;
+
+const FileName = styled.p`
+  text-align: center;
+`;
+
 const ItemsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 250px);
+  grid-template-columns: repeat(auto-fit, 300px);
   grid-gap: 20px;
   justify-content: space-evenly;
 `;
@@ -60,6 +75,16 @@ function ShopContainer({fetchShop, shop = []}) {
           </ItemsContainer>
           <OrderForm src={`https://docs.google.com/forms/d/e/${shopData.form}/viewform?embedded=true`}>Cargando…</OrderForm>
         </ShopCatalogContainer>
+        <LinkContainer>
+          {
+            shopData.files.map((file) => (
+              <LinkContent>
+                <a href={file.link} target="_blank"><img src={`/assets/extensions/${file.extension}.png`} alt={`File extension ${file.extension}`} /></a>
+                <FileName>{file.fileName}</FileName>
+              </LinkContent>
+            ))
+          }
+        </LinkContainer>
       </div>
     ))
   );
