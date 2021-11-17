@@ -40,9 +40,9 @@ const NewImage = styled.img`
   max-height: 100%;
   max-width: 100%;
   height: 100%;
+  width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
-  width: auto;
   transition: opacity 2.4s ease-in;
   box-sizing: inherit;
 `;
