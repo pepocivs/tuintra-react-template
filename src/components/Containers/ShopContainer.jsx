@@ -79,7 +79,7 @@ function ShopContainer({fetchShop, shop = []}) {
           {
             shopData.files.map((file) => (
               <LinkContent>
-                <a href={file.link} target="_blank"><img src={`/assets/extensions/${file.extension}.png`} alt={`File extension ${file.extension}`} /></a>
+                <a href={file.link} target="_blank" rel="noreferrer"><img src={`/assets/extensions/${file.extension}.png`} alt={`File extension ${file.extension}`} /></a>
                 <FileName>{file.fileName}</FileName>
               </LinkContent>
             ))
