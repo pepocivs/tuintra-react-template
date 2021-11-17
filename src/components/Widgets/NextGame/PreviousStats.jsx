@@ -4,6 +4,7 @@ import styled from "styled-components";
 const LastResultContainer = styled.div`
   display: flex;
   align-items: center;
+  ${({vertical}) => (vertical) ? 'flex-flow: column;': ''};
 `;
 
 const LastResultBox = styled.div`
@@ -39,7 +40,7 @@ const LastResultBox = styled.div`
   };
 `;
 
-function PreviousStats({data}) {
+function PreviousStats({data, vertical = false}) {
   const blankSpaces = ((5 - data.length) < 0) ? 0 : (5 - data.length);
   for (let x = 0; x < blankSpaces; x++) {
     data.unshift({
@@ -55,7 +56,7 @@ function PreviousStats({data}) {
   }
   var variance = (data.length - 5);
   return (
-    <LastResultContainer>
+    <LastResultContainer vertical={vertical} >
       {data.slice(variance, 5+variance).map((lastResult, index) => {
         return (
           <LastResultBox 

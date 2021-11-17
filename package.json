@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "babel-preset-react-app": "^9.0.2",
     "color": "^3.1.2",
+    "html-to-image": "^1.9.0",
     "moment": "^2.24.0",
     "react": "^16.9.0",
     "react-awesome-slider": "github:pepocivs/react-awesome-slider#adding-blur-functionality",

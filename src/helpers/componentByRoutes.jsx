@@ -6,6 +6,7 @@ import NotFound from 'components/Containers/NotFound';
 import NewsContainer from "components/Connectors/ConnectedNews";
 import TeamsContainer from "components/Connectors/ConnectedTeams";
 import StreamsContainer from "components/Connectors/ConnectedStreams";
+import NextGamesContainer from "components/Containers/NextGamesContainer";
 import ShopContainer from "components/Connectors/ConnectedShop";
 import CompetitionsContainer from "components/Connectors/ConnectedCompetitions";
 import LinksContainer from "components/Connectors/ConnectedLinks";
@@ -37,6 +38,7 @@ const components = {
   politicaPrivacidad: PrivacyPolicyContainer,
   politicaCookies: CookiesPolicyContainer,
   streams: StreamsContainer,
+  nextGames: NextGamesContainer,
   shop: ShopContainer,
 };
 
