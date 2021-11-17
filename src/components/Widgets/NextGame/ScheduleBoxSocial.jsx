@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Moment from 'react-moment';
-import * as htmlToImage from 'html-to-image';
+import html2canvas from 'html2canvas';
 import 'moment/locale/es';
 
 /** Helpers */
@@ -21,7 +21,7 @@ const statSize = (0.7*width / 393);
 const topInfoPosition = calcRatio(10, width);
 const teamLayerPosition = calcRatio(195, width, yAxis);
 const teamLayerTopPosition = calcRatio(210, width, yAxis);
-const teamLayerStatsTopPosition = calcRatio(222, width, yAxis);
+const teamLayerStatsTopPosition = calcRatio(205, width, yAxis);
 const generalInfoTopPosition = calcRatio(255, width, yAxis);
 const dateTopPosition = calcRatio(280, width, yAxis);
 const bottomInfoPosition = calcRatio(325, width, yAxis);
@@ -33,7 +33,6 @@ const ScheduleBoxContainer = styled.div`
   }
   font-family: Acme;
   position: relative;
-  border-bottom: 1px solid ${({theme}) => theme.colors.grey};
   background-color: ${({theme}) => theme.colors.black};
   color: ${({theme}) => theme.colors.light};
   margin-bottom: 5px;
@@ -82,7 +81,6 @@ const Stats = styled.div`
   position: absolute;
   top: ${teamLayerStatsTopPosition}px;
   ${({position}) => `${position}: 10px;`}
-  zoom: ${statSize};
   -moz-transform: scale(${statSize});
 `;
 
@@ -179,30 +177,22 @@ function calcRatio(width, pixels, variance = 0) {
   return Math.ceil((pixels+variance)*width / 393);
 }
 
-function saveAs(blob, fileName) {
-  var elem = window.document.createElement('a');
-  elem.href = blob
-  elem.download = fileName;
-  elem.style = 'display:none;';
-  (document.body || document.documentElement).appendChild(elem);
-  if (typeof elem.click === 'function') {
-    elem.click();
-  } else {
-    elem.target = '_blank';
-    elem.dispatchEvent(new MouseEvent('click', {
-      view: window,
-      bubbles: true,
-      cancelable: true
-    }));
-  }
-  URL.revokeObjectURL(elem.href);
-  elem.remove()
+function saveCanvas(canvas, fileName) {
+  let downloadLink = document.createElement('a');
+  downloadLink.setAttribute('download', `${fileName}.png`);
+  let dataURL = canvas.toDataURL('image/png');
+  let url = dataURL.replace(/^data:image\/png/,'data:application/octet-stream');
+  downloadLink.setAttribute('href', url);
+  downloadLink.click();
 }
 
 async function getPNG(e) {
   const fileName = e.currentTarget.getAttribute('name');
-  const dataUrl = await htmlToImage.toPng(e.currentTarget);
-  saveAs(dataUrl, fileName);
+  const options = {
+    imageTimeout: 3000
+  }
+  const canvas = await html2canvas(e.currentTarget, options);
+  saveCanvas(canvas, fileName);
 }
 
 export default ScheduleBoxSocial;
