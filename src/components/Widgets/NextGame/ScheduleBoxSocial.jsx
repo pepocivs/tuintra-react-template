@@ -6,6 +6,7 @@ import 'moment/locale/es';
 
 /** Helpers */
 import { slugify } from "helpers/slugify";
+import clubInfoDomain from "helpers/clubInfo";
 
 /** Custom components */
 import PreviousStats from "./PreviousStats";
@@ -14,7 +15,8 @@ import PreviousStats from "./PreviousStats";
 const width = 524;
 const yAxis = 50;
 
-const imageHeight = calcRatio(284, width, yAxis);
+const imageHeight = calcRatio(283, width, yAxis);
+const underShieldWidth = calcRatio(123, width, yAxis);
 const teamLayerHeight = calcRatio(142, width);
 const shieldSize = calcRatio(75, width);
 const statSize = (0.7*width / 393);
@@ -34,6 +36,9 @@ const ScheduleBoxContainer = styled.div`
   font-family: Acme;
   position: relative;
   background-color: ${({theme}) => theme.colors.black};
+  background: url('/assets/next-game/cardBg.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
   color: ${({theme}) => theme.colors.light};
   margin-bottom: 5px;
   width: ${width}px;
@@ -43,17 +48,20 @@ const ScheduleBoxContainer = styled.div`
 
 const Image = styled.div`
   position: absolute;
+  /*
   background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
   background: -webkit-gradient(linear, left bottom, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(50%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 1))), url(${({src}) => src}) no-repeat;
   background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
   background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
   background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
   background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
+  filter: sepia() saturate(100%) hue-rotate(100deg);
+  */
   width: ${width}px;
   height: ${imageHeight}px;
+  background: url(${({src}) => src}) no-repeat;
   background-size: cover;
   background-position: center;
-  //filter: sepia() saturate(100%) hue-rotate(100deg);
   filter: saturate(125%);
 `;
 
@@ -89,7 +97,7 @@ const Versus = styled.div`
   top: ${teamLayerStatsTopPosition}px;
   -webkit-text-stroke: 1px black;
   font-weight: bold;
-  font-size: 45px;
+  font-size: 65px;
   width: 100%;
   text-align: center;
 `;
@@ -124,6 +132,7 @@ const Hour = styled.div`
 const BottomInfo = styled.div`
   position: absolute;
   top: ${bottomInfoPosition}px;
+  color: ${({theme}) => theme.colors.black};
   font-size: 25px;
   width: 100%;
   text-align: center;
@@ -136,6 +145,34 @@ const TopInfo = styled.div`
   width: 100%;
   text-align: center;
 `;
+
+const UnderShieldInfo = styled.div`
+  position: absolute;
+  top: ${dateTopPosition+15}px;
+  ${({position}) => `${position}: 12px;`}
+  line-height: 15px;
+  color: ${({theme}) => theme.colors.black};
+  font-size: 18px;
+  width: ${underShieldWidth}px;
+  text-align: center;
+`;
+
+const TopTag = styled.div`
+  position: absolute;
+  right: 0px;
+  padding: 5px 20px;
+  background-color: ${({theme}) => theme.clubOptions.principal_color_web};
+  background: url('/assets/next-game/cardBg.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: ${({theme}) => theme.colors.black};
+  font-weight: bold;
+  font-size: 25px;
+  border-bottom: 2px solid ${({theme}) => theme.colors.black};
+  border-left: 2px solid ${({theme}) => theme.colors.black};
+  opacity: 0.85;
+`;
+
 
 function ScheduleBoxSocial({nextGames, stats}) {
   return nextGames.map(game => {
@@ -151,8 +188,10 @@ function ScheduleBoxSocial({nextGames, stats}) {
         <Stats position="right"><PreviousStats vertical={true} gameId={game._id} data={(stats.data || {})[`${game.away._id}-${game.competitionId}`] || []} /></Stats>
         <Date><Moment format="DD MMM" date={game.date}/></Date>
         <Hour><Moment format="HH:mm" date={game.date}/>h</Hour>
-        <TopInfo>{game.competition.name}<br />{game.competition.category} {game.competition.gender}</TopInfo>
-        <BottomInfo>{game.facility}</BottomInfo>
+        <UnderShieldInfo position="left">{game.local.name}</UnderShieldInfo>
+        <UnderShieldInfo position="right">{game.away.name}</UnderShieldInfo>
+        <BottomInfo>{game.competition.name} - {game.competition.category} {game.competition.gender}</BottomInfo>
+        <TopTag>{game.facility}</TopTag>
         <GeneralInfo>{game.gameType}</GeneralInfo>
       </ScheduleBoxContainer>
     )
@@ -163,9 +202,9 @@ function getImage(competition) {
   const isDH = !!(competition.name.includes('Honor'));
   const number = Math.floor(Math.random() * (4 - 1) + 1);
   if (isDH) {
-    return `/assets/next-game/giner/division-honor0${number}.jpg`;
+    return `/assets/next-game/${clubInfoDomain.subdomain}/division-honor0${number}.jpg`;
   } else {
-    return `/assets/next-game/giner/${slugify(`${competition.category}-${competition.gender}`)}0${number}.jpg`;
+    return `/assets/next-game/${clubInfoDomain.subdomain}/${slugify(`${competition.category}-${competition.gender}`)}0${number}.jpg`;
   }
 }
 
