@@ -25,7 +25,7 @@ const teamLayerPosition = calcRatio(195, width, yAxis);
 const teamLayerTopPosition = calcRatio(210, width, yAxis);
 const teamLayerStatsTopPosition = calcRatio(205, width, yAxis);
 const generalInfoTopPosition = calcRatio(255, width, yAxis);
-const dateTopPosition = calcRatio(280, width, yAxis);
+const dateTopPosition = calcRatio(285, width, yAxis);
 const bottomInfoPosition = calcRatio(325, width, yAxis);
 
 const ScheduleBoxContainer = styled.div`
@@ -114,16 +114,17 @@ const GeneralInfo = styled.div`
 const Date = styled.div`
   position: absolute;
   top: ${dateTopPosition}px;
-  font-size: 25px;
+  font-size: 18px;
   color: ${({theme}) => theme.colors.black};
   width: 100%;
   text-align: center;
+  text-transform: capitalize;
 `;
 
 const Hour = styled.div`
   position: absolute;
-  top: ${dateTopPosition+25}px;
-  font-size: 25px;
+  top: ${dateTopPosition+18}px;
+  font-size: 18px;
   color: ${({theme}) => theme.colors.black};
   width: 100%;
   text-align: center;
@@ -148,7 +149,7 @@ const TopInfo = styled.div`
 
 const UnderShieldInfo = styled.div`
   position: absolute;
-  top: ${dateTopPosition+15}px;
+  top: ${dateTopPosition + 7}px;
   ${({position}) => `${position}: 12px;`}
   line-height: 15px;
   color: ${({theme}) => theme.colors.black};
