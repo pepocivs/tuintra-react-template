@@ -26,7 +26,7 @@ const teamLayerTopPosition = calcRatio(210, width, yAxis);
 const teamLayerStatsTopPosition = calcRatio(205, width, yAxis);
 const generalInfoTopPosition = calcRatio(255, width, yAxis);
 const dateTopPosition = calcRatio(285, width, yAxis);
-const bottomInfoPosition = calcRatio(325, width, yAxis);
+const bottomInfoPosition = calcRatio(315, width, yAxis);
 
 const ScheduleBoxContainer = styled.div`
   @font-face {
@@ -63,6 +63,15 @@ const Image = styled.div`
   background-size: cover;
   background-position: center;
   filter: saturate(125%);
+`;
+
+const Partners = styled.div`
+  position: absolute;
+  width: ${width}px;
+  height: ${imageHeight}px;
+  background: url(${({src}) => src}) no-repeat;
+  background-size: cover;
+  background-position: center;
 `;
 
 const TeamLayer = styled.div`
@@ -160,17 +169,13 @@ const UnderShieldInfo = styled.div`
 
 const TopTag = styled.div`
   position: absolute;
-  right: 0px;
-  padding: 5px 20px;
-  background-color: ${({theme}) => theme.clubOptions.principal_color_web};
-  background: url('/assets/next-game/cardBg.jpg') no-repeat;
-  background-size: cover;
-  background-position: center;
+  width: 100%;
+  text-align: center;
+  bottom: 0px;
+  padding: 3px 15px;
   color: ${({theme}) => theme.colors.black};
   font-weight: bold;
-  font-size: 25px;
-  border-bottom: 2px solid ${({theme}) => theme.colors.black};
-  border-left: 2px solid ${({theme}) => theme.colors.black};
+  font-size: 18px;
   opacity: 0.85;
 `;
 
@@ -181,6 +186,7 @@ function ScheduleBoxSocial({nextGames, stats}) {
     return (
       <ScheduleBoxContainer key={game._id} onClick={getPNG} name={slugify(`${game.date}-${game.competition.name}-${game.competition.category}-${game.competition.gender}`)}>
         <Image src={image} />
+        {(isDH(game.competition) ? (<Partners src={`/assets/next-game/${clubInfoDomain.subdomain}/partners/partner.png`} />) : '')}
         <TeamLayer />
         <Shield src={getShield(game.local.shield[100])} position="left" />
         <Stats position="left"><PreviousStats vertical={true} gameId={game._id} data={(stats.data || {})[`${game.local._id}-${game.competitionId}`] || []} /></Stats>
@@ -199,10 +205,13 @@ function ScheduleBoxSocial({nextGames, stats}) {
   });
 }
 
+function isDH(competition) {
+  return !!(competition.name.includes('Honor'));
+}
+
 function getImage(competition) {
-  const isDH = !!(competition.name.includes('Honor'));
   const number = Math.floor(Math.random() * (4 - 1) + 1);
-  if (isDH) {
+  if (isDH(competition)) {
     return `/assets/next-game/${clubInfoDomain.subdomain}/division-honor0${number}.jpg`;
   } else {
     return `/assets/next-game/${clubInfoDomain.subdomain}/${slugify(`${competition.category}-${competition.gender}`)}0${number}.jpg`;
