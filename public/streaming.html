@@ -1,0 +1,50 @@
+<html lang="es" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      .video-responsive {
+        height: 0;
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        padding-top: 30px;
+        position: relative;
+      }
+      .video-responsive iframe, .video-responsive object, .video-responsive embed {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    </style>
+    <title>C.D. Giner de los Ríos - TV</title>
+  </head>
+
+  <body>
+    <div id="stream-container"></div>
+
+    <script type="text/javascript" language="javascript">
+      function send() {
+        const URL = 'https://api.tuintra.com/ginerdelosrios/streams';
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", URL, false);
+        xmlhttp.send();
+        JSON.parse(xmlhttp.response).map(game => {
+          if (game.competition.name === 'D. Honor B') {
+            const body = document.querySelector('body');
+            const container = document.createElement("div");
+            container.classList = ['video-responsive'];
+            container.innerHTML = `<iframe src="https://www.youtube.com/embed/${game.youtubeId}" frameborder="0" allowfullscreen></iframe>`;
+            body.appendChild(container);
+          }
+        });
+        
+      }
+      send();
+    </script>
+  </body>
+</html>
