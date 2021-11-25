@@ -24,7 +24,9 @@ const topInfoPosition = calcRatio(10, width);
 const teamLayerPosition = calcRatio(195, width, yAxis);
 const teamLayerTopPosition = calcRatio(210, width, yAxis);
 const teamLayerStatsTopPosition = calcRatio(205, width, yAxis);
-const generalInfoTopPosition = calcRatio(255, width, yAxis);
+const versusTopPosition = calcRatio(195, width, yAxis);
+const generalInfoTopPosition = calcRatio(245, width, yAxis);
+const gameDayTopPosition = calcRatio(260, width, yAxis);
 const dateTopPosition = calcRatio(285, width, yAxis);
 const bottomInfoPosition = calcRatio(315, width, yAxis);
 
@@ -103,7 +105,7 @@ const Stats = styled.div`
 
 const Versus = styled.div`
   position: absolute;
-  top: ${teamLayerStatsTopPosition}px;
+  top: ${versusTopPosition}px;
   -webkit-text-stroke: 1px black;
   font-weight: bold;
   font-size: 65px;
@@ -114,6 +116,15 @@ const Versus = styled.div`
 const GeneralInfo = styled.div`
   position: absolute;
   top: ${generalInfoTopPosition}px;
+  font-size: 20px;
+  -webkit-text-stroke: 1px black;
+  width: 100%;
+  text-align: center;
+`;
+
+const GameDayInfo = styled.div`
+  position: absolute;
+  top: ${gameDayTopPosition}px;
   font-size: 20px;
   -webkit-text-stroke: 1px black;
   width: 100%;
@@ -200,6 +211,7 @@ function ScheduleBoxSocial({nextGames, stats}) {
         <BottomInfo>{game.competition.name} - {game.competition.category} {game.competition.gender}</BottomInfo>
         <TopTag>{game.facility}</TopTag>
         <GeneralInfo>{game.gameType}</GeneralInfo>
+        <GameDayInfo>Jornada {game.gameDay}</GameDayInfo>
       </ScheduleBoxContainer>
     )
   });
