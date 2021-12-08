@@ -8,7 +8,7 @@ const TitleContainer = styled.h1`
   span {
     position: absolute;
     overflow: hidden;
-    max-width: 100%;
+    max-width: 98%;
     font-size: 55px;
     font-size: ${({small}) => (small) ? "40px" : "55px"};
     left: 16px;

@@ -22,7 +22,7 @@ const TopFooterContiner = styled.div`
 
 const LinkContainer = styled.div`
   display: flex;
-  justify-content: ${({categoryId}) => (categoryId === 9) ? 'center' : 'space-between'};
+  justify-content: ${({big, middle}) => (big || middle) ? 'center' : 'space-between'};
   flex-flow: wrap;
   a {
     margin: 5px;
@@ -33,9 +33,9 @@ const FooterImage = styled.img`
   -webkit-filter: grayscale(100%) opacity(0.5) brightness(1) contrast(0.85);
   filter: grayscale(100%) opacity(0.5) brightness(1) contrast(0.85);
   transition: 0.5s;
-  max-width: ${({categoryId}) => (categoryId === 9) ? '500px' : '100px'};
+  max-width: ${({big, middle}) => big ? '500px' : (middle) ? '250px' : '100px'};
   @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape}px) {
-    max-width: ${({categoryId}) => (categoryId === 9) ? '100%' : '100px'};
+    max-width: ${({big, middle}) => (big || middle) ? '100%' : '100px'};
   }
   :hover {
     -webkit-filter: grayscale(0%) opacity(1) brightness(1) contrast(1);
@@ -44,6 +44,8 @@ const FooterImage = styled.img`
 `;
 
 function TopFooter({ footerLinks }) {
+  const bigCategories = [9, 11];
+  const middleCategories = [12];
   return (
     <TopFooterContiner>
       <FooterSection>
@@ -54,10 +56,10 @@ function TopFooter({ footerLinks }) {
                 ? (<Title shadow={categoryLink.categoryName}>{categoryLink.categoryName}</Title>) 
                 : ''
             }
-            <LinkContainer categoryId={categoryLink.categoryId}>
+            <LinkContainer big={bigCategories.includes(categoryLink.categoryId)} middle={middleCategories.includes(categoryLink.categoryId)}>
               {categoryLink.links.map(link => (
                 <a key={link.linkName} href={link.url} rel="noopener noreferrer" target="_blank">
-                  <FooterImage categoryId={categoryLink.categoryId} src={link.image} />
+                  <FooterImage big={bigCategories.includes(categoryLink.categoryId)} middle={middleCategories.includes(categoryLink.categoryId)} src={link.image} />
                 </a>
               ))}
             </LinkContainer>
