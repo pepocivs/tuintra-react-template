@@ -34,6 +34,7 @@ const FooterImage = styled.img`
   filter: grayscale(100%) opacity(0.5) brightness(1) contrast(0.85);
   transition: 0.5s;
   max-width: ${({big, middle}) => big ? '500px' : (middle) ? '250px' : '100px'};
+  width: ${({big, middle}) => big ? '500px' : (middle) ? '250px' : '100px'};
   @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape}px) {
     max-width: ${({big, middle}) => (big || middle) ? '100%' : '100px'};
   }
