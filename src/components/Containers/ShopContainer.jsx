@@ -17,7 +17,7 @@ const OrderForm = styled.iframe`
 
 const ShopCatalogContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 400px;
   column-gap: 30px;
   margin-bottom: 30px;
   @media (max-width: ${({theme}) => theme.breakpoints.tablet}px) {
