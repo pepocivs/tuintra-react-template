@@ -11,6 +11,9 @@ import clubInfoDomain from "helpers/clubInfo";
 /** Custom components */
 import PreviousStats from "./PreviousStats";
 
+/** Global vars */
+const IS_TEAM_CLUB = 1;
+
 /** Styles */
 const width = 524;
 const yAxis = 50;
@@ -193,7 +196,7 @@ const TopTag = styled.div`
 
 function ScheduleBoxSocial({nextGames, stats}) {
   return nextGames.map(game => {
-    const image = getImage(game.competition);
+    const image = getImage(game.competition, game.local, game.away);
     return (
       <ScheduleBoxContainer key={game._id} onClick={getPNG} name={slugify(`${game.date}-${game.competition.name}-${game.competition.category}-${game.competition.gender}`)}>
         <Image src={image} />
@@ -221,7 +224,7 @@ function isDH(competition) {
   return !!(competition.name.includes('Honor'));
 }
 
-function getImage(competition) {
+function getDefaultImage(competition) {
   const number = Math.floor(Math.random() * (4 - 1) + 1);
   if (isDH(competition)) {
     return `/assets/next-game/${clubInfoDomain.subdomain}/division-honor0${number}.jpg`;
@@ -232,6 +235,21 @@ function getImage(competition) {
 
 function getShield(imageUrl) {
   return `/assets/next-game/shields/${imageUrl.split('/').pop()}`;
+}
+
+function getImage(competition, local, away) {
+  if (clubInfoDomain.subdomain === 'ginerdelosrios') return getDefaultImage(competition); // Only for Giner just default
+  const localPic = getTeamImage(local);
+  const awayPic = getTeamImage(away);
+  return (localPic || awayPic)
+    ? localPic || awayPic
+    : getDefaultImage(competition);
+}
+
+function getTeamImage(teamInfo) {
+  return (teamInfo.type === IS_TEAM_CLUB && teamInfo.picture)
+    ? `/assets/next-game/${clubInfoDomain.subdomain}/teams/${teamInfo.picture.split('/').pop()}`
+    : false;
 }
 
 function calcRatio(width, pixels, variance = 0) {
