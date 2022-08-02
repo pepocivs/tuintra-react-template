@@ -61,8 +61,27 @@ const OuterText = styled.p`
   line-height: 1;
 `;
 
+const PriceSeparator = styled.div`
+  width: 50%;
+  flex: auto;
+  text-align: ${({right}) => (right) ? 'right' : 'left'};
+`;
+
+const SeparatedPriceContainer = styled.p`
+  display: flex;
+`;
+
 function Card({bgImage, title, subtitle, outerText, width, height, radius, shadow = true, bgPosition}) {
   const gradient = (shadow) ? (width > height) ? 30 : 60 : 100;
+  const subTitleText = (subtitle.includes('**'))
+    ? (
+      <SeparatedPriceContainer>
+        <PriceSeparator>Online:<br />{subtitle.split('**')[0]}</PriceSeparator>
+        <PriceSeparator right>Tienda:<br />{subtitle.split('**')[1]}</PriceSeparator>
+      </SeparatedPriceContainer>
+      )
+    : (<p>{subtitle}</p>);
+  console.log(subTitleText);
   return (
     <div>
       <CardImage
@@ -75,7 +94,7 @@ function Card({bgImage, title, subtitle, outerText, width, height, radius, shado
         bgPosition={bgPosition}>
         <CardDescription height={height}>
           <h2>{title}</h2>
-          <p>{subtitle}</p>
+          {subTitleText}
         </CardDescription>
       </CardImage>
       <OuterText>{outerText}</OuterText>

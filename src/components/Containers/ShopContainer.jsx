@@ -15,6 +15,13 @@ const OrderForm = styled.iframe`
   border: 0px;
 `;
 
+const OrderText = styled.div`
+  width: 100%
+  height: 100%;
+  min-height: 100vh;
+  border: 0px;
+`;
+
 const ShopCatalogContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 400px;
@@ -52,6 +59,9 @@ function ShopContainer({fetchShop, shop = []}) {
   }, [fetchShop]);
   if (!shop.ready) return <Loading />;
   if (shop.data.length === 0) return <><Title shadow="Tienda">Tienda</Title><Alert icon="info" iconColor="#aec6cf" msg="No se han encontrado productos en la tienda" /></>
+  const formType = (shop.data[0].form.includes('<!---text--->'))
+    ? <OrderText dangerouslySetInnerHTML={{__html: shop.data[0].form}}></OrderText>
+    : <OrderForm src={`https://docs.google.com/forms/d/e/${shop.data[0].form}/viewform?embedded=true`}>Cargando…</OrderForm>
   return (
     shop.data.map((shopData, index) => (
       <div key={index}>
@@ -73,7 +83,7 @@ function ShopContainer({fetchShop, shop = []}) {
               ))
             }
           </ItemsContainer>
-          <OrderForm src={`https://docs.google.com/forms/d/e/${shopData.form}/viewform?embedded=true`}>Cargando…</OrderForm>
+          {formType}
         </ShopCatalogContainer>
         <LinkContainer>
           {
