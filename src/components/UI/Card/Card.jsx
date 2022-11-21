@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+const CardContainer = styled.div`
+  width: ${({width}) => width || '250px'};
+`;
+
 const CardImage = styled.div`
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) ${({gradient}) => gradient}%, rgba(0, 0, 0, 1) 100%), url(${({src}) => src}) no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(${({gradient}) => gradient}%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 1))), url(${({src}) => src}) no-repeat;
@@ -73,7 +77,7 @@ const SeparatedPriceContainer = styled.p`
 
 function Card({bgImage, title, subtitle, outerText, width, height, radius, shadow = true, bgPosition}) {
   const gradient = (shadow) ? (width > height) ? 30 : 60 : 100;
-  const subTitleText = (subtitle.includes('**'))
+  const subTitleText = (subtitle && subtitle.includes('**'))
     ? (
       <SeparatedPriceContainer>
         <PriceSeparator>Online:<br />{subtitle.split('**')[0]}</PriceSeparator>
@@ -81,9 +85,8 @@ function Card({bgImage, title, subtitle, outerText, width, height, radius, shado
       </SeparatedPriceContainer>
       )
     : (<p>{subtitle}</p>);
-  console.log(subTitleText);
   return (
-    <div>
+    <CardContainer width={width}>
       <CardImage
         src={bgImage}
         width={width}
@@ -98,7 +101,7 @@ function Card({bgImage, title, subtitle, outerText, width, height, radius, shado
         </CardDescription>
       </CardImage>
       <OuterText>{outerText}</OuterText>
-    </div>
+    </CardContainer>
   )
 }
 
