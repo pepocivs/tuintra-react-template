@@ -7,6 +7,7 @@ const GameRow = styled.div`
   align-items: center;
   grid-template-columns: 36px 3fr 1fr 3fr 36px;
   grid-gap: 0 10px;
+  ${({reducedGame}) => reducedGame ? 'zoom: 50%;' : ''}
 `;
 
 const ScheduleRow = styled.div`
@@ -47,12 +48,12 @@ const ExtraInfo = styled.div`
   text-align: center;
 `;
 
-function ScheduleDay({game}) {
+function ScheduleDay({game, reducedGame}) {
   return (
     <ScheduleRow>
       <ExtraInfo title={game._id}>{game.gameType}</ExtraInfo>
       <ExtraInfo><Moment format="DD/MM/YYYY - HH:mm" date={game.date}/></ExtraInfo>
-      <GameRow>
+      <GameRow reducedGame={reducedGame}>
         <TeamShield src={game.local.shield[100]} alt={game.local.name}/>
         <TeamName position="left">{game.local.name}</TeamName>
         <Score>{game.localScore} - {game.awayScore}</Score>

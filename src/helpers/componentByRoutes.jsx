@@ -7,6 +7,7 @@ import NewsContainer from "components/Connectors/ConnectedNews";
 import TeamsContainer from "components/Connectors/ConnectedTeams";
 import StreamsContainer from "components/Connectors/ConnectedStreams";
 import NextGamesContainer from "components/Containers/NextGamesContainer";
+import ResourcesContainer from "components/Containers/ResourcesContainer";
 import ShopContainer from "components/Connectors/ConnectedShop";
 import CompetitionsContainer from "components/Connectors/ConnectedCompetitions";
 import LinksContainer from "components/Connectors/ConnectedLinks";
@@ -39,6 +40,7 @@ const components = {
   politicaCookies: CookiesPolicyContainer,
   streams: StreamsContainer,
   nextGames: NextGamesContainer,
+  resources: ResourcesContainer,
   shop: ShopContainer,
 };
 
