@@ -18,7 +18,7 @@ const SliderContainer = styled.div`
 
 const AwesomeSliderStyled = styled(AwesomeSlider)`
   height: calc(80vh - 160px);
-  max-height: 500px;
+  max-height: 600px;
   width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
@@ -59,8 +59,8 @@ const AwesomeSliderStyled = styled(AwesomeSlider)`
       -2px -1px 0px ${({theme}) => theme.clubOptions.principal_color_web};
   };
   .aws-sld__content>img {
-    -o-object-fit: contain;
-    object-fit: contain;
+    -o-object-fit: cover;
+    object-fit: cover;
   }
   .aws-sld__content>img.blured {
     -o-object-fit: cover;
@@ -104,10 +104,16 @@ function NewsHeader({ news }) {
       <AwesomeSliderStyled>
         {news.map((article, key) => (
           <div data-src={article.image} key={key}>
-            <p>{article.title}</p>
-            <ButtonLink>
-              <StyledLink to={`/noticias${article.slug}`}>Ver Notícia</StyledLink>
-            </ButtonLink>
+            {
+              (!article.hideButton)
+              ? (<>
+                  <p>{article.title}</p>
+                  <ButtonLink>
+                    <StyledLink to={`/noticias${article.slug}`}>Ver Notícia</StyledLink>
+                  </ButtonLink>
+                </>)
+              : (<></>)
+            }
           </div>
         ))}
       </AwesomeSliderStyled>

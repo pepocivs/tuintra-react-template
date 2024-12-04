@@ -7,7 +7,7 @@ import GetWidget from "components/Widgets/GetWidget";
 import News from "components/Widgets/News/News";
 
 const HomeGridContainer = styled.div`
-  margin: 550px auto 0 auto;
+  margin: 650px auto 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
