@@ -73,7 +73,7 @@ const SeparatedPriceContainer = styled.p`
 
 function Card({bgImage, title, subtitle, outerText, width, height, radius, shadow = true, bgPosition}) {
   const gradient = (shadow) ? (width > height) ? 30 : 60 : 100;
-  const subTitleText = (subtitle.includes('**'))
+  const subTitleText = (subtitle?.includes('**'))
     ? (
       <SeparatedPriceContainer>
         <PriceSeparator>Online:<br />{subtitle.split('**')[0]}</PriceSeparator>

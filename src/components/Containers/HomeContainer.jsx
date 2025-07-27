@@ -33,6 +33,14 @@ const HomeGridContainer = styled.div`
 
 `;
 
+const HomeGridContainerEmpty = styled.div`
+  margin: 650px auto 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+`;
+
 const WidgetMI = styled.div`
   grid-area: medio-izquierda;
 `;
@@ -73,7 +81,7 @@ function HomeContainer({clubInfo}) {
     <>
       <News></News>
       {(widgets.length === 0) 
-        ? null
+        ? <HomeGridContainerEmpty></HomeGridContainerEmpty>
         : <HomeGridContainer>
             <WidgetMI><GetWidget joinedContent={joinedContent} widget={widgets.find(widget => widget.position === 'medio-izquierda')} /></WidgetMI>
             <WidgetMC><GetWidget joinedContent={joinedContent} widget={widgets.find(widget => widget.position === 'medio-centro')} /></WidgetMC>

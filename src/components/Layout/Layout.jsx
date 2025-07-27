@@ -30,7 +30,6 @@ const MainContainer = styled.div`
     "footer footer footer";
   grid-template-columns: ${({theme}) => `${theme.spacings.layoutMargin} 1fr ${theme.spacings.layoutMargin}`};
   grid-template-rows: ${({theme}) => theme.spacings.headerHeight} 1fr auto;
-  grid-gap: 10px;
   height: 100vh;
   @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape}px) {
     grid-template-columns: ${({theme}) => `${theme.spacings.layoutSmallMargin} 1fr ${theme.spacings.layoutSmallMargin}`};
