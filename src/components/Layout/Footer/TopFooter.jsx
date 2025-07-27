@@ -35,8 +35,9 @@ const FooterImage = styled.img`
   transition: 0.5s;
   max-height: ${({big, middle}) => big ? '500px' : (middle) ? '250px' : '100px'};
   height: ${({big, middle}) => big ? '500px' : (middle) ? '250px' : '100px'};
-  @media (max-height: ${({theme}) => theme.breakpoints.tabletLandscape}px) {
-    max-height: ${({big, middle}) => (big || middle) ? '100%' : '100px'};
+  @media (max-width: ${({theme}) => theme.breakpoints.tabletLandscape}px) {
+    max-width: ${({big, middle}) => (big || middle) ? '100%' : '100px'};
+    height: auto;
   }
   :hover {
     -webkit-filter: grayscale(0%) opacity(1) brightness(1) contrast(1);
